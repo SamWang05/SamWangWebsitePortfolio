@@ -10,6 +10,15 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+
+/* Horizontal line for decoration */
+
+.horizontalLine {
+    border: 1px solid #5E5653 / 50%;
+    margin: 50px;
+}
+
+
 @font-face {
     font-family: firaSansCondensedReg;
     src: url(/assets/fonts/firaSansCondensedRegular.woff2);
