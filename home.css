@@ -63,6 +63,7 @@
 
     justify-content: space-between;
     margin: 50px;
+    margin-bottom: 150px;
 }
 
 
@@ -107,6 +108,42 @@
     font-size: 36px;
     text-wrap: pretty;
 
-    padding-right: 50px;
+    padding-right: 30px;
     border-right: 5px solid #5E5653;
+}
+
+/* About Me Intro Blurb*/
+
+.aboutMeIntro {
+    display: flex;
+    flex-direction: column;
+
+    align-items: space-between;
+
+    padding: 50px;
+    gap: 30px;
+
+    background-color: #d9d1cb;
+    color: #5E5653;
+}
+
+.aboutMeIntro * {
+    background-color: #d9d1cb;
+}
+
+.aboutMeIntro > .textCaptionTitle {
+    font-family: firaSansCondensedReg;
+    font-size: 48px;
+    font-weight: 700;
+    text-wrap: nowrap;
+    text-align: left;
+}
+
+.aboutMeIntro > .textCaptionBody {
+    font-family: playfairDisplayVar;
+    font-size: 24px;
+    text-wrap: pretty;
+    text-align: right;
+
+    padding-right: 30px;
 }
