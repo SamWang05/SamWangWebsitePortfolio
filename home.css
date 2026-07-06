@@ -91,6 +91,7 @@
     gap: 30px;
 
     text-align: right;
+
     color: #5E5653;
 }
 
@@ -98,6 +99,7 @@
     font-family: firaSansCondensedReg;
     font-size: 100px;
     font-weight: 700;
+
     text-wrap: nowrap;
 }
 
@@ -106,6 +108,7 @@
     
     font-family: playfairDisplayVar;
     font-size: 36px;
+
     text-wrap: pretty;
 
     padding-right: 30px;
@@ -118,34 +121,30 @@
     display: flex;
     flex-direction: column;
 
-    align-items: space-between;
+    justify-content: center;
 
     padding: 50px;
     gap: 30px;
-    border-radius: 30px 0px 0px 30px;
-    margin-left: 100px;
+    margin: 100px;
 
-    background-color: #d9d1cb;
     color: #5E5653;
-}
-
-.aboutMeIntro * {
-    background-color: #d9d1cb;
 }
 
 .aboutMeIntro > .textCaptionTitle {
     font-family: firaSansCondensedReg;
     font-size: 48px;
     font-weight: 700;
+
     text-wrap: nowrap;
-    text-align: left;
+    text-align: left;    
 }
 
 .aboutMeIntro > .textCaptionBody {
     font-family: playfairDisplayVar;
     font-size: 24px;
+
     text-wrap: pretty;
-    text-align: right;
+    text-align: left;
 
     padding-right: 30px;
 }
