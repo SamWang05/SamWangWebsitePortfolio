@@ -1,0 +1,21 @@
+/* MASTER sheet used for ALL formatting across all pages */
+
+* {
+    margin: 0px;
+    background-color: #E9E6E7;
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+@font-face {
+    font-family: firaSansCondensedReg;
+    src: url(/assets/fonts/firaSansCondensedRegular.woff2);
+}
+
+@font-face {
+    font-family: playfairDisplayVar;
+    src: url(/assets/fonts/playfairDisplayVariable.woff2);
+}

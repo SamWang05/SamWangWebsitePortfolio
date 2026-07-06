@@ -1,0 +1,112 @@
+/* Overhead Banner */
+
+.overheadBanner * {
+    background-color: #F0F0F0;
+}
+
+
+
+/* Modules within the banner */
+
+.bannerModules {
+    display: flex;
+
+    justify-content: space-between;
+    padding: 20px;
+    gap: 500px;
+}
+
+
+
+/* Overhead Banner Logo */
+
+.bannerModules > .logo .websiteLogo {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    outline: none;
+}
+
+
+
+/* Overhead Banner Links */
+
+.bannerModules > .links {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    gap: 30px;
+
+    list-style-type: none;
+
+    text-wrap: nowrap;
+    font-family: playfairDisplayVar;
+}
+
+.bannerModules > .links a {
+    color: #5E5653;
+    
+    font-weight: 100;
+    font-size: 20px;
+
+    text-decoration: none;
+}
+
+
+
+/* Intro Display */
+
+.introDisplay {
+    display: flex;
+
+    justify-content: space-between;
+    margin: 50px;
+}
+
+
+
+/* Intro Display Photo */
+
+.introDisplay > .posePhoto {
+    width: 500px;
+    height: auto;
+
+    border-radius: 150px;
+}
+
+
+
+/* Intro Display Caption Text */
+
+.introDisplay > .captionText {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: right;
+    padding: 20px;
+    gap: 30px;
+
+    text-align: right;
+    color: #5E5653;
+}
+
+.introDisplay > .captionText > .textCaptionTitle {
+    font-family: firaSansCondensedReg;
+    font-size: 100px;
+    font-weight: 700;
+    text-wrap: nowrap;
+}
+
+.introDisplay > .captionText > .textCaptionBody {
+    width: 400px;
+    
+    font-family: playfairDisplayVar;
+    font-size: 36px;
+    text-wrap: pretty;
+
+    padding-right: 50px;
+    border-right: 5px solid #5E5653;
+}
