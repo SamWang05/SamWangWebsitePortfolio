@@ -154,8 +154,6 @@
 .technicalAndSoftSkills {
     display: flex;
 
-    justify-content: space-evenly;
-
     padding: 50px;
     gap: 100px;
     margin: 100px;
@@ -163,14 +161,7 @@
     color: #5E5653;
 }
 
-.skillsCategory {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-}
-
-.skillsCategory > .textCaptionTitle {
+.technicalAndSoftSkills > .textCaptionTitle {
     font-family: firaSansCondensedReg;
     font-size: 48px;
     font-weight: 700;
