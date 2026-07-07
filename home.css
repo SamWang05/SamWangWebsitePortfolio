@@ -115,7 +115,7 @@
     border-right: 5px solid #5E5653;
 }
 
-/* About Me Intro Blurb*/
+/* About Me Intro Blurb */
 
 .aboutMeIntro {
     display: flex;
@@ -145,4 +145,50 @@
 
     text-wrap: pretty;
     text-align: left;
+}
+
+
+
+/* Technical/Soft Skills */
+
+.technicalAndSoftSkills {
+    display: flex;
+
+    justify-content: space-evenly;
+
+    padding: 50px;
+    gap: 100px;
+    margin: 100px;
+
+    color: #5E5653;
+}
+
+.skillsCategory {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.skillsCategory > .textCaptionTitle {
+    font-family: firaSansCondensedReg;
+    font-size: 48px;
+    font-weight: 700;
+
+    text-wrap: nowrap;
+    text-align: left;   
+}
+
+/*
+In the center, below the two subtitles, add a word cloud composed of skills from both 
+types. On the sides, there is a list of the skills comprising the technical/soft skills 
+making that list.
+*/
+
+.technicalAndSoftSkills > .wordCloud {
+    padding: 150px;
+
+    background-color: blue; /* Temporary placeholder */
+    color: black;
+    font-size: 36px;
 }
