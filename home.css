@@ -178,17 +178,3 @@
     text-wrap: nowrap;
     text-align: left;   
 }
-
-/*
-In the center, below the two subtitles, add a word cloud composed of skills from both 
-types. On the sides, there is a list of the skills comprising the technical/soft skills 
-making that list.
-*/
-
-.technicalAndSoftSkills > .wordCloud {
-    padding: 150px;
-
-    background-color: blue; /* Temporary placeholder */
-    color: black;
-    font-size: 36px;
-}
