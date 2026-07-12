@@ -12,7 +12,7 @@
     display: flex;
 
     justify-content: space-between;
-    
+
     padding: 20px;
     gap: 500px;
 }
@@ -44,7 +44,7 @@
     list-style-type: none;
 
     text-wrap: nowrap;
-    font-family: playfairDisplayVar;
+    font-family: comfortaaVariable;
 }
 
 .bannerModules > .links a {
@@ -108,9 +108,9 @@
 }
 
 .introDisplay > .captionText > .textCaptionBody {
-    width: 400px;
+    width: 600px;
     
-    font-family: playfairDisplayVar;
+    font-family: comfortaaVariable;
     font-size: 36px;
 
     text-wrap: pretty;
@@ -144,7 +144,7 @@
 }
 
 .aboutMeIntro > .textCaptionBody {
-    font-family: playfairDisplayVar;
+    font-family: karlaVariable;
     font-size: 24px;
 
     text-wrap: pretty;

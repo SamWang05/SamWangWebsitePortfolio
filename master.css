@@ -18,12 +18,23 @@
     margin: 50px;
 }
 
+/* Fira Sans Condensed for Titles */
+
 @font-face {
     font-family: firaSansCondensedReg;
     src: url(/assets/fonts/firaSansCondensedRegular.woff2);
 }
 
+/* Comfortaa Variable for Subtitles and Decorative Text */
+
 @font-face {
-    font-family: playfairDisplayVar;
-    src: url(/assets/fonts/playfairDisplayVariable.woff2);
+    font-family: comfortaaVariable;
+    src: url(/assets/fonts/comfortaaVariable.woff2);
+}
+
+/* Karla Variable for Body Text */
+
+@font-face {
+    font-family: karlaVariable;
+    src: url(/assets/fonts/karlaVariable.woff2);
 }
