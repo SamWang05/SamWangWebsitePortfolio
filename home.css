@@ -1,6 +1,6 @@
-/* Overhead Banner */
+/* Overhead Display */
 
-.overheadBanner * {
+.overheadDisplay * {
     background-color: #F0F0F0;
 }
 
@@ -8,7 +8,7 @@
 
 /* Modules within the banner */
 
-.bannerModules {
+.displayModules {
     display: flex;
 
     justify-content: space-between;
@@ -21,7 +21,7 @@
 
 /* Overhead Banner Logo */
 
-.bannerModules > .logo .websiteLogo {
+.displayModules > .logoPhoto img {
     width: 50px;
     height: 50px;
 
@@ -33,7 +33,7 @@
 
 /* Overhead Banner Links */
 
-.bannerModules > .links {
+.displayModules > .links {
     display: flex;
     flex-direction: row;
 
@@ -47,7 +47,7 @@
     font-family: comfortaaVariable;
 }
 
-.bannerModules > .links a {
+.displayModules > .links a {
     color: #5E5653;
     
     font-weight: 100;
@@ -118,22 +118,28 @@
     border-right: 5px solid #5E5653;
 }
 
-/* About Me Intro Blurb */
+/* About Me Display */
 
-.aboutMeIntro {
+.aboutMeDisplay {
+    display: flex;
+
+    justify-content: center;
+
+    margin: 100px;
+}
+.aboutMeDisplay > .displayText {
     display: flex;
     flex-direction: column;
 
     justify-content: center;
 
-    padding: 50px;
     gap: 30px;
-    margin: 100px;
 
     color: #5E5653;
 }
 
-.aboutMeIntro > .textCaptionTitle {
+
+.aboutMeDisplay > .displayText > .titleText {
     font-family: firaSansCondensedReg;
     font-size: 48px;
     font-weight: 700;
@@ -142,33 +148,10 @@
     text-align: left;    
 }
 
-.aboutMeIntro > .textCaptionBody {
+.aboutMeDisplay > .displayText > .bodyText {
     font-family: karlaVariable;
     font-size: 24px;
 
     text-wrap: pretty;
     text-align: left;
-}
-
-
-
-/* Technical/Soft Skills */
-
-.technicalAndSoftSkills {
-    display: flex;
-
-    padding: 50px;
-    gap: 100px;
-    margin: 100px;
-
-    color: #5E5653;
-}
-
-.technicalAndSoftSkills > .textCaptionTitle {
-    font-family: firaSansCondensedReg;
-    font-size: 48px;
-    font-weight: 700;
-
-    text-wrap: nowrap;
-    text-align: left;   
 }
