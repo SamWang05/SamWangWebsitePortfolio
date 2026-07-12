@@ -75,13 +75,13 @@
 
 .introDisplay > .posePhoto {
     width: 30%;
-
     min-width: 300px;
     max-width: 500px;
-    
-    height: auto;
 
-    border-radius: 150px;
+    height: auto;
+    min-height: 350px;
+
+    border-radius: 20%;
 }
 
 
