@@ -29,22 +29,15 @@
     font-family: frauncesVariable;
 }
 
-/* Comfortaa Variable for Subtitles and Decorative Text */
-
-@font-face {
-    font-family: comfortaaVariable;
-    src: url(/assets/fonts/comfortaaVariable.woff2);
-}
-
-.subtitleText {
-    font-family: comfortaaVariable;
-}
-
-/* Karla Variable for Body Text */
+/* Karla Variable for Subtitles and Body Text */
 
 @font-face {
     font-family: karlaVariable;
     src: url(/assets/fonts/karlaVariable.woff2);
+}
+
+.subtitleText {
+    font-family: karlaVariable;
 }
 
 .bodyText {
