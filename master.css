@@ -21,12 +21,12 @@
 /* Fira Sans Condensed for Titles */
 
 @font-face {
-    font-family: firaSansCondensedReg;
-    src: url(/assets/fonts/firaSansCondensedRegular.woff2);
+    font-family: frauncesVariable;
+    src: url(/assets/fonts/frauncesVariable.woff2);
 }
 
 .titleText {
-    font-family: firaSansCondensedReg;
+    font-family: frauncesVariable;
 }
 
 /* Comfortaa Variable for Subtitles and Decorative Text */
