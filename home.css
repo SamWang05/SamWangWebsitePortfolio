@@ -44,7 +44,6 @@
     list-style-type: none;
 
     text-wrap: nowrap;
-    font-family: comfortaaVariable;
 }
 
 .displayModules > .links a {
@@ -108,8 +107,7 @@
 
 .introDisplay > .captionText > .subtitleText {
     width: 600px;
-    
-    font-family: comfortaaVariable;
+
     font-size: 36px;
 
     text-wrap: pretty;
@@ -139,8 +137,7 @@
 }
 
 
-.aboutMeDisplay > .displayText > .titleText {
-    font-family: firaSansCondensedReg;
+.aboutMeDisplay > .displayText > .subtitleText {
     font-size: 48px;
     font-weight: 700;
 
@@ -149,7 +146,6 @@
 }
 
 .aboutMeDisplay > .displayText > .bodyText {
-    font-family: karlaVariable;
     font-size: 24px;
 
     text-wrap: pretty;
