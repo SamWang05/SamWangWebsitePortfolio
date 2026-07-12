@@ -63,6 +63,7 @@
     display: flex;
 
     justify-content: space-between;
+    gap: 150px;
 
     margin: 50px;
     margin-bottom: 150px;
@@ -74,6 +75,7 @@
 
 .introDisplay > .posePhoto {
     width: 500px;
+
     height: auto;
 
     border-radius: 150px;
@@ -86,6 +88,7 @@
 .introDisplay > .captionText {
     display: flex;
     flex-direction: column;
+    flex-basis: 600px;
 
     justify-content: center;
     align-items: right;
@@ -106,8 +109,6 @@
 }
 
 .introDisplay > .captionText > .subtitleText {
-    width: 600px;
-
     font-size: 36px;
 
     text-wrap: pretty;
@@ -130,7 +131,7 @@
     flex-direction: column;
 
     justify-content: center;
-
+    
     gap: 30px;
 
     color: #5E5653;
