@@ -25,6 +25,10 @@
     src: url(/assets/fonts/firaSansCondensedRegular.woff2);
 }
 
+.titleText {
+    font-family: firaSansCondensedReg;
+}
+
 /* Comfortaa Variable for Subtitles and Decorative Text */
 
 @font-face {
@@ -32,9 +36,17 @@
     src: url(/assets/fonts/comfortaaVariable.woff2);
 }
 
+.subtitleText {
+    font-family: comfortaaVariable;
+}
+
 /* Karla Variable for Body Text */
 
 @font-face {
     font-family: karlaVariable;
     src: url(/assets/fonts/karlaVariable.woff2);
+}
+
+.bodyText {
+    font-family: karlaVariable;
 }

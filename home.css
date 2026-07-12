@@ -99,15 +99,14 @@
     color: #5E5653;
 }
 
-.introDisplay > .captionText > .textCaptionTitle {
-    font-family: firaSansCondensedReg;
+.introDisplay > .captionText > .titleText {
     font-size: 100px;
     font-weight: 700;
 
     text-wrap: nowrap;
 }
 
-.introDisplay > .captionText > .textCaptionBody {
+.introDisplay > .captionText > .subtitleText {
     width: 600px;
     
     font-family: comfortaaVariable;
