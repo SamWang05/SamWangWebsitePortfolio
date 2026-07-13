@@ -17,7 +17,7 @@
 
 /* Modules within the banner */
 
-.displayModules {
+.overheadDisplay > .displayModules {
     display: flex;
 
     justify-content: space-between;
@@ -30,7 +30,7 @@
 
 /* Overhead Banner Logo */
 
-.displayModules > .logoPhoto img {
+.overheadDisplay > .displayModules > .logoPhoto img {
     width: 50px;
     height: 50px;
 
@@ -42,7 +42,7 @@
 
 /* Overhead Banner Links */
 
-.displayModules > .links {
+.overheadDisplay > .displayModules > .links {
     display: flex;
     flex-direction: row;
 
@@ -55,7 +55,7 @@
     text-wrap: nowrap;
 }
 
-.displayModules > .links a {
+.overheadDisplay > .displayModules > .links a {
     color: #5E5653;
     
     font-weight: 400;
@@ -268,5 +268,30 @@
     display: flex;
     flex-direction: column;
 
+    align-items: flex-start;
+
+    margin-right: 50px;
+
     gap: 20px;
+}
+
+.skillsDisplay > .displayModules > .skillGroupSelectors > .skillGroup {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: #D9D9D9;
+    border-radius: 25px 0px 0px 25px;
+
+    width: 200px;
+    height: 100px;
+}
+
+.skillsDisplay > .displayModules > .skillGroupDisplay {
+    height: 600px;
+
+    flex-grow: 1;
+
+    background-color: #D9D9D9;
 }
