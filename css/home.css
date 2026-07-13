@@ -138,24 +138,30 @@
     border-right: 5px solid #5E5653;
 }
 
+
+
 /* Title Animation */
 
 @keyframes smashRight {
     0% {
         transform-origin: right;
-        transform:scaleX(1);
+        transform:scale(1, 1);
     }
     20% {
         transform-origin: right;
-        transform:scaleX(1);
+        transform:scale(1, 1);
+    }
+    75% {
+        transform-origin: right;
+        transform:scale(0.05, 1.2);
     }
     80% {
         transform-origin: right;
-        transform:scaleX(0);
+        transform:scale(0, 1.2);
     }
     100% {
         transform-origin: right;
-        transform:scaleX(0);
+        transform:scale(0, 1.2);
     }
 }
 
@@ -166,11 +172,14 @@
     20% {
         transform:translateX(0px);
     }
+    75% {
+        transform:translateX(140px);
+    }
     80% {
-        transform:translateX(150px);
+        transform:translateX(170px);
     }
     100% {
-        transform:translateX(150px);
+        transform:translateX(170px);
     }
 }
 
@@ -184,7 +193,7 @@
 }
 
 .introDisplay > .captionText > .titleText > .middleText {
-    display: block;
+    display: flex;
 
     animation-name: smashRight;
     animation-duration: 4s;
