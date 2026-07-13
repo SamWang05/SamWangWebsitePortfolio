@@ -70,9 +70,9 @@
     display: flex;
 
     justify-content: space-between;
+
     gap: 150px;
 
-    margin: 50px;
     margin-bottom: 150px;
 }
 
@@ -87,6 +87,8 @@
 
     height: auto;
     min-height: 350px;
+
+    margin: 50px;
 
     border-radius: 20%;
 }
@@ -116,7 +118,7 @@
 }
 
 .introDisplay > .captionText > .titleText {
-    font-size: 100px;
+    font-size: 128px;
     font-weight: 700;
 
     text-wrap: nowrap;
@@ -126,6 +128,8 @@
     font-size: 36px;
 
     text-wrap: pretty;
+
+    margin-right: 25px;
 
     padding-right: 30px;
     border-right: 5px solid #5E5653;
