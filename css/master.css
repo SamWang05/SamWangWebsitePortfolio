@@ -10,7 +10,7 @@ html {
     height: 100%;
 }
 
-body {
+body:not(.animation) {
     display: flex;
     flex-direction: column;
 

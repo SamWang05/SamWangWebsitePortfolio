@@ -9,6 +9,8 @@
 
     width: 100vw;
     height: auto;
+
+    z-index: 1000;
 }
 
 
@@ -122,6 +124,8 @@
 
     font-size: 128px;
     font-weight: 700;
+
+    overflow: hidden;
 }
 
 .introDisplay > .captionText > .subtitleText {
@@ -130,11 +134,63 @@
     text-wrap: pretty;
 
     margin-right: 25px;
-
     padding-right: 30px;
     border-right: 5px solid #5E5653;
 }
 
+/* Title Animation */
+
+@keyframes smashRight {
+    0% {
+        transform-origin: right;
+        transform:scaleX(1);
+    }
+    20% {
+        transform-origin: right;
+        transform:scaleX(1);
+    }
+    80% {
+        transform-origin: right;
+        transform:scaleX(0);
+    }
+    100% {
+        transform-origin: right;
+        transform:scaleX(0);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform:translateX(0px);
+    }
+    20% {
+        transform:translateX(0px);
+    }
+    80% {
+        transform:translateX(150px);
+    }
+    100% {
+        transform:translateX(150px);
+    }
+}
+
+.introDisplay > .captionText > .titleText > .leftText {
+    display: block;
+
+    animation-name: slideRight;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.introDisplay > .captionText > .titleText > .middleText {
+    display: block;
+
+    animation-name: smashRight;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
 
 
 /* About Me Display */
