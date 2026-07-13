@@ -118,6 +118,8 @@
 }
 
 .introDisplay > .captionText > .titleText {
+    display: flex;
+
     font-size: 128px;
     font-weight: 700;
 }
