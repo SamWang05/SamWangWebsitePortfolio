@@ -38,8 +38,10 @@
 
 .subtitleText {
     font-family: karlaVariable;
+    font-size: 2rem;  /* Assuming 16px = 1rem, equates to 32px. Helps w/ accessibility. */
 }
 
 .bodyText {
     font-family: karlaVariable;
+    font-size: 1.5rem; /* Assuming 16px = 1rem, equates to 24px. Helps w/ accessibility. */
 }
