@@ -46,7 +46,7 @@
 
     align-content: center;
 
-    gap: 30px;
+    gap: 50px;
 
     list-style-type: none;
 
@@ -103,7 +103,7 @@
     justify-content: center;
     align-content: flex-end;
 
-    padding: 20px;
+    padding: 50px;
     gap: 30px;
 
     text-align: right;
@@ -112,7 +112,7 @@
 
     background-image: url(/assets/img/backgroundCircle.svg);
     background-repeat: no-repeat;
-    background-position: top 100px right;
+    background-position: center right;
 }
 
 .introDisplay > .captionText > .titleText {
