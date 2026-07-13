@@ -3,7 +3,7 @@ const titleNode = document.querySelector(".titleText");
 const slideRightNode = document.querySelector(".animateSlideRight");
 const smashRightNode = document.querySelector(".animateSmashRight");
 
-const titleListenerEnter = titleNode.addEventListener("click", () => {
+const titleListenerEnter = titleNode.addEventListener("mouseenter", () => {
 /*
     
 */
