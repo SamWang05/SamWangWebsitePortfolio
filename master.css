@@ -2,7 +2,6 @@
 
 * {
     margin: 0px;
-    background-color: #E9E6E7;
     box-sizing: border-box;
 }
 
@@ -23,7 +22,7 @@ body {
 /* Horizontal line for decoration */
 
 .horizontalLine {
-    border: 1px solid #5E5653 / 50%;
+    border: 1px solid rgb(94 86 83 / 50%);
     margin: 50px;
 }
 
