@@ -144,19 +144,23 @@
         transform-origin: right center;
         transform:scale(1, 1);
     }
-    10% {
+    15% {
         transform-origin: right center;
         transform:scale(1, 1);
     }
-    15% {
+    17.5% {
         transform-origin: right center;
         transform:scale(1.1, 0.9);
     }
-    75% {
+    47.5% {
         transform-origin: right center;
         transform:scale(0.05, 1.2);
     }
-    80% {
+    50% {
+        transform-origin: right center;
+        transform:scale(0, 1.2);
+    }
+    60% {
         transform-origin: right center;
         transform:scale(0, 1.2);
     }
@@ -170,16 +174,19 @@
     0% {
         transform:translateX(0px);
     }
-    10% {
+    15% {
         transform:translateX(0px);
     }
-    15% {
+    17.5% {
         transform:translateX(-15px);
     }
-    75% {
+    47.5% {
         transform:translateX(140px);
     }
-    80% {
+    50% {
+        transform:translateX(170px);
+    }
+    60% {
         transform:translateX(170px);
     }
     100% {
@@ -191,7 +198,7 @@
     display: block;
 
     animation-name: slideRight;
-    animation-duration: 5s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
@@ -201,7 +208,7 @@
     display: flex;
 
     animation-name: smashRight;
-    animation-duration: 5s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
