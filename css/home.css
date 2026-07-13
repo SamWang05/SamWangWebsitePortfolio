@@ -102,7 +102,6 @@
 .introDisplay > .captionText {
     display: flex;
     flex-direction: column;
-    flex-basis: 600px;
 
     justify-content: center;
     align-content: flex-end;
@@ -124,8 +123,6 @@
 
     font-size: 128px;
     font-weight: 700;
-
-    overflow: hidden;
 }
 
 .introDisplay > .captionText > .subtitleText {
@@ -144,23 +141,27 @@
 
 @keyframes smashRight {
     0% {
-        transform-origin: right;
+        transform-origin: right center;
         transform:scale(1, 1);
     }
-    20% {
-        transform-origin: right;
+    10% {
+        transform-origin: right center;
         transform:scale(1, 1);
+    }
+    15% {
+        transform-origin: right center;
+        transform:scale(1.1, 0.9);
     }
     75% {
-        transform-origin: right;
+        transform-origin: right center;
         transform:scale(0.05, 1.2);
     }
     80% {
-        transform-origin: right;
+        transform-origin: right center;
         transform:scale(0, 1.2);
     }
     100% {
-        transform-origin: right;
+        transform-origin: right center;
         transform:scale(0, 1.2);
     }
 }
@@ -169,8 +170,11 @@
     0% {
         transform:translateX(0px);
     }
-    20% {
+    10% {
         transform:translateX(0px);
+    }
+    15% {
+        transform:translateX(-15px);
     }
     75% {
         transform:translateX(140px);
@@ -187,18 +191,20 @@
     display: block;
 
     animation-name: slideRight;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    animation-timing-function: ease-in-out;
 }
 
 .introDisplay > .captionText > .titleText > .middleText {
     display: flex;
 
     animation-name: smashRight;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    animation-timing-function: ease-in-out;
 }
 
 
