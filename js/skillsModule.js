@@ -11,7 +11,7 @@ const selectColor = "#C9C9C9";
 
 function initializeSkillGroupListeners() {
     skillGroupsNodeArray.forEach((skillGroup) => {
-        skillGroup.addEventListener("mouseenter", (event) => {
+        skillGroup.addEventListener("click", (event) => {
             const targetNode = event.currentTarget;
             const targetClassList = targetNode.classList[1];
 
@@ -33,7 +33,7 @@ function initializeSkillGroupListeners() {
             });
 
             switch(targetClassList) {
-                
+
             }
 
             skillGroupDisplayNode.style.backgroundColor = selectColor;
