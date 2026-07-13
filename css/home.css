@@ -144,7 +144,7 @@
         transform-origin: right center;
         transform:scale(1, 1);
     }
-    15% {
+    10% {
         transform-origin: right center;
         transform:scale(1, 1);
     }
@@ -160,10 +160,6 @@
         transform-origin: right center;
         transform:scale(0, 1.2);
     }
-    60% {
-        transform-origin: right center;
-        transform:scale(0, 1.2);
-    }
     100% {
         transform-origin: right center;
         transform:scale(0, 1.2);
@@ -174,7 +170,7 @@
     0% {
         transform:translateX(0px);
     }
-    15% {
+    10% {
         transform:translateX(0px);
     }
     17.5% {
@@ -186,15 +182,12 @@
     50% {
         transform:translateX(170px);
     }
-    60% {
-        transform:translateX(170px);
-    }
     100% {
         transform:translateX(170px);
     }
 }
 
-.introDisplay > .captionText > .titleText > .leftText {
+.animateSlideRight {
     display: block;
 
     animation-name: slideRight;
@@ -204,7 +197,7 @@
     animation-fill-mode: forwards;
 }
 
-.introDisplay > .captionText > .titleText > .middleText {
+.animateSmashRight {
     display: flex;
 
     animation-name: smashRight;
