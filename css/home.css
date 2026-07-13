@@ -144,19 +144,19 @@
         transform-origin: right center;
         transform:scale(1, 1);
     }
-    10% {
+    20% {
         transform-origin: right center;
         transform:scale(1, 1);
     }
-    17.5% {
+    35% {
         transform-origin: right center;
         transform:scale(1.1, 0.9);
     }
-    47.5% {
+    75% {
         transform-origin: right center;
         transform:scale(0.05, 1.2);
     }
-    50% {
+    80% {
         transform-origin: right center;
         transform:scale(0, 1.2);
     }
@@ -170,16 +170,16 @@
     0% {
         transform:translateX(0px);
     }
-    10% {
+    20% {
         transform:translateX(0px);
     }
-    17.5% {
+    35% {
         transform:translateX(-15px);
     }
-    47.5% {
+    75% {
         transform:translateX(140px);
     }
-    50% {
+    80% {
         transform:translateX(170px);
     }
     100% {
@@ -191,20 +191,20 @@
     display: block;
 
     animation-name: slideRight;
-    animation-duration: 10s;
+    animation-duration: 5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
 }
 
 .animateSmashRight {
     display: flex;
 
     animation-name: smashRight;
-    animation-duration: 10s;
+    animation-duration: 5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
 }
 
 
