@@ -109,6 +109,10 @@
     text-align: right;
 
     color: #5E5653;
+
+    background-image: url(/assets/img/backgroundCircle.svg);
+    background-repeat: no-repeat;
+    background-position: top 100px right;
 }
 
 .introDisplay > .captionText > .titleText {
