@@ -1,0 +1,63 @@
+/* Overhead Display */
+
+.overheadDisplay {
+    background-color: #F0F0F0;
+
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+
+    width: 100vw;
+    height: auto;
+}
+
+
+
+/* Modules within the banner */
+
+.displayModules {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 40px;
+    gap: 100px;
+}
+
+
+
+/* Overhead Banner Logo */
+
+.displayModules > .logoPhoto img {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    outline: none;
+}
+
+
+
+/* Overhead Banner Links */
+
+.displayModules > .links {
+    display: flex;
+    flex-direction: row;
+
+    align-content: center;
+
+    gap: 50px;
+
+    list-style-type: none;
+
+    text-wrap: nowrap;
+}
+
+.displayModules > .links a {
+    color: #5E5653;
+    
+    font-weight: 400;
+    font-size: 24px; /* Keep banner text from changing size */
+
+    text-decoration: none;
+}
