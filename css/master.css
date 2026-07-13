@@ -42,6 +42,8 @@ body {
     font-family: frauncesVariable;
 
     color: #5E5653;
+
+    text-wrap: nowrap;
 }
 
 /* Karla Variable for Subtitles and Body Text */
@@ -61,6 +63,6 @@ body {
 .bodyText {
     font-family: karlaVariable;
     font-size: 1.5rem; /* Assuming 16px = 1rem, equates to 24px. Helps w/ accessibility. */
-    
+
     color: #5E5653;
 }
