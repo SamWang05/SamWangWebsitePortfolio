@@ -199,9 +199,9 @@
 
     animation-name: slideRight;
     animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 .introDisplay > .captionText > .titleText > .middleText {
@@ -209,10 +209,11 @@
 
     animation-name: smashRight;
     animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
+
 
 
 /* About Me Display */
