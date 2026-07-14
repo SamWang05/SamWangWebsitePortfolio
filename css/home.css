@@ -289,14 +289,21 @@
 .skillsDisplay > .displayModules > .skillGroupSelectors > .skillGroup {
     writing-mode: sideways-lr;
     text-orientation: sideways;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
 
-.skillsDisplay > .displayModules > .skillGroupDisplay {
+.skillsDisplay > .displayModules > .skillTabDisplay {
     flex-grow: 1;
 
-    background-color: #D9D9D9;
+    background-color: #C9C9C9;
     
     height: 1000px;
+
+    padding: 50px;
 
     border-radius: 25px;
 }
