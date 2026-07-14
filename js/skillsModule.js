@@ -6,6 +6,8 @@ const softwareSkillNode = document.querySelector(".softwareSkills");
 const baseColor = "#D9D9D9";
 const selectColor = "#C9C9C9";
 
+const logosDirectory = "/assets/img/logos/";
+
 
 
 function initializeSkillGroupListeners() {
@@ -53,14 +55,14 @@ function clearSkillTabDisplay () {
 
 function renderSoftwareSkills () {
     const softwareSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Python", "82%", "Automation, Data Processing and Visualization", "/assets/img/logos/pythonLogo.png"],
-        ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", ""],
-        ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", ""],
+        ["Python", "82%", "Automation, Data Processing and Visualization", "Python.svg"],
+        ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", "cLogo.svg"],
+        ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "MATLAB.svg"],
         ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", ""],
-        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", ""],
-        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers", ""],
-        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing", ""],
-        ["Assembly", "23%", "Machine Code, Hardware Architecture", ""],
+        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "KiCAD.svg"],
+        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers", "PCBGeneralLogo.svg"],
+        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing", "GitHub.svg"],
+        ["Assembly", "23%", "Machine Code, Hardware Architecture", "Verilog.svg"],
     ]
 
     createSkillModule(softwareSkillsArray);
@@ -141,7 +143,7 @@ function createSkillModule (skillArray, skillCategory) {
 
             const skillLogo = document.createElement("img");
 
-                skillLogo.src = skillData[3];
+                skillLogo.src = logosDirectory + skillData[3];
 
                 skillLogo.style.width = "1.5rem";
                 skillLogo.style.height = "1.5rem";
@@ -216,6 +218,8 @@ function createSkillModule (skillArray, skillCategory) {
 
 function main() {
     initializeSkillGroupListeners();
+
+    renderSoftwareSkills();
 }
 
 main();
