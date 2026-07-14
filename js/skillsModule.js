@@ -53,14 +53,14 @@ function clearSkillTabDisplay () {
 
 function renderSoftwareSkills () {
     const softwareSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Python", "82%", "Automation, Data Processing and Visualization"],
-        ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization"],
-        ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis"],
-        ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout"],
-        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits"],
-        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers"],
-        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing"],
-        ["Assembly", "23%", "Machine Code, Hardware Architecture"],
+        ["Python", "82%", "Automation, Data Processing and Visualization", "/assets/img/logos/pythonLogo.png"],
+        ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", ""],
+        ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", ""],
+        ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", ""],
+        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", ""],
+        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers", ""],
+        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing", ""],
+        ["Assembly", "23%", "Machine Code, Hardware Architecture", ""],
     ]
 
     createSkillModule(softwareSkillsArray);
@@ -68,12 +68,12 @@ function renderSoftwareSkills () {
 
 function renderHardwareSkills () {
     const hardwareSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano"],
-        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets"],
-        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals"],
-        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors"],
-        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering"],
-        ["PCB Construction", "15%", "Bill of Materials, PCB Layout"]
+        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", ""],
+        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets", ""],
+        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", ""],
+        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors", ""],
+        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering", ""],
+        ["PCB Construction", "15%", "Bill of Materials, PCB Layout", ""]
     ]
 
     createSkillModule(hardwareSkillsArray);
@@ -81,11 +81,11 @@ function renderHardwareSkills () {
 
 function renderIntPerSkills () {
     const interpersonalSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Communication", "92%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)"],
-        ["Leadership", "96%", "Volunteering, Mentorship, Initiative"],
-        ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability"],
-        ["Adaptability", "98%", "Curiousity, Creative Thinking, Quick Learner, Open to Feedback"],
-        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition"]
+        ["Communication", "92%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)", ""],
+        ["Leadership", "96%", "Volunteering, Mentorship, Initiative", ""],
+        ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability", ""],
+        ["Adaptability", "98%", "Curiousity, Creative Thinking, Quick Learner, Open to Feedback", ""],
+        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition", ""]
     ]
 
     createSkillModule(interpersonalSkillsArray);
@@ -118,21 +118,35 @@ function createSkillModule (skillArray, skillCategory) {
 
             skillTabDisplayNode.appendChild(skillDataNode);
         
+        const skillTitleContainerNode = document.createElement("div");
 
+            skillTitleContainerNode.style.display = "flex";
+            skillTitleContainerNode.style.flexDirection = "row";
 
-        const skillTitleNode = document.createElement("div");
+            skillTitleContainerNode.style.gap = "10px";
 
-            skillTitleNode.classList.add("skillTitle");
-            skillTitleNode.classList.add("subtitleText");
+            skillDataNode.appendChild(skillTitleContainerNode);
 
-            skillTitleNode.textContent = skillData[0];
+            const skillTitleNode = document.createElement("div");
 
-            skillTitleNode.style.fontSize = "1.5rem";
-            skillTitleNode.style.fontWeight = "700";
+                skillTitleNode.classList.add("skillTitle");
+                skillTitleNode.classList.add("subtitleText");
 
-            skillDataNode.appendChild(skillTitleNode);
+                skillTitleNode.textContent = skillData[0];
 
+                skillTitleNode.style.fontSize = "1.5rem";
+                skillTitleNode.style.fontWeight = "700";
 
+                skillTitleContainerNode.appendChild(skillTitleNode);
+
+            const skillLogo = document.createElement("img");
+
+                skillLogo.src = skillData[3];
+
+                skillLogo.style.width = "1.5rem";
+                skillLogo.style.height = "1.5rem";
+
+                skillTitleContainerNode.appendChild(skillLogo);
 
         const skillSliderNode = document.createElement("div");
 
