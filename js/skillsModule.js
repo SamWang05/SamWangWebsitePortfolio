@@ -83,11 +83,11 @@ function renderHardwareSkills () {
 
 function renderIntPerSkills () {
     const interpersonalSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Communication", "92%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)", ""],
-        ["Leadership", "96%", "Volunteering, Mentorship, Initiative", ""],
-        ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability", ""],
-        ["Adaptability", "98%", "Curiousity, Creative Thinking, Quick Learner, Open to Feedback", ""],
-        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition", ""]
+        ["Communication", "92%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)", "SpeechBubbles.svg"],
+        ["Leadership", "96%", "Volunteering, Mentorship, Initiative", "Leadership.svg"],
+        ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability", "Handshake.svg"],
+        ["Adaptability", "98%", "Curiousity, Creative Thinking, Quick Learner, Open to Feedback", "BookOpen.svg"],
+        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition", "Lightbulb.svg"]
     ]
 
     createSkillModule(interpersonalSkillsArray);
