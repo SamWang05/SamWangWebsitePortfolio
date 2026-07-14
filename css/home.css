@@ -285,6 +285,8 @@
     width: 100px;
     height: 250px;
 
+    font-weight: 700;
+
     writing-mode: sideways-lr;
     text-orientation: sideways;
 
