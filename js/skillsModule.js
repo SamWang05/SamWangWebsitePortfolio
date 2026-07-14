@@ -142,23 +142,37 @@ function createSkillModule (skillArray, skillCategory) {
 
             const skillSliderFrame = document.createElement("div");
             
-            skillSliderFrame.style.width = "1000px";
-            skillSliderFrame.style.borderRadius = "10px";
+                skillSliderFrame.style.width = "1000px";
+                skillSliderFrame.style.borderRadius = "10px";
 
-            skillSliderFrame.style.backgroundColor = "#DDD9D3";
+                skillSliderFrame.style.backgroundColor = "#DDD9D3";
 
-            skillSliderNode.appendChild(skillSliderFrame);
+                skillSliderNode.appendChild(skillSliderFrame);
 
             const skillSlider = document.createElement("div");
 
-            skillSlider.textContent = ".";
-            skillSlider.style.width = skillData[1];
-            skillSlider.style.borderRadius = "10px";
+                skillSlider.textContent = "";
 
-            skillSlider.style.backgroundColor = "#8C7B6B";
+                skillSlider.animate([
+                    {width: "0px"},
+                    {width: skillData[1]}
+                ],
+                    {
+                        duration: 2000,
+                        iterations: 1,
+                        fill: "forwards",
+                        easing: "ease-in-out"
+                    }
+                )
 
-            skillSliderFrame.appendChild(skillSlider);
-        
+                skillSlider.style.height = "18px";
+
+                skillSlider.style.borderRadius = "10px";
+
+                skillSlider.style.backgroundColor = "#8C7B6B";
+
+                skillSliderFrame.appendChild(skillSlider);
+            
 
 
         const skillCommentsNode = document.createElement("div");

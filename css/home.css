@@ -283,10 +283,8 @@
     border-radius: 25px 0px 0px 25px;
 
     width: 100px;
-    height: 220px;
-}
+    height: 250px;
 
-.skillsDisplay > .displayModules > .skillGroupSelectors > .skillGroup {
     writing-mode: sideways-lr;
     text-orientation: sideways;
 
@@ -304,6 +302,7 @@
     min-height: 900px;
 
     padding: 50px;
+    gap: 20px;
 
     border-radius: 25px;
 }
