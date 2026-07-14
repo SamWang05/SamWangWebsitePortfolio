@@ -145,7 +145,7 @@ body:not(.animation) {
 
     justify-content: flex-end;
 
-    background-color: #0F0F0F;
+    background-color: #F0F0F0;
 
     width: 100vw;
     height: 200px;
@@ -162,8 +162,12 @@ body:not(.animation) {
     display: flex;
 
     justify-content: center;
+
+    padding: 30px;
 }
 
-.footerDisplay > .displayModules > .linkText > .subtitleText {
-    padding: 30px;
+.footerDisplay > .displayModules > .linkText > .subtitleText > a {
+    color: #5E5653;
+
+    padding: 10px;
 }
