@@ -29,6 +29,8 @@ function initializeSkillGroupListeners() {
                 }
             });
 
+            clearSkillTabDisplay();
+
             switch(targetClassList) {
                 case "softwareSkills":
                     renderSoftwareSkills();
@@ -46,7 +48,7 @@ function initializeSkillGroupListeners() {
 
 
 function clearSkillTabDisplay () {
-    /* Just clear all the children */
+    skillTabDisplayNode.replaceChildren();
 }
 
 function renderSoftwareSkills () {
