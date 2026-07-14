@@ -60,8 +60,7 @@ function renderSoftwareSkills () {
         ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "MATLAB.svg"],
         ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", "KiCAD.svg"],
         ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "logicORGate.svg"],
-        ["Dev Tools and IDEs", "64%", "VSCode, Keil uVision, Arduino IDE", "VSCode.svg"],
-        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing", "GitHub.svg"],
+        ["Dev Tools and IDEs", "69%", "VSCode, GitHub, Keil uVision, Arduino IDE", "VSCode.svg"],
         ["Assembly", "23%", "Machine Code, Hardware Architecture", "Verilog.svg"],
     ]
 
@@ -83,11 +82,12 @@ function renderHardwareSkills () {
 
 function renderIntPerSkills () {
     const interpersonalSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Communication", "92%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)", "SpeechBubbles.svg"],
+        ["Communication", "94%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)", "SpeechBubbles.svg"],
         ["Leadership", "96%", "Volunteering, Mentorship, Initiative", "Leadership.svg"],
         ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability", "Handshake.svg"],
         ["Adaptability", "98%", "Curiousity, Creative Thinking, Quick Learner, Open to Feedback", "BookOpen.svg"],
-        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition", "Lightbulb.svg"]
+        ["Problem Solving", "97%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition", "Lightbulb.svg"],
+        ["Time Management", "91%", "Deadline-Driven, Task Prioritization, Multitasking", "Timer.svg"]
     ]
 
     createSkillModule(interpersonalSkillsArray);
@@ -167,10 +167,12 @@ function createSkillModule (skillArray, skillCategory) {
 
             const skillSlider = document.createElement("div");
 
-                skillSlider.textContent = "";
+                skillSlider.classList.add("bodyText");
+
+                skillSlider.textContent = skillData[1];
 
                 skillSlider.animate([
-                    {width: "0px"},
+                    {width: "30px"},
                     {width: skillData[1]}
                 ],
                     {
@@ -182,9 +184,19 @@ function createSkillModule (skillArray, skillCategory) {
                 )
 
                 skillSlider.style.height = "18px";
-
+                
                 skillSlider.style.borderRadius = "10px";
 
+                skillSlider.style.paddingRight = "10px";
+                skillSlider.style.paddingLeft = "5px";
+                skillSlider.style.paddingTop = "1px";
+
+                skillSlider.style.textAlign = "right";
+
+                skillSlider.style.fontWeight = "700";
+                skillSlider.style.fontSize = "0.75rem"
+
+                skillSlider.style.color = "#F5F0E8";
                 skillSlider.style.backgroundColor = "#8C7B6B";
 
                 skillSliderFrame.appendChild(skillSlider);
