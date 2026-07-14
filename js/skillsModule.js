@@ -58,9 +58,9 @@ function renderSoftwareSkills () {
         ["Python", "82%", "Automation, Data Processing and Visualization", "Python.svg"],
         ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", "cLogo.svg"],
         ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "MATLAB.svg"],
-        ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", ""],
-        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "KiCAD.svg"],
-        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers", "PCBGeneralLogo.svg"],
+        ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", "KiCAD.svg"],
+        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "logicORGate.svg"],
+        ["Dev Tools and IDEs", "64%", "VSCode, Keil uVision, Arduino IDE", "VSCode.svg"],
         ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing", "GitHub.svg"],
         ["Assembly", "23%", "Machine Code, Hardware Architecture", "Verilog.svg"],
     ]
@@ -70,12 +70,12 @@ function renderSoftwareSkills () {
 
 function renderHardwareSkills () {
     const hardwareSkillsArray = [ /* [Skill, Strength%, Comments] */
-        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", ""],
-        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets", ""],
-        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", ""],
-        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors", ""],
-        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering", ""],
-        ["PCB Construction", "15%", "Bill of Materials, PCB Layout", ""]
+        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", "Arduino.svg"],
+        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets", "MagnifyingGlass.svg"],
+        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", "ACVoltage.svg"],
+        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors", "Transistor.svg"],
+        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering", "Shield.svg"],
+        ["PCB Construction", "15%", "Bill of Materials, PCB Layout", "PCBGeneralLogo.svg"]
     ]
 
     createSkillModule(hardwareSkillsArray);
