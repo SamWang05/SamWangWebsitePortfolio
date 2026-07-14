@@ -45,31 +45,36 @@ function initializeSkillGroupListeners() {
 }
 
 
+function clearSkillTabDisplay () {
+    /* Just clear all the children */
+}
 
 function renderSoftwareSkills () {
-    const softwareSkillsArray = [ /* [Skill, Strength%, Comments, # of Years] */
-        ["Python", "82%", "Automation, Data Processing and Visualization", "5+"],
-        ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", "3"],
-        ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "4"],
-        ["PCB Design Software", "3", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", "33%"],
-        ["Circuit Simulation", "1", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "68%"],
-        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers", "1"],
-        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing", "<1",]
-        ["Assembly", "23%", "Machine Code, Hardware Architecture", "<1"],
+    const softwareSkillsArray = [ /* [Skill, Strength%, Comments] */
+        ["Python", "82%", "Automation, Data Processing and Visualization"],
+        ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization"],
+        ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis"],
+        ["PCB Design Software", "3", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout"],
+        ["Circuit Simulation", "1", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits"],
+        ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers"],
+        ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing"],
+        ["Assembly", "23%", "Machine Code, Hardware Architecture"],
     ]
 
-
+    createSkillModule(softwareSkillsArray);
 }
 
 function renderHardwareSkills () {
-    const hardwareSkillsArray = [ /* [Skill, Strength%, Comments, # of Years] */
-        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", "5+"],
-        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets", "5+"],
-        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", "4"],
-        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors", "3"],
-        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering", "2"],
-        ["PCB Construction", "15%", "Bill of Materials, PCB Layout", "<1"]
+    const hardwareSkillsArray = [ /* [Skill, Strength%, Comments] */
+        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano"],
+        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets"],
+        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals"],
+        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors"],
+        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering"],
+        ["PCB Construction", "15%", "Bill of Materials, PCB Layout"]
     ]
+
+    createSkillModule(hardwareSkillsArray);
 }
 
 function renderIntPerSkills () {
@@ -78,11 +83,84 @@ function renderIntPerSkills () {
         ["Leadership", "96%", "Volunteering, Mentorship, Initiative"],
         ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability"],
         ["Adaptability", "98%", "Curiousity, Creative Thinking, Quick Learner, Open to Feedback"],
-        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition"],
+        ["Problem Solving", "95%", "Logical/Critical Thinking, Modeling, Scientific Research, Pattern Recognition"]
     ]
+
+    createSkillModule(interpersonalSkillsArray);
 }
 
+function createSkillModule (skillArray, skillCategory) {
+    for (let i = 0; i < skillArray.length; i++) {
+        let skillData = skillArray[i];
 
+        const skillDataNode = document.createElement("div");
+
+            skillDataNode.classList.add("skillDataNode");
+
+            skillDataNode.style.display = "flex";
+            skillDataNode.style.flexDirection = "column";
+
+            skillDataNode.style.justifyContent = "space-equally";
+
+            skillDataNode.style.padding = "20px";
+            
+            skillDataNode.style.borderRadius = "15px";    
+
+            if (i % 2) {
+                skillDataNode.style.backgroundColor = "#C9C9C9";
+            }
+            else {
+                skillDataNode.style.backgroundColor = "#B9B9B9";
+            }        
+
+            skillTabDisplayNode.appendChild(skillDataNode);
+        
+
+
+        const skillTitleNode = document.createElement("div");
+
+            skillTitleNode.classList.add("skillTitle");
+            skillTitleNode.classList.add("subtitleText");
+
+            skillTitleNode.textContent = skillData[0];
+
+            skillTitleNode.style.fontSize = "1.5rem";
+            skillTitleNode.style.fontWeight = "700";
+
+            skillDataNode.appendChild(skillTitleNode);
+
+
+
+        const skillSliderNode = document.createElement("div");
+
+            skillSliderNode.classList.add("skillSlider");
+
+            skillDataNode.appendChild(skillSliderNode);
+        
+
+
+        const skillCommentsNode = document.createElement("div");
+
+            skillCommentsNode.classList.add("skillComments");
+            skillCommentsNode.classList.add("bodyText");
+
+            skillCommentsNode.textContent = skillData[2];
+
+            skillCommentsNode.style.fontSize = "0.75rem";
+
+            skillDataNode.appendChild(skillCommentsNode);
+        /* 
+            skillDataNode
+               skillTitle subtitleText
+               skillSlider
+               skillComments bodyText
+        */
+
+        /* 
+            use different emojis/svgs to represent different percentages of skill (ex: 20% = egg, 40% = baby chicken, etc.)
+        */
+    }
+}
 
 
 
