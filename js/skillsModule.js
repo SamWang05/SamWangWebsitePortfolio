@@ -56,8 +56,8 @@ function renderSoftwareSkills () {
         ["Python", "82%", "Automation, Data Processing and Visualization"],
         ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization"],
         ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis"],
-        ["PCB Design Software", "3", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout"],
-        ["Circuit Simulation", "1", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits"],
+        ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout"],
+        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits"],
         ["Keil uVision", "59%", "Assembly/C++, ARM Microcontrollers"],
         ["GitHub", "46%", "Version Control, Collaborative Software Design, Open-Source Software, Licensing"],
         ["Assembly", "23%", "Machine Code, Hardware Architecture"],
@@ -105,6 +105,7 @@ function createSkillModule (skillArray, skillCategory) {
             skillDataNode.style.justifyContent = "space-equally";
 
             skillDataNode.style.padding = "20px";
+            skillDataNode.style.gap = "10px";
             
             skillDataNode.style.borderRadius = "15px";    
 
@@ -138,6 +139,25 @@ function createSkillModule (skillArray, skillCategory) {
             skillSliderNode.classList.add("skillSlider");
 
             skillDataNode.appendChild(skillSliderNode);
+
+            const skillSliderFrame = document.createElement("div");
+            
+            skillSliderFrame.style.width = "1000px";
+            skillSliderFrame.style.borderRadius = "10px";
+
+            skillSliderFrame.style.backgroundColor = "#DDD9D3";
+
+            skillSliderNode.appendChild(skillSliderFrame);
+
+            const skillSlider = document.createElement("div");
+
+            skillSlider.textContent = ".";
+            skillSlider.style.width = skillData[1];
+            skillSlider.style.borderRadius = "10px";
+
+            skillSlider.style.backgroundColor = "#8C7B6B";
+
+            skillSliderFrame.appendChild(skillSlider);
         
 
 
