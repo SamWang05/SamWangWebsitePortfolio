@@ -179,7 +179,9 @@ function createSkillModule (skillArray, skillCategory) {
                         duration: 2000,
                         iterations: 1,
                         fill: "forwards",
-                        easing: "ease-in-out"
+                        easing: "ease-in-out",
+                        animationTimeline: "view()",
+                        animationRange: "entry 10% exit 40%;"
                     }
                 )
 
@@ -211,6 +213,7 @@ function createSkillModule (skillArray, skillCategory) {
             skillCommentsNode.textContent = skillData[2];
 
             skillCommentsNode.style.fontSize = "0.75rem";
+            skillCommentsNode.style.fontWeight = "700";
 
             skillDataNode.appendChild(skillCommentsNode);
         /* 
