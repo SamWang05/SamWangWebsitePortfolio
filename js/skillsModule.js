@@ -20,13 +20,9 @@ function initializeSkillGroupListeners() {
 
                 if (skillClassList == targetClassList) {
                     skill.style.backgroundColor = selectColor;
-                    skill.style.marginRight = "0px";
-                    skill.style.borderRadius = "25px 0px 0px 25px";
                 }
                 else {
                     skill.style.backgroundColor = baseColor;
-                    skill.style.marginRight = "50px";
-                    skill.style.borderRadius = "25px";
 
                     skillGroupDisplayNode.style.backgroundColor = baseColor;
                 }
@@ -47,7 +43,6 @@ function animateSkillGroupSelectors(skillGroupNode) {
 
 function defaultSkillGroupSelection() {
     softwareSkillNode.style.backgroundColor = selectColor;
-    softwareSkillNode.style.marginRight = "0px";
     softwareSkillNode.style.borderRadius = "25px 0px 0px 25px";
 
     skillGroupDisplayNode.style.backgroundColor = selectColor;
