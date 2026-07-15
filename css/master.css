@@ -44,6 +44,9 @@ body:not(.animation) {
     color: #5E5653;
 
     text-wrap: nowrap;
+    
+    font-size: 128px;
+    font-weight: 700;
 }
 
 /* Karla Variable for Subtitles and Body Text */

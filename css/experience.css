@@ -1,0 +1,16 @@
+.introDisplay {
+    display: flex;
+}
+
+.introDisplay > .captionText {
+    display: flex;
+
+    height: 87vh;
+
+    background-color: red;
+}
+
+.introDisplay > .captionText > .titleText {
+    padding: 50px;
+    align-content: flex-end;
+}
