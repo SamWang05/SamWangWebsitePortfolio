@@ -180,8 +180,6 @@ function createSkillModule (skillArray, skillCategory) {
                         iterations: 1,
                         fill: "forwards",
                         easing: "ease-in-out",
-                        animationTimeline: "view()",
-                        animationRange: "entry 10% exit 40%;"
                     }
                 )
 
