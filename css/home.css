@@ -176,6 +176,8 @@
 .aboutMeDisplay > .displayText > .bodyText {
     text-wrap: pretty;
     text-align: left;
+
+    width: clamp(45ch, 50%, 75ch);
 }
 
 
