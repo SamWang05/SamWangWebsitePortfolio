@@ -4,13 +4,27 @@
 
 .introDisplay > .captionText {
     display: flex;
+    flex-direction: column;
 
-    height: 87vh;
+    justify-content: flex-end;
+
+    height: 90vh;
+
+    padding: 30px;
 
     background-color: red;
 }
 
 .introDisplay > .captionText > .titleText {
     padding: 50px;
-    align-content: flex-end;
+}
+
+.introDisplay > .captionText > .subtitleText {
+    padding: 50px;
+
+    text-align: right;
+
+    border-right: 5px solid #5E5653;
+
+    margin-right: 50px;
 }

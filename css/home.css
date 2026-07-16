@@ -5,7 +5,7 @@
 
     justify-content: space-between;
 
-    gap: 150px;
+    gap: 75px;
 
     margin-bottom: 100px;
 }
@@ -15,12 +15,8 @@
 /* Intro Display Photo */
 
 .introDisplay > .posePhoto {
-    width: 30%;
-    min-width: 300px;
-    max-width: 700px;
-
+    width: 450px;
     height: auto;
-    min-height: 350px;
 
     margin: 50px;
 
@@ -51,7 +47,7 @@
 }
 
 .introDisplay > .captionText > .titleText {
-    display: flex;
+    display: flex; 
 }
 
 .introDisplay > .captionText > .subtitleText {
