@@ -45,7 +45,7 @@ body:not(.animation) {
 
     text-wrap: nowrap;
     
-    font-size: 128px;
+    font-size: 8rem;
     font-weight: 700;
 }
 
