@@ -5,6 +5,9 @@
 
     position: fixed;
     left: 0;
+
+    width: 45vw;
+    height: 100vh;
 }
 
 .introDisplay > .captionText {
@@ -12,9 +15,6 @@
     flex-direction: column;
 
     justify-content: flex-end;
-
-    width: 45vw;
-    height: 100vh;
 
     padding: 50px;
 
@@ -67,19 +67,3 @@
 }
 
 /* Timeline Display */
-
-.timelineDisplay {
-    display: flex;
-
-    justify-content: flex-end;
-}
-
-.timelineDisplay > .displayModules {
-    display: flex;
-
-    justify-content: center;
-
-    width: 55vw;
-
-    padding: 50px;
-}
