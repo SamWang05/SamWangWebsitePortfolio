@@ -2,6 +2,9 @@
 
 .introDisplay {
     display: flex;
+
+    position: fixed;
+    left: 0;
 }
 
 .introDisplay > .captionText {
@@ -10,11 +13,12 @@
 
     justify-content: flex-end;
 
-    height: 90vh;
-
-    background-color: red;
+    width: 45vw;
+    height: 100vh;
 
     padding: 50px;
+
+    background-color: #B9B9B9;
 }
 
 /* Intro Display Rotating Caption Text */
@@ -64,6 +68,18 @@
 
 /* Timeline Display */
 
+.timelineDisplay {
+    display: flex;
+
+    justify-content: flex-end;
+}
+
 .timelineDisplay > .displayModules {
-    height: 1000px;
+    display: flex;
+
+    justify-content: center;
+
+    width: 55vw;
+
+    padding: 50px;
 }
