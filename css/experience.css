@@ -1,16 +1,16 @@
 /* Intro Display */
 
-.introDisplay {
+.bannerDisplay {
     display: flex;
 
     position: fixed;
+    top: 0;
     left: 0;
 
-    width: 45vw;
     height: 100vh;
 }
 
-.introDisplay > .captionText {
+.bannerDisplay > .captionText {
     display: flex;
     flex-direction: column;
 
@@ -23,7 +23,7 @@
 
 /* Intro Display Rotating Caption Text */
 
-.introDisplay > .captionText > .rotatingCaption {
+.bannerDisplay > .captionText > .rotatingCaption {
     display: flex;
 
     justify-content: flex-start;
@@ -33,7 +33,7 @@
     margin-left: 10px;
 }
 
-.introDisplay > .captionText > .rotatingCaption > .subtitleText {
+.bannerDisplay > .captionText > .rotatingCaption > .subtitleText {
     font-size: 54px;
 }
 
