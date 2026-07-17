@@ -11,27 +11,22 @@
     height: 90vh;
 
     background-color: red;
-}
 
-.introDisplay > .captionText > .titleText {
     padding: 50px;
 }
 
 .introDisplay > .captionText > .rotatingCaption {
     display: flex;
 
-    justify-content: flex-end;
-
-    height: 100px;
+    justify-content: flex-start;
 
     align-items: center; /* Note: align-items will affect items within the container. Don't mistake with align-content! :) */
 
-    border-right: 5px solid #5E5653;
-    margin-right: 50px;
+    margin-left: 10px;
 }
 
 .introDisplay > .captionText > .rotatingCaption > .subtitleText {
-    padding-right: 30px;
+    font-size: 54px;
 }
 
 .timelineDisplay > .displayModules {

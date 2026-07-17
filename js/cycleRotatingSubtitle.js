@@ -11,7 +11,7 @@ const observerOptions = {
 
 const subtitleTextArray = [
     "Education",
-    "Work Experience",
+    "Employment",
     "Extracurriculars",
     "Volunteering",
     "Mentorship"
