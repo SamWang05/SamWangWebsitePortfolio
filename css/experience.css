@@ -37,3 +37,30 @@
 .timelineDisplay > .displayModules {
     height: 1000px;
 }
+
+@keyframes rotateCaption {
+    0% {
+        transform-origin: bottom;
+        transform:rotateX(-90deg);
+    }
+    20% {
+        transform-origin: bottom;
+        transform:rotateX(0deg);
+    }
+    80% {
+        transform-origin: bottom;
+        transform:rotateX(0deg);
+    }
+    100% {
+        transform-origin: bottom;
+        transform:rotateX(90deg);
+    }
+}
+
+.animateCaption {
+    animation-name: rotateCaption;
+    animation-duration: 3.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}

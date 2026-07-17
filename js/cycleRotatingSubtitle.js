@@ -15,51 +15,23 @@ const subtitleTextArray = [
     "Title3",
     "Title4",
     "Title5"
-]
+];
 
-function renderRotatingCaption(subtitleText) {
+let animationIterations = 1;
+
+
+
+function renderRotatingCaption() {
     const rotatingTextNode = document.createElement("div");
 
     rotatingTextNode.classList.add("subtitleText");
-    rotatingTextNode.textContent = subtitleText;
+    rotatingTextNode.classList.add("animateCaption");
+
+    rotatingTextNode.textContent = subtitleTextArray[0];
 
     rotatingCaptionNode.appendChild(rotatingTextNode);
 
-    animateRotatingText(rotatingTextNode);
-}
-
-function animateRotatingText(rotatingCaptionNode) {
-    rotatingCaptionNode.animate([
-        {
-            transformOrigin: "bottom",
-            transform: "rotateX(-90deg)"
-        },
-        {
-            transformOrigin: "bottom",
-            transform: "rotateX(0deg)",
-            offset: 0.05
-        },
-        {
-            transformOrigin: "bottom",
-            transform: "rotateX(0deg)",
-            offset: 0.95
-        },
-        {
-            transformOrigin: "bottom",
-            transform: "rotateX(90deg)"
-        }
-    ],
-        {
-            duration: animationDuration,
-            iterations: Infinity,
-            fill: "forwards",
-            easing: "ease-in-out",
-        }
-    )
-}
-
-function clearRotatingText(rotatingCaptionNode) {
-    rotatingCaptionNode.textContent = "";
+    return rotatingTextNode;
 }
 
 function clearRotatingDisplay() {
@@ -67,18 +39,30 @@ function clearRotatingDisplay() {
 }
 
 function main() {
-    const observer = new IntersectionObserver((entries) => {
+    const observeIntroDisplay = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting){
-                const rotatingText = renderRotatingCaption("test");
+                const rotatingText = renderRotatingCaption();
+
+                rotatingText.addEventListener("animationiteration", () => {
+                    rotatingText.textContent = subtitleTextArray[animationIterations];
+
+                    animationIterations++;
+
+                    if (animationIterations > subtitleTextArray.length - 1) {
+                        animationIterations = 0;
+                    }
+                });
             }
             else {
                 clearRotatingDisplay();
+
+                animationIterations = 1;
             }
         });
     }, observerOptions);
 
-    observer.observe(introDisplayNode);
+    observeIntroDisplay.observe(introDisplayNode);
 }
 
 main();
