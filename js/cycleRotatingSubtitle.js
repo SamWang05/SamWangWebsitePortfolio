@@ -13,8 +13,6 @@ const subtitleTextArray = [
     "Education",
     "Employment",
     "Extracurriculars",
-    "Volunteering",
-    "Mentorship"
 ];
 
 let animationIterations = 1;
