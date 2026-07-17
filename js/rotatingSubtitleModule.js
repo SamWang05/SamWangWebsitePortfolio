@@ -37,30 +37,20 @@ function clearRotatingDisplay() {
 }
 
 function main() {
-    const observeIntroDisplay = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting){
-                const rotatingText = initializeRotatingCaption();
+    const rotatingText = initializeRotatingCaption();
 
-                rotatingText.addEventListener("animationiteration", () => {
-                    rotatingText.textContent = subtitleTextArray[animationIterations];
+    rotatingText.addEventListener("animationiteration", () => {
+        rotatingText.textContent = subtitleTextArray[animationIterations];
 
-                    animationIterations++;
+        animationIterations++;
 
-                    if (animationIterations > subtitleTextArray.length - 1) {
-                        animationIterations = 0;
-                    }
-                });
-            }
-            else {
-                clearRotatingDisplay();
+        if (animationIterations > subtitleTextArray.length - 1) {
+            animationIterations = 0;
+        }
+    });
 
-                animationIterations = 1;
-            }
-        });
-    }, observerOptions);
 
-    observeIntroDisplay.observe(introDisplayNode);
+    animationIterations = 1;
 }
 
 main();
