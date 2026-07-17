@@ -10,18 +10,18 @@ const observerOptions = {
 };
 
 const subtitleTextArray = [
-    "Title1",
-    "Title2",
-    "Title3",
-    "Title4",
-    "Title5"
+    "Education",
+    "Work Experience",
+    "Extracurriculars",
+    "Volunteering",
+    "Mentorship"
 ];
 
 let animationIterations = 1;
 
 
 
-function renderRotatingCaption() {
+function initializeRotatingCaption() {
     const rotatingTextNode = document.createElement("div");
 
     rotatingTextNode.classList.add("subtitleText");
@@ -42,7 +42,7 @@ function main() {
     const observeIntroDisplay = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting){
-                const rotatingText = renderRotatingCaption();
+                const rotatingText = initializeRotatingCaption();
 
                 rotatingText.addEventListener("animationiteration", () => {
                     rotatingText.textContent = subtitleTextArray[animationIterations];
