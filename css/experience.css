@@ -1,13 +1,17 @@
-/* Intro Display */
-
-.test {
+.timelineModules {
     display: flex;
+    flex-direction: row;
 }
+
+/* Intro Display */
 
 .bannerDisplay {
     display: flex;
 
     height: 100vh;
+
+    position: sticky;
+    top: 0;
 }
 
 .bannerDisplay > .captionText {
@@ -64,4 +68,20 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
+}
+
+/* Timeline Display */
+
+.timelineDisplay {
+    display: flex;
+    flex: 1;
+
+    justify-content: center;
+
+    padding: 50px;
+}
+
+.timelineDisplay > .displayModules {
+    display: flex;
+    flex-direction: row;
 }
