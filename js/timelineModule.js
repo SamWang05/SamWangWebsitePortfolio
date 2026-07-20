@@ -4,6 +4,15 @@ const timelineDisplay = document.querySelector(".timelineDisplay");
 let timelineCurrentLength = 300;
 const ONE_SCROLL_PX_INCREMENT = 100;
 
+function calculateTimelineLength() {
+    const TIMELINE_START_DATE = Temporal.PlainDate.from("2023-09-01");
+    const TIMELINE_END_DATE = Temporal.Now.plainDateISO();
+
+    let monthsElapsed = (TIMELINE_END_DATE.month + 12 * TIMELINE_END_DATE.year) - (TIMELINE_START_DATE.month + 12 * TIMELINE_START_DATE.year) + 6; // Add 6 to give some headway;
+
+    return monthsElapsed;
+}
+
 function timelineScrollListener(sliderNode) {
     let lastScrollPos = 0.0;
     let currentScrollPos = 0.0;
@@ -11,8 +20,6 @@ function timelineScrollListener(sliderNode) {
 
     document.addEventListener("scrollend", (event) => {
         currentScrollPos = document.scrollingElement.scrollTop;
-
-        console.log();
 
         differentialScroll = currentScrollPos - lastScrollPos;
 
@@ -38,13 +45,13 @@ function timelineScrollListener(sliderNode) {
     });
 }
 
-function renderTimeline() {
+function renderTimeline(months) {
     const timelineSliderFrame = document.createElement("div");
 
         timelineSliderFrame.style.backgroundColor = "#DDD9D3";
         
         timelineSliderFrame.style.width = "30px";
-        timelineSliderFrame.style.height = "2000px";
+        timelineSliderFrame.style.height = months * 100 + "px";
 
         timelineSliderFrame.style.padding = "5px";
 
@@ -70,7 +77,8 @@ function renderTimeline() {
 }
 
 function main() {
-    const timelineSliderNode = renderTimeline();
+    const monthsElapsed = calculateTimelineLength();
+    const timelineSliderNode = renderTimeline(monthsElapsed);
     timelineScrollListener(timelineSliderNode);
 }
 

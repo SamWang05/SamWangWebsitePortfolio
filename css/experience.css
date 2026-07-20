@@ -76,12 +76,20 @@
     display: flex;
     flex: 1;
 
-    justify-content: center;
-
     padding: 50px;
+    gap: 50px;
+
+    justify-content: flex-end;
 }
 
 .timelineDisplay > .displayModules {
     display: flex;
+    flex: 1;
     flex-direction: row;
+
+    box-sizing: content-box;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
 }
