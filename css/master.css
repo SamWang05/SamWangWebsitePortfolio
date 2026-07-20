@@ -79,7 +79,7 @@ body:not(.animation) {
     top: 0;
     align-self: flex-start;
 
-    width: 100vw;
+    width: 100%;
     height: auto;
 
     z-index: 1000;
