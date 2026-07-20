@@ -1,6 +1,44 @@
 const timelineLine = document.querySelector(".timelineLine");
+const timelineDisplay = document.querySelector(".timelineDisplay");
 
-function initializeTimeline() {
+let timelineCurrentLength = 300;
+const ONE_SCROLL_PX_INCREMENT = 100;
+
+function timelineScrollListener(sliderNode) {
+    let lastScrollPos = 0.0;
+    let currentScrollPos = 0.0;
+    let differentialScroll = 0.0;
+
+    document.addEventListener("scrollend", (event) => {
+        currentScrollPos = document.scrollingElement.scrollTop;
+
+        console.log();
+
+        differentialScroll = currentScrollPos - lastScrollPos;
+
+        sliderNode.animate([
+            {
+                height: String(timelineCurrentLength) + "px"
+            },
+            {
+                height: String(timelineCurrentLength + differentialScroll) + "px"
+            }
+        ],
+            {
+                duration: 2000,
+                iterations: 1,
+                fill: "forwards",
+                easing: "ease-in-out",
+            }
+        )
+
+        timelineCurrentLength = timelineCurrentLength + differentialScroll;
+        
+        lastScrollPos = currentScrollPos;
+    });
+}
+
+function renderTimeline() {
     const timelineSliderFrame = document.createElement("div");
 
         timelineSliderFrame.style.backgroundColor = "#DDD9D3";
@@ -19,15 +57,19 @@ function initializeTimeline() {
         timelineSlider.style.backgroundColor = "#8C7B6B";
 
         timelineSlider.style.width = "20px";
-        timelineSlider.style.height = "200px";
+        
+        timelineSlider.style.height = timelineCurrentLength + "px";
 
         timelineSlider.style.borderRadius = "10px";
 
         timelineSliderFrame.appendChild(timelineSlider);
+
+    return timelineSlider;
 }
 
 function main() {
-    initializeTimeline();
+    const timelineSliderNode = renderTimeline();
+    timelineScrollListener(timelineSliderNode);
 }
 
 main();
