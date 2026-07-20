@@ -93,3 +93,11 @@
 
     margin-top: 20px;
 }
+
+.timelineDisplay > .timelineLine {
+    padding: 3px 25px;
+
+    background-color: #C7C0B5;
+
+    border-radius: 20px;
+}
