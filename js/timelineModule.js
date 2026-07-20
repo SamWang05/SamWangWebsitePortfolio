@@ -59,6 +59,8 @@ function renderTimeline() {
         timelineSlider.style.width = "20px";
         
         timelineSlider.style.height = timelineCurrentLength + "px";
+        timelineSlider.style.minHeight = "10%";
+        timelineSlider.style.maxHeight = "90%";
 
         timelineSlider.style.borderRadius = "10px";
 
