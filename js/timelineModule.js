@@ -25,10 +25,10 @@ function timelineScrollListener(sliderNode) {
             }
         ],
             {
-                duration: 2000,
+                duration: 1000,
                 iterations: 1,
                 fill: "forwards",
-                easing: "ease-in-out",
+                easing: "ease-out",
             }
         )
 
