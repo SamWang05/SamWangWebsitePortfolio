@@ -128,7 +128,7 @@ function renderTimeline(months) {
 
         timelineSlider.style.width = "20px";
         
-        timelineSlider.style.height = timelineCurrentLength + "px";
+        timelineSlider.style.minHeight = "50px";
 
         timelineSlider.style.borderRadius = "10px";
 
@@ -140,7 +140,7 @@ function renderTimeline(months) {
         timelineSlider.style.fontSize = "1rem";
         timelineSlider.style.color = "#DDD9D3";
 
-        timelineSlider.textContent = "2023 Sep";
+        timelineSlider.textContent = "";
 
         timelineSliderFrame.appendChild(timelineSlider);
 
