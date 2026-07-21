@@ -9,9 +9,24 @@ const TIMELINE_START_DATE = Temporal.PlainDate.from("2023-09-01");
 let datePosition = TIMELINE_START_DATE;
 
 const experienceEvents = [
-    /* [Module Object, [Start Year, Start Month], [End Year, End Month], Experience Color, Experience Employer, Experience Title, 
-    Experience Body] */
     /* 
+    Copy/Paste for new experience:
+
+    [
+        null,
+        [Start Year, Start Month (Num)], 
+        [End Year, End Month (Num)], 
+        "Background Color (See Below)",
+        "EXPERIENCE TITLE",
+        "Employer", 
+        "Summary of Duties",
+    ],
+
+    
+    
+    [Module Object, [Start Year, Start Month], [End Year, End Month], Experience Color, Experience Employer, Experience Title, 
+    Experience Body]
+    
     Recommended Experience Colors:
     Terracotta Clay - #C4A184
     Warm Taupe - #A89A8C
@@ -22,7 +37,7 @@ const experienceEvents = [
     [
         null, /* Empty Entry to hold possible object */
         [2025, 3], 
-        [2026, 2], 
+        [2026, 6], 
         "#8FA0A8",
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Aerial Robotics Team", 
@@ -65,9 +80,57 @@ function calculateDateFromMonths(months){
     datePosition = TIMELINE_START_DATE.add({ months: months });
 }
 
+function isDateBetweenRange(startDateRange, endDateRange) {
+    let timelineYear = datePosition.year;
+    let timelineMonth = datePosition.month;
+    let timelineDateInMonths = timelineYear * 12 + timelineMonth;
+
+    let startYear = startDateRange[0];
+    let startMonth = startDateRange[1];
+    let startDateInMonths = startYear * 12 + startMonth;
+    
+    let endYear = endDateRange[0];
+    let endMonth = endDateRange[1];
+    let endDateInMonths = endYear * 12 + endMonth;
+
+    if (startDateInMonths <= timelineDateInMonths && timelineDateInMonths <= endDateInMonths) {
+        return true;
+    }
+    return false;
+}
+
+function checkTimelineEvent() {
+    experienceEvents.forEach((experience) => {
+        if (isDateBetweenRange(experience[1], experience[2])) {
+            if (experience[0] == null) {
+                experience[0] = newExperienceModule(experience);
+            }
+        }
+        else if (experience[0] != null) {
+            /* delete experienceObject module */
+            deleteExperienceModule(experience);
+        }
+    });
+    
+}
+
 
 
 /* Timeline Scrolling Functions */
+
+function calculateAllTimelinePositions() {
+    let startDateMonths = TIMELINE_START_DATE.year * 12 + TIMELINE_START_DATE.month;
+    let timelinePositionsArray = [];
+
+    experienceEvents.forEach((experience) => {
+        let experienceFromStartInMonths = ((experience[1][0] * 12) + (experience[1][1]) - startDateMonths)
+        timelinePositionsArray.push(experienceFromStartInMonths);
+    });
+
+    console.log(timelinePositionsArray);
+
+    return timelinePositionsArray;
+}
 
 function timelineScrollListener(sliderNode) {
     let lastScrollPos = 0.0;
@@ -95,7 +158,7 @@ function timelineScrollListener(sliderNode) {
             }
         )
 
-        calculateDateFromMonths(Math.floor(currentScrollPos / 100, 1))
+        calculateDateFromMonths(Math.floor(currentScrollPos / 100, 1));
         sliderNode.textContent = datePosition.year + " " + datePosition.toLocaleString("en-US", { month: "short" });
 
         checkTimelineEvent();
@@ -237,45 +300,12 @@ function deleteExperienceModule(experienceArrayEntry) {
     experienceArrayEntry[0] = null;
 }
 
-function isDateBetweenRange(startDateRange, endDateRange) {
-    let timelineYear = datePosition.year;
-    let timelineMonth = datePosition.month;
-    let timelineDateInMonths = timelineYear * 12 + timelineMonth;
-
-    let startYear = startDateRange[0];
-    let startMonth = startDateRange[1];
-    let startDateInMonths = startYear * 12 + startMonth;
-    
-    let endYear = endDateRange[0];
-    let endMonth = endDateRange[1];
-    let endDateInMonths = endYear * 12 + endMonth;
-
-    if (startDateInMonths <= timelineDateInMonths && timelineDateInMonths <= endDateInMonths) {
-        return true;
-    }
-    return false;
-}
-
-function checkTimelineEvent() {
-    experienceEvents.forEach((experience) => {
-        if (isDateBetweenRange(experience[1], experience[2])) {
-            if (experience[0] == null) {
-                experience[0] = newExperienceModule(experience);
-            }
-        }
-        else if (experience[0] != null) {
-            /* delete experienceObject module */
-            deleteExperienceModule(experience);
-        }
-    });
-    
-}
-
 
 
 /* Main Function */
 
 function main() {
+    const timelinePosArray = calculateAllTimelinePositions();
     const monthsElapsed = calculateTimelineLength();
     const timelineSliderNode = renderTimeline(monthsElapsed);
 
