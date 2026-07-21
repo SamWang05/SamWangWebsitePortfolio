@@ -9,7 +9,8 @@ const TIMELINE_START_DATE = Temporal.PlainDate.from("2023-09-01");
 let datePosition = TIMELINE_START_DATE;
 
 const experienceEvents = [
-    /* [Module Object, [Start Year, Start Month], [End Year, End Month], Experience Title, Experience Body, Experience Color] */
+    /* [Module Object, [Start Year, Start Month], [End Year, End Month], Experience Color, Experience Employer, Experience Title, 
+    Experience Body] */
     /* 
     Recommended Experience Colors:
     Terracotta Clay - #C4A184
@@ -21,18 +22,29 @@ const experienceEvents = [
     [
         null, /* Empty Entry to hold possible object */
         [2025, 3], 
-        [2026, 6], 
-        "Test Experience Title 1", 
+        [2026, 2], 
+        "#8FA0A8",
+        "ELECTRICAL SUBTEAM GENERAL MEMBER",
+        "McMaster Aerial Robotics Team", 
         "Test Experience Body 1",
-        "#B4BFAE"
+    ],
+    [
+        null, /* Empty Entry to hold possible object */
+        [2026, 2], 
+        [2026, 6], 
+        "#8FA0A8",
+        "ELECTRICAL SUBTEAM TECHNICAL LEAD",
+        "McMaster Aerial Robotics Team",
+        "Test Experience Body 1",
     ],
     [
         null, /* Empty Entry to hold possible object */
         [2024, 5], 
         [2024, 8], 
-        "Test Experience Title 2", 
+        "#C9B27E", 
+        "QUALITY ASSURANCE AND AUTOMATION INTERN", 
+        "Canadian Imperial Bank of Commerce (CIBC)", 
         "Test Experience Body 2",
-        "#C9B27E"
     ],
 ]
 
@@ -143,37 +155,61 @@ function newExperienceModule(experienceEvent) {
     const experienceModule = document.createElement("div");
 
         experienceModule.style.display = "flex";
-        experienceModule.style.flex = "1";
         experienceModule.style.flexDirection = "column";
 
         experienceModule.style.width = "auto";
-        experienceModule.style.height = "500px";
+        experienceModule.style.height = "30vh";
 
-        experienceModule.style.position = "sticky";
-        experienceModule.style.top = "30vh";
-
-        experienceModule.style.backgroundColor = experienceEvent[5];
+        experienceModule.style.backgroundColor = experienceEvent[3];
 
         experienceModule.style.borderRadius = "15px";
 
         experienceModule.style.padding = "50px";
         experienceModule.style.gap = "20px";
 
+        experienceModule.animate(
+        [
+            { opacity: 0 },
+            { opacity: 1 }
+        ], 
+        {
+            duration: 500,
+            fill: 'forwards'
+        });
+
         experienceModules.appendChild(experienceModule);
 
     const moduleTitle = document.createElement("div");
 
-        moduleTitle.classList.add("subtitleText");
+        moduleTitle.classList.add("titleText");
 
-        moduleTitle.textContent = experienceEvent[3];
+        moduleTitle.style.textWrap = "wrap";
+        moduleTitle.style.fontSize = "1.5rem";
+
+        moduleTitle.textContent = experienceEvent[4];
 
         experienceModule.appendChild(moduleTitle);
+
+    const moduleEmployer = document.createElement("div");
+
+        moduleEmployer.classList.add("subtitleText");
+
+        moduleEmployer.style.fontSize = "1.25rem";
+        moduleEmployer.style.paddingLeft = "20px";
+        moduleEmployer.style.borderLeft = "5px solid"
+
+        moduleEmployer.textContent = experienceEvent[5];
+
+        experienceModule.appendChild(moduleEmployer)
 
     const moduleBody = document.createElement("div");
 
         moduleBody.classList.add("bodyText");
 
-        moduleBody.textContent = experienceEvent[4];
+        moduleBody.style.fontSize = "1rem";
+        moduleBody.style.paddingLeft = "20px";
+
+        moduleBody.textContent = experienceEvent[6];
 
         experienceModule.appendChild(moduleBody);
 
@@ -183,7 +219,20 @@ function newExperienceModule(experienceEvent) {
 function deleteExperienceModule(experienceArrayEntry) {
     let targetModule = experienceArrayEntry[0];
 
-    targetModule.remove();
+    targetModule.animate(
+        [
+            { opacity: 1 },
+            { opacity: 0 }
+        ], 
+        {
+            duration: 500,
+            fill: 'forwards'
+    });
+
+    setTimeout(() => {
+        targetModule.remove();
+    }, 500);
+    
 
     experienceArrayEntry[0] = null;
 }
