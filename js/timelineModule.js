@@ -9,20 +9,30 @@ const TIMELINE_START_DATE = Temporal.PlainDate.from("2023-09-01");
 let datePosition = TIMELINE_START_DATE;
 
 const experienceEvents = [
-    /* [module Object, [Start Year, Start Month], [End Year, End Month], Experience Title, Experience Body] */
+    /* [Module Object, [Start Year, Start Month], [End Year, End Month], Experience Title, Experience Body, Experience Color] */
+    /* 
+    Recommended Experience Colors:
+    Terracotta Clay - #C4A184
+    Warm Taupe - #A89A8C
+    Muted Blue-Grey - #8FA0A8
+    Soft Ochre/Mustard - #C9B27E
+    Sage Green - #B4BFAE
+    */
     [
         null, /* Empty Entry to hold possible object */
         [2025, 3], 
         [2026, 6], 
         "Test Experience Title 1", 
-        "Test Experience Body 1"
+        "Test Experience Body 1",
+        "#B4BFAE"
     ],
     [
         null, /* Empty Entry to hold possible object */
         [2024, 5], 
         [2024, 8], 
         "Test Experience Title 2", 
-        "Test Experience Body 2"
+        "Test Experience Body 2",
+        "#C9B27E"
     ],
 ]
 
@@ -142,7 +152,7 @@ function newExperienceModule(experienceEvent) {
         experienceModule.style.position = "sticky";
         experienceModule.style.top = "30vh";
 
-        experienceModule.style.backgroundColor = "#B4BFAE";
+        experienceModule.style.backgroundColor = experienceEvent[5];
 
         experienceModule.style.borderRadius = "15px";
 
