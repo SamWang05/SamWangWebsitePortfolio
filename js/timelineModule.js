@@ -18,7 +18,7 @@ function calculateTimelineLength() {
 function calculateDateFromMonths(months){
     let dateFromStart = TIMELINE_START_DATE.add({ months: months });
 
-    return (dateFromStart.year + "-" + dateFromStart.month);
+    return (dateFromStart.year + " " + dateFromStart.toLocaleString("en-US", { month: "short" }));
 }
 
 function timelineScrollListener(sliderNode) {
@@ -89,7 +89,7 @@ function renderTimeline(months) {
         timelineSlider.style.fontSize = "1rem";
         timelineSlider.style.color = "#DDD9D3";
 
-        timelineSlider.textContent = "2023-7";
+        timelineSlider.textContent = "2023 Sep";
 
         timelineSliderFrame.appendChild(timelineSlider);
 
