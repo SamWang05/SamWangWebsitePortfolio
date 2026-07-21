@@ -1,10 +1,34 @@
 const timelineLine = document.querySelector(".timelineLine");
 const timelineDisplay = document.querySelector(".timelineDisplay");
+const experienceModules = document.querySelector(".experienceModules");
 
 let timelineCurrentLength = 300;
 const ONE_SCROLL_PX_INCREMENT = 100;
 
 const TIMELINE_START_DATE = Temporal.PlainDate.from("2023-09-01");
+let datePosition = TIMELINE_START_DATE;
+
+const experienceEvents = [
+    /* [module Object, [Start Year, Start Month], [End Year, End Month], Experience Title, Experience Body] */
+    [
+        null, /* Empty Entry to hold possible object */
+        [2025, 3], 
+        [2026, 6], 
+        "Test Experience Title 1", 
+        "Test Experience Body 1"
+    ],
+    [
+        null, /* Empty Entry to hold possible object */
+        [2024, 5], 
+        [2024, 8], 
+        "Test Experience Title 2", 
+        "Test Experience Body 2"
+    ],
+]
+
+
+
+/* DateTime Calculation Functions */
 
 function calculateTimelineLength() {
     const TIMELINE_END_DATE = Temporal.Now.plainDateISO();
@@ -16,17 +40,19 @@ function calculateTimelineLength() {
 }
 
 function calculateDateFromMonths(months){
-    let dateFromStart = TIMELINE_START_DATE.add({ months: months });
-
-    return (dateFromStart.year + " " + dateFromStart.toLocaleString("en-US", { month: "short" }));
+    datePosition = TIMELINE_START_DATE.add({ months: months });
 }
+
+
+
+/* Timeline Scrolling Functions */
 
 function timelineScrollListener(sliderNode) {
     let lastScrollPos = 0.0;
     let currentScrollPos = 0.0;
     let differentialScroll = 0.0;
 
-    document.addEventListener("scrollend", (event) => {
+    document.addEventListener("scrollend", () => {
         currentScrollPos = document.scrollingElement.scrollTop;
 
         differentialScroll = currentScrollPos - lastScrollPos;
@@ -47,12 +73,15 @@ function timelineScrollListener(sliderNode) {
             }
         )
 
-        sliderNode.textContent = calculateDateFromMonths(Math.floor(currentScrollPos / 100, 1));
+        calculateDateFromMonths(Math.floor(currentScrollPos / 100, 1))
+        sliderNode.textContent = datePosition.year + " " + datePosition.toLocaleString("en-US", { month: "short" });
+
+        checkTimelineEvent();
 
         timelineCurrentLength = timelineCurrentLength + differentialScroll;
-        
         lastScrollPos = currentScrollPos;
     });
+
 }
 
 function renderTimeline(months) {
@@ -96,9 +125,101 @@ function renderTimeline(months) {
     return timelineSlider;
 }
 
+
+
+/* Experience Module Functions */
+
+function newExperienceModule(experienceEvent) {
+    const experienceModule = document.createElement("div");
+
+        experienceModule.style.display = "flex";
+        experienceModule.style.flex = "1";
+        experienceModule.style.flexDirection = "column";
+
+        experienceModule.style.width = "auto";
+        experienceModule.style.height = "500px";
+
+        experienceModule.style.position = "sticky";
+        experienceModule.style.top = "30vh";
+
+        experienceModule.style.backgroundColor = "#B4BFAE";
+
+        experienceModule.style.borderRadius = "15px";
+
+        experienceModule.style.padding = "50px";
+        experienceModule.style.gap = "20px";
+
+        experienceModules.appendChild(experienceModule);
+
+    const moduleTitle = document.createElement("div");
+
+        moduleTitle.classList.add("subtitleText");
+
+        moduleTitle.textContent = experienceEvent[3];
+
+        experienceModule.appendChild(moduleTitle);
+
+    const moduleBody = document.createElement("div");
+
+        moduleBody.classList.add("bodyText");
+
+        moduleBody.textContent = experienceEvent[4];
+
+        experienceModule.appendChild(moduleBody);
+
+    return experienceModule;
+}
+
+function deleteExperienceModule(experienceArrayEntry) {
+    let targetModule = experienceArrayEntry[0];
+
+    targetModule.remove();
+
+    experienceArrayEntry[0] = null;
+}
+
+function isDateBetweenRange(startDateRange, endDateRange) {
+    let timelineYear = datePosition.year;
+    let timelineMonth = datePosition.month;
+    let timelineDateInMonths = timelineYear * 12 + timelineMonth;
+
+    let startYear = startDateRange[0];
+    let startMonth = startDateRange[1];
+    let startDateInMonths = startYear * 12 + startMonth;
+    
+    let endYear = endDateRange[0];
+    let endMonth = endDateRange[1];
+    let endDateInMonths = endYear * 12 + endMonth;
+
+    if (startDateInMonths <= timelineDateInMonths && timelineDateInMonths <= endDateInMonths) {
+        return true;
+    }
+    return false;
+}
+
+function checkTimelineEvent() {
+    experienceEvents.forEach((experience) => {
+        if (isDateBetweenRange(experience[1], experience[2])) {
+            if (experience[0] == null) {
+                experience[0] = newExperienceModule(experience);
+            }
+        }
+        else if (experience[0] != null) {
+            /* delete experienceObject module */
+            deleteExperienceModule(experience);
+        }
+    });
+    
+}
+
+
+
+/* Main Function */
+
 function main() {
     const monthsElapsed = calculateTimelineLength();
     const timelineSliderNode = renderTimeline(monthsElapsed);
+
     timelineScrollListener(timelineSliderNode);
 }
 
