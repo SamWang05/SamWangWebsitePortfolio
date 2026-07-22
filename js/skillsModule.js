@@ -218,7 +218,6 @@ function createSkillModule (skillArray, skillCategory) { // Generates new module
 }
 
 
-
 function main() {
     initializeSkillGroupListeners();
 
