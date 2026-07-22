@@ -2,18 +2,17 @@ const timelineLine = document.querySelector(".timelineLine");
 const timelineDisplay = document.querySelector(".timelineDisplay");
 const experienceModules = document.querySelector(".experienceModules");
 
-let timelineCurrentLength = 300;
-const ONE_SCROLL_PX_INCREMENT = 100;
+let timelinePositionIndex = 0;
+let scrollFlag = true;
 
-const TIMELINE_START_DATE = Temporal.PlainDate.from("2023-09-01");
-let datePosition = TIMELINE_START_DATE;
+
 
 const experienceEvents = [
-    /* 
+/* 
     Copy/Paste for new experience:
 
     [
-        null,
+        null, Empty Entry to hold possible object
         [Start Year, Start Month (Num)], 
         [End Year, End Month (Num)], 
         "Background Color (See Below)",
@@ -21,11 +20,6 @@ const experienceEvents = [
         "Employer", 
         "Summary of Duties",
     ],
-
-    
-    
-    [Module Object, [Start Year, Start Month], [End Year, End Month], Experience Color, Experience Employer, Experience Title, 
-    Experience Body]
     
     Recommended Experience Colors:
     Terracotta Clay - #C4A184
@@ -35,7 +29,16 @@ const experienceEvents = [
     Sage Green - #B4BFAE
     */
     [
-        null, /* Empty Entry to hold possible object */
+        null, 
+        [2024, 5], 
+        [2024, 8], 
+        "#C9B27E", 
+        "QUALITY ASSURANCE AND AUTOMATION INTERN", 
+        "Canadian Imperial Bank of Commerce (CIBC)", 
+        "Test Experience Body 2",
+    ],
+    [
+        null,
         [2025, 3], 
         [2026, 6], 
         "#8FA0A8",
@@ -44,7 +47,7 @@ const experienceEvents = [
         "Test Experience Body 1",
     ],
     [
-        null, /* Empty Entry to hold possible object */
+        null,
         [2026, 2], 
         [2026, 6], 
         "#8FA0A8",
@@ -52,130 +55,123 @@ const experienceEvents = [
         "McMaster Aerial Robotics Team",
         "Test Experience Body 1",
     ],
-    [
-        null, /* Empty Entry to hold possible object */
-        [2024, 5], 
-        [2024, 8], 
-        "#C9B27E", 
-        "QUALITY ASSURANCE AND AUTOMATION INTERN", 
-        "Canadian Imperial Bank of Commerce (CIBC)", 
-        "Test Experience Body 2",
-    ],
 ]
 
+/* Logic Functions */
 
-
-/* DateTime Calculation Functions */
-
-function calculateTimelineLength() {
-    const TIMELINE_END_DATE = Temporal.Now.plainDateISO();
-
-    let monthsElapsed = (TIMELINE_END_DATE.month + 12 * TIMELINE_END_DATE.year) - 
-    (TIMELINE_START_DATE.month + 12 * TIMELINE_START_DATE.year) + 6; // Add 6 months to give some headway;
-
-    return monthsElapsed;
+function calculateScrollDirection(prevPos, currentPos) {
+    if (currentPos > prevPos) return "DOWN";
+    else if (currentPos < prevPos) return "UP";
+    else return null;
 }
 
-function calculateDateFromMonths(months){
-    datePosition = TIMELINE_START_DATE.add({ months: months });
-}
+function checkTimelineIndexBounds() {
+    const timelineLength = countUniqueDates().length;
 
-function isDateBetweenRange(startDateRange, endDateRange) {
-    let timelineYear = datePosition.year;
-    let timelineMonth = datePosition.month;
-    let timelineDateInMonths = timelineYear * 12 + timelineMonth;
-
-    let startYear = startDateRange[0];
-    let startMonth = startDateRange[1];
-    let startDateInMonths = startYear * 12 + startMonth;
-    
-    let endYear = endDateRange[0];
-    let endMonth = endDateRange[1];
-    let endDateInMonths = endYear * 12 + endMonth;
-
-    if (startDateInMonths <= timelineDateInMonths && timelineDateInMonths <= endDateInMonths) {
-        return true;
+    if (timelinePositionIndex < 0) {
+        timelinePositionIndex = 0;
     }
-    return false;
+    else if (timelinePositionIndex > (timelineLength - 1)) {
+        timelinePositionIndex = timelineLength - 1;
+    }
 }
 
-function checkTimelineEvent() {
-    experienceEvents.forEach((experience) => {
-        if (isDateBetweenRange(experience[1], experience[2])) {
-            if (experience[0] == null) {
-                experience[0] = newExperienceModule(experience);
-            }
-        }
-        else if (experience[0] != null) {
-            /* delete experienceObject module */
-            deleteExperienceModule(experience);
-        }
-    });
-    
-}
-
-
-
-/* Timeline Scrolling Functions */
-
-function calculateAllTimelinePositions() {
-    let startDateMonths = TIMELINE_START_DATE.year * 12 + TIMELINE_START_DATE.month;
-    let timelinePositionsArray = [];
+function countUniqueDates() {
+    let experienceDatesArray = []
 
     experienceEvents.forEach((experience) => {
-        let experienceFromStartInMonths = ((experience[1][0] * 12) + (experience[1][1]) - startDateMonths)
-        timelinePositionsArray.push(experienceFromStartInMonths);
+        experienceDatesArray.push(experience[1].toString());
+        experienceDatesArray.push(experience[2].toString());
     });
 
-    console.log(timelinePositionsArray);
+    experienceDatesArray.sort();
 
-    return timelinePositionsArray;
+    let tempSet = new Set(experienceDatesArray);
+    let uniqueExperienceDatesSet = new Set();
+
+    tempSet.forEach((experience) => {
+        experienceDate = experience.split(",");
+        uniqueExperienceDatesSet.add(experienceDate);
+    });
+    const uniqueExperienceDatesArray = [...uniqueExperienceDatesSet];
+
+    return uniqueExperienceDatesArray;
 }
 
-function timelineScrollListener(sliderNode) {
-    let lastScrollPos = 0.0;
-    let currentScrollPos = 0.0;
-    let differentialScroll = 0.0;
+/* Experience Module Functions */
+
+function renderExperienceModules() {
+    // Cycles through each experience in experienceEvents and identifies if the time range is accurate
+}
+
+function newExperienceModule() {
+    // Actually creates the new experience module
+}
+
+/* Timeline Functions */
+
+function centerWindow() {
+    scrollFlag = false;
+
+    window.scrollTo({
+        top: 100,
+        left: 0,
+        behavior: 'auto'
+    });
+}
+
+function updateTimelineDate(timelineSlider, uniqueDateSet) {
+    const uniqueDate = uniqueDateSet[timelinePositionIndex];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    const uniqueYear = uniqueDate[0];
+    const uniqueMonth = months[(uniqueDate[1] - 1)];
+
+    timelineSlider.textContent = String(uniqueYear + " | " + uniqueMonth);
+}
+
+function timelineListener(timelineSliderNode, uniqueDateSet) {
+    let lastScrollPos = 100;
+    let currentScrollPos = 0;
 
     document.addEventListener("scrollend", () => {
+        if (!scrollFlag) {
+            scrollFlag = true;
+            return;
+        }
+
         currentScrollPos = document.scrollingElement.scrollTop;
 
-        differentialScroll = currentScrollPos - lastScrollPos;
+        let scrollDir = calculateScrollDirection(lastScrollPos, currentScrollPos);
 
-        sliderNode.animate([
-            {
-                height: String(timelineCurrentLength) + "px"
-            },
-            {
-                height: String(timelineCurrentLength + differentialScroll) + "px"
-            }
-        ],
-            {
-                duration: 1000,
-                iterations: 1,
-                fill: "forwards",
-                easing: "ease-out",
-            }
-        )
+        switch (scrollDir) {
+            case "UP":
+                timelinePositionIndex--;
+            break;
+            case "DOWN":
+                timelinePositionIndex++;
+            break;
+        }
 
-        calculateDateFromMonths(Math.floor(currentScrollPos / 100, 1));
-        sliderNode.textContent = datePosition.year + " " + datePosition.toLocaleString("en-US", { month: "short" });
+        checkTimelineIndexBounds();
+        animateTimeline(timelineSliderNode, uniqueDateSet);
+        centerWindow();
+        updateTimelineDate(timelineSliderNode, uniqueDateSet);
 
-        checkTimelineEvent();
-
-        timelineCurrentLength = timelineCurrentLength + differentialScroll;
-        lastScrollPos = currentScrollPos;
+        renderExperienceModules();
+        
+        lastScrollPos = 100;
     });
-
 }
 
-function renderTimeline(months) {
+function renderTimeline() {
     const timelineSliderFrame = document.createElement("div");
 
         timelineSliderFrame.style.backgroundColor = "#DDD9D3";
         
         timelineSliderFrame.style.width = "30px";
-        timelineSliderFrame.style.height = months * 100 + "px";
+        timelineSliderFrame.style.height = "100%";
 
         timelineSliderFrame.style.padding = "5px";
 
@@ -190,114 +186,58 @@ function renderTimeline(months) {
         timelineSlider.style.backgroundColor = "#8C7B6B";
 
         timelineSlider.style.width = "20px";
+        timelineSlider.style.minHeight = "20%";
+        timelineSlider.style.maxHeight = "80%";
         
-        timelineSlider.style.minHeight = "50px";
+        timelineSlider.animate([
+            {
+                height: "10%"
+            },
+            {
+                height: "20%"
+            }
+        ],
+            {
+                duration: 1000,
+                iterations: 1,
+                fill: "forwards",
+                easing: "ease-out",
+            }
+        )
 
         timelineSlider.style.borderRadius = "10px";
-
-        timelineSlider.style.paddingBottom = "10px";
 
         timelineSlider.style.writingMode = "vertical-rl";
         timelineSlider.style.textAlign = "right";
 
+        timelineSlider.style.paddingBottom = "10px";
+
         timelineSlider.style.fontSize = "1rem";
         timelineSlider.style.color = "#DDD9D3";
 
-        timelineSlider.textContent = "";
+        timelineSlider.textContent = "Sep | 2023";
 
         timelineSliderFrame.appendChild(timelineSlider);
-
+    
     return timelineSlider;
 }
 
-
-
-/* Experience Module Functions */
-
-function newExperienceModule(experienceEvent) {
-    const experienceModule = document.createElement("div");
-
-        experienceModule.style.display = "flex";
-        experienceModule.style.flexDirection = "column";
-
-        experienceModule.style.width = "auto";
-        experienceModule.style.height = "30vh";
-
-        experienceModule.style.backgroundColor = experienceEvent[3];
-
-        experienceModule.style.borderRadius = "15px";
-
-        experienceModule.style.padding = "50px";
-        experienceModule.style.gap = "20px";
-
-        experienceModule.animate(
-        [
-            { opacity: 0 },
-            { opacity: 1 }
-        ], 
+function animateTimeline(sliderNode, uniqueDateSet) {
+    sliderNode.animate([
         {
-            duration: 500,
-            fill: 'forwards'
-        });
-
-        experienceModules.appendChild(experienceModule);
-
-    const moduleTitle = document.createElement("div");
-
-        moduleTitle.classList.add("titleText");
-
-        moduleTitle.style.textWrap = "wrap";
-        moduleTitle.style.fontSize = "1.5rem";
-
-        moduleTitle.textContent = experienceEvent[4];
-
-        experienceModule.appendChild(moduleTitle);
-
-    const moduleEmployer = document.createElement("div");
-
-        moduleEmployer.classList.add("subtitleText");
-
-        moduleEmployer.style.fontSize = "1.25rem";
-        moduleEmployer.style.paddingLeft = "20px";
-        moduleEmployer.style.borderLeft = "5px solid"
-
-        moduleEmployer.textContent = experienceEvent[5];
-
-        experienceModule.appendChild(moduleEmployer)
-
-    const moduleBody = document.createElement("div");
-
-        moduleBody.classList.add("bodyText");
-
-        moduleBody.style.fontSize = "1rem";
-        moduleBody.style.paddingLeft = "20px";
-
-        moduleBody.textContent = experienceEvent[6];
-
-        experienceModule.appendChild(moduleBody);
-
-    return experienceModule;
-}
-
-function deleteExperienceModule(experienceArrayEntry) {
-    let targetModule = experienceArrayEntry[0];
-
-    targetModule.animate(
-        [
-            { opacity: 1 },
-            { opacity: 0 }
-        ], 
+            height: ""
+        },
         {
-            duration: 500,
-            fill: 'forwards'
-    });
-
-    setTimeout(() => {
-        targetModule.remove();
-    }, 500);
-    
-
-    experienceArrayEntry[0] = null;
+            height: String(Math.round(20 + ((60 / (uniqueDateSet.length - 1)) * timelinePositionIndex), 1)) + "%"
+        }
+    ],
+        {
+            duration: 2000,
+            iterations: 1,
+            fill: "forwards",
+            easing: "ease-in-out",
+        }
+    )
 }
 
 
@@ -305,11 +245,10 @@ function deleteExperienceModule(experienceArrayEntry) {
 /* Main Function */
 
 function main() {
-    const timelinePosArray = calculateAllTimelinePositions();
-    const monthsElapsed = calculateTimelineLength();
-    const timelineSliderNode = renderTimeline(monthsElapsed);
+    const uniqueDateSet = countUniqueDates();
+    const sliderNode = renderTimeline();
 
-    timelineScrollListener(timelineSliderNode);
+    timelineListener(sliderNode, uniqueDateSet);
 }
 
 main();
