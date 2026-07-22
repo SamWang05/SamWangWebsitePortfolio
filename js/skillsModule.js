@@ -18,12 +18,12 @@ function initializeSkillGroupListeners() {
             event.preventDefault();
 
             const targetNode = event.currentTarget;
-            const targetClassList = targetNode.classList[1];
+            const targetClassList = targetNode.classList[1]; // Identify if the clicked tab was for software/hardware/interpersonal skills
 
             skillGroupsNodeArray.forEach((skill) => {
                 const skillClassList = skill.classList[1];
 
-                if (skillClassList == targetClassList) {
+                if (skillClassList == targetClassList) { // If the tab was selected, darken its background color. Otherwise, change back to base
                     skill.style.backgroundColor = selectColor;
                 }
                 else {
@@ -33,7 +33,7 @@ function initializeSkillGroupListeners() {
 
             clearSkillTabDisplay();
 
-            switch(targetClassList) {
+            switch(targetClassList) { // Render the correct skills list based on target class selected
                 case "softwareSkills":
                     renderSoftwareSkills();
                     break;
@@ -54,7 +54,7 @@ function clearSkillTabDisplay () {
 }
 
 function renderSoftwareSkills () {
-    const softwareSkillsArray = [ /* [Skill, Strength%, Comments] */
+    const softwareSkillsArray = [ // [Skill, Strength%, Comments, Photo]
         ["Python", "82%", "Automation, Data Processing and Visualization", "Python.svg"],
         ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", "cLogo.svg"],
         ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "MATLAB.svg"],
@@ -68,7 +68,7 @@ function renderSoftwareSkills () {
 }
 
 function renderHardwareSkills () {
-    const hardwareSkillsArray = [ /* [Skill, Strength%, Comments] */
+    const hardwareSkillsArray = [ // [Skill, Strength%, Comments, Photo]
         ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", "Arduino.svg"],
         ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets", "MagnifyingGlass.svg"],
         ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", "ACVoltage.svg"],
@@ -81,7 +81,7 @@ function renderHardwareSkills () {
 }
 
 function renderIntPerSkills () {
-    const interpersonalSkillsArray = [ /* [Skill, Strength%, Comments] */
+    const interpersonalSkillsArray = [ // [Skill, Strength%, Comments, Photo]
         ["Communication", "94%", "Public Speaking, Active Listening, Verbal/Nonverbal, Trilingual (English/French/Mandarin)", "SpeechBubbles.svg"],
         ["Leadership", "96%", "Volunteering, Mentorship, Initiative", "Leadership.svg"],
         ["Collaboration", "95%", "Extracurricular Technical Teams, Peer Support, Reliability", "Handshake.svg"],
@@ -93,7 +93,7 @@ function renderIntPerSkills () {
     createSkillModule(interpersonalSkillsArray);
 }
 
-function createSkillModule (skillArray, skillCategory) {
+function createSkillModule (skillArray, skillCategory) { // Generates new module and appends to the display
     for (let i = 0; i < skillArray.length; i++) {
         let skillData = skillArray[i];
 
@@ -214,16 +214,6 @@ function createSkillModule (skillArray, skillCategory) {
             skillCommentsNode.style.fontWeight = "700";
 
             skillDataNode.appendChild(skillCommentsNode);
-        /* 
-            skillDataNode
-               skillTitle subtitleText
-               skillSlider
-               skillComments bodyText
-        */
-
-        /* 
-            use different emojis/svgs to represent different percentages of skill (ex: 20% = egg, 40% = baby chicken, etc.)
-        */
     }
 }
 
