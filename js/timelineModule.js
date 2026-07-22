@@ -248,18 +248,41 @@ function createExperienceModule(experienceEvent) {
         moduleTitle.textContent = experienceEvent[4];
 
         experienceModule.appendChild(moduleTitle);
+    
+    const moduleContainer = document.createElement("div");
 
-    const moduleEmployer = document.createElement("div");
+        moduleContainer.style.display = "flex";
+        moduleContainer.style.flexDirection = "row";
 
-        moduleEmployer.classList.add("subtitleText");
+        moduleContainer.style.justifyContent = "space-between";
+        
+        experienceModule.appendChild(moduleContainer);
 
-        moduleEmployer.style.fontSize = "1.25rem";
-        moduleEmployer.style.paddingLeft = "20px";
-        moduleEmployer.style.borderLeft = "5px solid"
+        const moduleEmployer = document.createElement("div");
 
-        moduleEmployer.textContent = experienceEvent[5];
+            moduleEmployer.classList.add("subtitleText");
 
-        experienceModule.appendChild(moduleEmployer)
+            moduleEmployer.style.fontSize = "1.25rem";
+            moduleEmployer.style.paddingLeft = "20px";
+            moduleEmployer.style.borderLeft = "5px solid"
+
+            moduleEmployer.textContent = experienceEvent[5];
+
+            moduleContainer.appendChild(moduleEmployer)
+
+        const moduleDate = document.createElement("div");
+
+            moduleDate.classList.add("bodyText");
+
+            moduleDate.style.fontSize = "1.25rem";
+
+            moduleDate.style.paddingRight = "10px";
+            moduleDate.style.borderRight = "5px solid";
+
+            moduleDate.textContent = experienceEvent[1][0] + " " + months[experienceEvent[1][1] - 1] + 
+            " | " + experienceEvent[2][0] + " " + months[experienceEvent[2][1] - 1];
+
+            moduleContainer.appendChild(moduleDate)
 
     const moduleBody = document.createElement("div");
 
