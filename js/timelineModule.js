@@ -5,6 +5,9 @@ const experienceModules = document.querySelector(".experienceModules");
 let timelinePositionIndex = 0;
 let scrollFlag = true;
 
+let datePosition = [2023, 9];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 
 
 const experienceEvents = [
@@ -12,7 +15,7 @@ const experienceEvents = [
     Copy/Paste for new experience:
 
     [
-        null, Empty Entry to hold possible object
+        null, holds Obj. for the corresponding HTML experience element
         [Start Year, Start Month (Num)], 
         [End Year, End Month (Num)], 
         "Background Color (See Below)",
@@ -30,21 +33,57 @@ const experienceEvents = [
     */
     [
         null, 
+        [2023, 9], 
+        [2024, 4], 
+        "#B4BFAE", 
+        "STUDENT - BIOMEDICAL ENGINEERING LEVEL I", 
+        "McMaster University - Faculty of Engineering", 
+        "",
+    ],
+    [
+        null, 
+        [2024, 5], 
+        [2025, 4], 
+        "#B4BFAE", 
+        "STUDENT - ELECTRICAL & BIOMED. ENG. LEVEL II", 
+        "McMaster University - Faculty of Engineering", 
+        "",
+    ],
+    [
+        null, 
+        [2025, 5], 
+        [2026, 4], 
+        "#B4BFAE", 
+        "STUDENT - ELEC. & BIOMED. ENG. LEVEL III", 
+        "McMaster University - Faculty of Engineering", 
+        "",
+    ],
+    [
+        null, 
+        [2026, 5], 
+        [2026, 7], 
+        "#B4BFAE", 
+        "STUDENT - ELEC. & BIOMED. ENG. LEVEL IV", 
+        "McMaster University - Faculty of Engineering", 
+        "",
+    ],
+    [
+        null, 
         [2024, 5], 
         [2024, 8], 
         "#C9B27E", 
         "QUALITY ASSURANCE AND AUTOMATION INTERN", 
         "Canadian Imperial Bank of Commerce (CIBC)", 
-        "Test Experience Body 2",
+        "",
     ],
     [
         null,
         [2025, 3], 
-        [2026, 6], 
+        [2026, 1], 
         "#8FA0A8",
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Aerial Robotics Team", 
-        "Test Experience Body 1",
+        "",
     ],
     [
         null,
@@ -53,11 +92,17 @@ const experienceEvents = [
         "#8FA0A8",
         "ELECTRICAL SUBTEAM TECHNICAL LEAD",
         "McMaster Aerial Robotics Team",
-        "Test Experience Body 1",
+        "",
     ],
 ]
 
 /* Logic Functions */
+
+function findPresentDate() {
+    const currentDate = Temporal.Now.plainDateISO();
+
+    return [currentDate.year, currentDate.month];
+}
 
 function calculateScrollDirection(prevPos, currentPos) {
     if (currentPos > prevPos) return "DOWN";
@@ -90,22 +135,195 @@ function countUniqueDates() {
     let uniqueExperienceDatesSet = new Set();
 
     tempSet.forEach((experience) => {
-        experienceDate = experience.split(",");
+        let experienceDate = experience.split(",");
+
+        experienceDate.forEach((expDate, index) => {
+            experienceDate[index] = parseInt(expDate);
+        });
+
         uniqueExperienceDatesSet.add(experienceDate);
     });
+
     const uniqueExperienceDatesArray = [...uniqueExperienceDatesSet];
 
     return uniqueExperienceDatesArray;
 }
 
-/* Experience Module Functions */
+function isDateBetweenRange(startDateRange, endDateRange) {
+    let timelineYear = datePosition[0];
+    let timelineMonth = datePosition[1];
+    let timelineDateInMonths = timelineYear * 12 + timelineMonth;
 
-function renderExperienceModules() {
-    // Cycles through each experience in experienceEvents and identifies if the time range is accurate
+    let startYear = startDateRange[0];
+    let startMonth = startDateRange[1];
+    let startDateInMonths = startYear * 12 + startMonth;
+    
+    let endYear = endDateRange[0];
+    let endMonth = endDateRange[1];
+    let endDateInMonths = endYear * 12 + endMonth;
+
+    if (startDateInMonths <= timelineDateInMonths && timelineDateInMonths <= endDateInMonths) {
+        return true;
+    }
+    return false;
 }
 
-function newExperienceModule() {
-    // Actually creates the new experience module
+function isEventEnding(experienceObj) {
+    const endDateRange = experienceObj[2];
+
+    if (datePosition[0] == endDateRange[0] && datePosition[1] == endDateRange[1]) return true;
+    else return false;
+}
+
+
+
+/* Experience Module Functions */
+
+function renderExperienceModules(uniqueDateSet) {
+    // Cycles through each experience in experienceEvents and identifies if the time range is accurate
+    // if entry is within date bounds, add its object to a list. Then, render all items in that index list.
+
+    let activeExperienceModulesArray = [];
+
+    experienceEvents.forEach((experience, index) => {
+        let experienceModuleData = [];
+
+        if (isDateBetweenRange(experience[1], experience[2]) && experience[0] == null) {
+            const experienceModuleObj = createExperienceModule(experience);
+
+            experienceModuleData.push(index);
+            experienceModuleData.push(experienceModuleObj);
+
+            experience[0] = experienceModuleObj;
+
+            activeExperienceModulesArray.push(experienceModuleData);
+        }
+        else if ((!isDateBetweenRange(experience[1], experience[2])) && experience[0] != null) {
+            deleteExperienceModule(experience);
+
+            experience[0] = null;
+        }
+        
+        if (isEventEnding(experience) && experience[0] != null) {
+            animateExperienceDeletion(experience);
+        }
+        else if (!isEventEnding(experience) && experience[0] != null) {
+            resetExperienceAnimation(experience);
+        }
+    });
+}
+
+function createExperienceModule(experienceEvent) {
+    const experienceModule = document.createElement("div");
+
+        experienceModule.style.display = "flex";
+        experienceModule.style.flexDirection = "column";
+
+        experienceModule.style.backgroundColor = experienceEvent[3];
+
+        experienceModule.style.borderRadius = "15px";
+
+        experienceModule.style.padding = "25px";
+        experienceModule.style.gap = "10px";
+
+        experienceModule.animate(
+        [
+            { opacity: 0 },
+            { opacity: 1 }
+        ], 
+        {
+            duration: 500,
+            fill: 'forwards'
+        });
+
+        experienceModules.appendChild(experienceModule);
+
+    const moduleTitle = document.createElement("div");
+
+        moduleTitle.classList.add("titleText");
+
+        moduleTitle.style.textWrap = "wrap";
+        moduleTitle.style.fontSize = "1.5rem";
+
+        moduleTitle.textContent = experienceEvent[4];
+
+        experienceModule.appendChild(moduleTitle);
+
+    const moduleEmployer = document.createElement("div");
+
+        moduleEmployer.classList.add("subtitleText");
+
+        moduleEmployer.style.fontSize = "1.25rem";
+        moduleEmployer.style.paddingLeft = "20px";
+        moduleEmployer.style.borderLeft = "5px solid"
+
+        moduleEmployer.textContent = experienceEvent[5];
+
+        experienceModule.appendChild(moduleEmployer)
+
+    const moduleBody = document.createElement("div");
+
+        moduleBody.classList.add("bodyText");
+
+        moduleBody.style.fontSize = "1rem";
+        moduleBody.style.paddingLeft = "20px";
+
+        moduleBody.textContent = experienceEvent[6];
+
+        experienceModule.appendChild(moduleBody);
+
+    return experienceModule;
+}
+
+function animateExperienceDeletion(experienceObj) {
+    let targetModule = experienceObj[0];
+
+    targetModule.animate(
+        [
+            { backgroundColor: "", offset: 0},
+            { backgroundColor: "#C9C9C9", offset:  1},
+        ], 
+        {
+            duration: 500,
+            fill: 'forwards'
+    });
+
+    targetModule.animate(
+        [
+            { transform: "rotate(0deg)", offset: 0},
+            { transform: "rotate(0.5deg)", offset:  0.05},
+            { transform: "rotate(-0.5deg)", offset:  0.1},
+        ], 
+        {
+            duration: 100,
+            fill: 'forwards',
+            iterations: Infinity,
+    });
+}
+
+function resetExperienceAnimation(experienceObj) {
+    let targetModule = experienceObj[0];
+
+    targetModule.getAnimations().forEach(animation => animation.cancel());
+    targetModule.style.backgroundColor = experienceObj[3];
+}
+
+function deleteExperienceModule(experienceObj) {
+    let targetModule = experienceObj[0];
+
+    targetModule.animate(
+        [
+            { opacity: 1 },
+            { opacity: 0 },
+        ], 
+        {
+            duration: 500,
+            fill: 'forwards'
+    });
+
+    setTimeout(() => {
+        targetModule.remove();
+    }, 500);
 }
 
 /* Timeline Functions */
@@ -114,7 +332,7 @@ function centerWindow() {
     scrollFlag = false;
 
     window.scrollTo({
-        top: 100,
+        top: (document.documentElement.scrollHeight - window.innerHeight) / 2,
         left: 0,
         behavior: 'auto'
     });
@@ -122,13 +340,13 @@ function centerWindow() {
 
 function updateTimelineDate(timelineSlider, uniqueDateSet) {
     const uniqueDate = uniqueDateSet[timelinePositionIndex];
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     const uniqueYear = uniqueDate[0];
     const uniqueMonth = months[(uniqueDate[1] - 1)];
 
-    timelineSlider.textContent = String(uniqueYear + " | " + uniqueMonth);
+    timelineSlider.textContent = uniqueYear + " | " + uniqueMonth;
+
+    return [uniqueYear, (uniqueDate[1])];
 }
 
 function timelineListener(timelineSliderNode, uniqueDateSet) {
@@ -156,11 +374,11 @@ function timelineListener(timelineSliderNode, uniqueDateSet) {
 
         checkTimelineIndexBounds();
         animateTimeline(timelineSliderNode, uniqueDateSet);
-        centerWindow();
-        updateTimelineDate(timelineSliderNode, uniqueDateSet);
+        datePosition = updateTimelineDate(timelineSliderNode, uniqueDateSet);
+        renderExperienceModules(uniqueDateSet);
 
-        renderExperienceModules();
-        
+        centerWindow();
+
         lastScrollPos = 100;
     });
 }
@@ -247,8 +465,10 @@ function animateTimeline(sliderNode, uniqueDateSet) {
 function main() {
     const uniqueDateSet = countUniqueDates();
     const sliderNode = renderTimeline();
+    const presentDate = findPresentDate();
 
     timelineListener(sliderNode, uniqueDateSet);
+    renderExperienceModules(uniqueDateSet);
 }
 
 main();
