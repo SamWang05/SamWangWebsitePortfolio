@@ -3,19 +3,11 @@ const introDisplayNode = document.querySelector(".introDisplay");
 
 const animationDuration = 3500; // duration in ms
 
-const observerOptions = {
-    root: null, 
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
 const subtitleTextArray = [
     "Education",
     "Employment",
     "Extracurriculars",
 ];
-
-let animationIterations = 1;
 
 
 
@@ -24,6 +16,7 @@ function initializeRotatingCaption() {
 
     rotatingTextNode.classList.add("subtitleText");
     rotatingTextNode.classList.add("animateCaption");
+    // CSS Tag with animation data. Can't use .animate in JS because we need animationiteration event listener
 
     rotatingTextNode.textContent = subtitleTextArray[0];
 
@@ -36,11 +29,12 @@ function clearRotatingDisplay() {
     rotatingCaptionNode.replaceChildren();
 }
 
-function main() {
-    const rotatingText = initializeRotatingCaption();
+function animationListener(rotatingTextNode) {
+    let animationIterations = 1; // Tracks progress of cycling animation
 
-    rotatingText.addEventListener("animationiteration", () => {
-        rotatingText.textContent = subtitleTextArray[animationIterations];
+    rotatingTextNode.addEventListener("animationiteration", () => { 
+        // Upon each iteration's end, cycles to next subtitle and cycles animationIterations counter until fully cycled, then repeat
+        rotatingTextNode.textContent = subtitleTextArray[animationIterations];
 
         animationIterations++;
 
@@ -51,6 +45,13 @@ function main() {
 
 
     animationIterations = 1;
+
+}
+
+function main() {
+    const rotatingText = initializeRotatingCaption();
+
+    animationListener(rotatingText);
 }
 
 main();
