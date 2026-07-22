@@ -102,7 +102,7 @@
 
 .timelineDisplay > .timelineLine {
     position: fixed;
-    right: 5vw;
+    right: 2vw;
 
     width: 50px;
     height: 75vh;
@@ -120,7 +120,7 @@
 
     justify-content: flex-end;
 
-    margin-right: 5vw;
+    margin-right: 3vw;
 }
 
 .timelineDisplay > .displayModules > .experienceModules {
@@ -132,5 +132,5 @@
     padding: 20px;
     gap: 10px;
 
-    width: 50vw;
+    width: 52vw;
 }

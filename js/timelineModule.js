@@ -15,13 +15,14 @@ const experienceEvents = [
     Copy/Paste for new experience:
 
     [
-        null, holds Obj. for the corresponding HTML experience element
+        null, // holds Obj. for the corresponding HTML experience element
         [Start Year, Start Month (Num)], 
         [End Year, End Month (Num)], 
         "Background Color (See Below)",
         "EXPERIENCE TITLE",
         "Employer", 
         "Summary of Duties",
+        "false", // flag for controlling deletion animations
     ],
     
     Recommended Experience Colors:
@@ -39,6 +40,7 @@ const experienceEvents = [
         "STUDENT - BIOMEDICAL ENGINEERING LEVEL I", 
         "McMaster University - Faculty of Engineering", 
         "",
+        false,
     ],
     [
         null, 
@@ -48,6 +50,7 @@ const experienceEvents = [
         "STUDENT - ELECTRICAL & BIOMED. ENG. LEVEL II", 
         "McMaster University - Faculty of Engineering", 
         "",
+        false,
     ],
     [
         null, 
@@ -57,6 +60,7 @@ const experienceEvents = [
         "STUDENT - ELEC. & BIOMED. ENG. LEVEL III", 
         "McMaster University - Faculty of Engineering", 
         "",
+        false,
     ],
     [
         null, 
@@ -66,6 +70,7 @@ const experienceEvents = [
         "STUDENT - ELEC. & BIOMED. ENG. LEVEL IV", 
         "McMaster University - Faculty of Engineering", 
         "",
+        false,
     ],
     [
         null, 
@@ -75,6 +80,7 @@ const experienceEvents = [
         "QUALITY ASSURANCE AND AUTOMATION INTERN", 
         "Canadian Imperial Bank of Commerce (CIBC)", 
         "",
+        false,
     ],
     [
         null,
@@ -84,6 +90,7 @@ const experienceEvents = [
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Aerial Robotics Team", 
         "",
+        false,
     ],
     [
         null,
@@ -93,6 +100,7 @@ const experienceEvents = [
         "ELECTRICAL SUBTEAM TECHNICAL LEAD",
         "McMaster Aerial Robotics Team",
         "",
+        false,
     ],
 ]
 
@@ -149,205 +157,12 @@ function countUniqueDates() {
     return uniqueExperienceDatesArray;
 }
 
-function isDateBetweenRange(startDateRange, endDateRange) {
-    let timelineYear = datePosition[0];
-    let timelineMonth = datePosition[1];
-    let timelineDateInMonths = timelineYear * 12 + timelineMonth;
-
-    let startYear = startDateRange[0];
-    let startMonth = startDateRange[1];
-    let startDateInMonths = startYear * 12 + startMonth;
-    
-    let endYear = endDateRange[0];
-    let endMonth = endDateRange[1];
-    let endDateInMonths = endYear * 12 + endMonth;
-
-    if (startDateInMonths <= timelineDateInMonths && timelineDateInMonths <= endDateInMonths) {
-        return true;
-    }
-    return false;
-}
-
-function isEventEnding(experienceObj) {
-    const endDateRange = experienceObj[2];
-
-    if (datePosition[0] == endDateRange[0] && datePosition[1] == endDateRange[1]) return true;
-    else return false;
-}
-
 
 
 /* Experience Module Functions */
 
-function renderExperienceModules(uniqueDateSet) {
-    // Cycles through each experience in experienceEvents and identifies if the time range is accurate
-    // if entry is within date bounds, add its object to a list. Then, render all items in that index list.
 
-    let activeExperienceModulesArray = [];
 
-    experienceEvents.forEach((experience, index) => {
-        let experienceModuleData = [];
-
-        if (isDateBetweenRange(experience[1], experience[2]) && experience[0] == null) {
-            const experienceModuleObj = createExperienceModule(experience);
-
-            experienceModuleData.push(index);
-            experienceModuleData.push(experienceModuleObj);
-
-            experience[0] = experienceModuleObj;
-
-            activeExperienceModulesArray.push(experienceModuleData);
-        }
-        else if ((!isDateBetweenRange(experience[1], experience[2])) && experience[0] != null) {
-            deleteExperienceModule(experience);
-
-            experience[0] = null;
-        }
-        
-        if (isEventEnding(experience) && experience[0] != null) {
-            animateExperienceDeletion(experience);
-        }
-        else if (!isEventEnding(experience) && experience[0] != null) {
-            resetExperienceAnimation(experience);
-        }
-    });
-}
-
-function createExperienceModule(experienceEvent) {
-    const experienceModule = document.createElement("div");
-
-        experienceModule.style.display = "flex";
-        experienceModule.style.flexDirection = "column";
-
-        experienceModule.style.backgroundColor = experienceEvent[3];
-
-        experienceModule.style.borderRadius = "15px";
-
-        experienceModule.style.padding = "25px";
-        experienceModule.style.gap = "10px";
-
-        experienceModule.animate(
-        [
-            { opacity: 0 },
-            { opacity: 1 }
-        ], 
-        {
-            duration: 500,
-            fill: 'forwards'
-        });
-
-        experienceModules.appendChild(experienceModule);
-
-    const moduleTitle = document.createElement("div");
-
-        moduleTitle.classList.add("titleText");
-
-        moduleTitle.style.textWrap = "wrap";
-        moduleTitle.style.fontSize = "1.5rem";
-
-        moduleTitle.textContent = experienceEvent[4];
-
-        experienceModule.appendChild(moduleTitle);
-    
-    const moduleContainer = document.createElement("div");
-
-        moduleContainer.style.display = "flex";
-        moduleContainer.style.flexDirection = "row";
-
-        moduleContainer.style.justifyContent = "space-between";
-        
-        experienceModule.appendChild(moduleContainer);
-
-        const moduleEmployer = document.createElement("div");
-
-            moduleEmployer.classList.add("subtitleText");
-
-            moduleEmployer.style.fontSize = "1.25rem";
-            moduleEmployer.style.paddingLeft = "20px";
-            moduleEmployer.style.borderLeft = "5px solid"
-
-            moduleEmployer.textContent = experienceEvent[5];
-
-            moduleContainer.appendChild(moduleEmployer)
-
-        const moduleDate = document.createElement("div");
-
-            moduleDate.classList.add("bodyText");
-
-            moduleDate.style.fontSize = "1.25rem";
-
-            moduleDate.style.paddingRight = "10px";
-            moduleDate.style.borderRight = "5px solid";
-
-            moduleDate.textContent = experienceEvent[1][0] + " " + months[experienceEvent[1][1] - 1] + 
-            " | " + experienceEvent[2][0] + " " + months[experienceEvent[2][1] - 1];
-
-            moduleContainer.appendChild(moduleDate)
-
-    const moduleBody = document.createElement("div");
-
-        moduleBody.classList.add("bodyText");
-
-        moduleBody.style.fontSize = "1rem";
-        moduleBody.style.paddingLeft = "20px";
-
-        moduleBody.textContent = experienceEvent[6];
-
-        experienceModule.appendChild(moduleBody);
-
-    return experienceModule;
-}
-
-function animateExperienceDeletion(experienceObj) {
-    let targetModule = experienceObj[0];
-
-    targetModule.animate(
-        [
-            { backgroundColor: "", offset: 0},
-            { backgroundColor: "#C9C9C9", offset:  1},
-        ], 
-        {
-            duration: 500,
-            fill: 'forwards'
-    });
-
-    targetModule.animate(
-        [
-            { transform: "rotate(0deg)", offset: 0},
-            { transform: "rotate(0.5deg)", offset:  0.05},
-            { transform: "rotate(-0.5deg)", offset:  0.1},
-        ], 
-        {
-            duration: 100,
-            fill: 'forwards',
-            iterations: Infinity,
-    });
-}
-
-function resetExperienceAnimation(experienceObj) {
-    let targetModule = experienceObj[0];
-
-    targetModule.getAnimations().forEach(animation => animation.cancel());
-    targetModule.style.backgroundColor = experienceObj[3];
-}
-
-function deleteExperienceModule(experienceObj) {
-    let targetModule = experienceObj[0];
-
-    targetModule.animate(
-        [
-            { opacity: 1 },
-            { opacity: 0 },
-        ], 
-        {
-            duration: 500,
-            fill: 'forwards'
-    });
-
-    setTimeout(() => {
-        targetModule.remove();
-    }, 500);
-}
 
 /* Timeline Functions */
 
@@ -398,7 +213,6 @@ function timelineListener(timelineSliderNode, uniqueDateSet) {
         checkTimelineIndexBounds();
         animateTimeline(timelineSliderNode, uniqueDateSet);
         datePosition = updateTimelineDate(timelineSliderNode, uniqueDateSet);
-        renderExperienceModules(uniqueDateSet);
 
         centerWindow();
 
@@ -491,7 +305,6 @@ function main() {
     const presentDate = findPresentDate();
 
     timelineListener(sliderNode, uniqueDateSet);
-    renderExperienceModules(uniqueDateSet);
 }
 
 main();
