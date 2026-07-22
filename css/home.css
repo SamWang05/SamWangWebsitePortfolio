@@ -263,7 +263,7 @@
     }
 }
 
-.skillsDisplay > .displayModules > .skillGroupSelectors > .skillGroup > .subtitleText:hover {
+.skillsDisplay > .displayModules > .skillGroupSelectors > .skillGroup:hover {
     animation-name: inflateHeader;
     animation-duration: 1s;
     animation-iteration-count: 0.2;
