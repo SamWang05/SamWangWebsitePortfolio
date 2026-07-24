@@ -10,7 +10,7 @@ const PRESENT_DATE = findPresentDate();
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 let datePosition = TIMELINE_START_DATE;
 
-const MODULE_HEIGHT_MULTIPLE = 100; // Units of px
+const MODULE_HEIGHT_MULTIPLE = 150; // Units of px
 const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
 
 
@@ -25,7 +25,7 @@ const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
         "Background Color (See Below)",
         "EXPERIENCE TITLE",
         "Employer", 
-        "Summary of Duties",
+        "Summary of Duties (Divide using |)",
         "Type of Experience (Edu/Work/EC)"
     ],
     
@@ -45,7 +45,8 @@ const experienceEvents = [
         "#B4BFAE", 
         "STUDENT - BIOMEDICAL ENGINEERING LEVEL I", 
         "McMaster University - Faculty of Engineering", 
-        "",
+        `Health Solutions Design Projects I | Engineering Mathematics I/II | Physics 
+        | Entrepreneurship and Biomedical Innovation`,
         "Edu",
     ],
     [
@@ -53,9 +54,11 @@ const experienceEvents = [
         [2024, 4], 
         [2025, 4], 
         "#B4BFAE", 
-        "STUDENT - ELECTRICAL & BIOMED. ENG. LEVEL II", 
+        "STUDENT - ELECTRICAL & BIOMEDICAL ENG. LEVEL II", 
         "McMaster University - Faculty of Engineering", 
-        "",
+        `Hlth. Solutions Design Projects II | Physiology and Anatomy I/II | Electromagnetics I | Principles 
+        of Programming & Data Structures | Circuit Analysis | Circuits and Systems | Engineering Mathematics 
+        III`,
         "Edu",
     ],
     [
@@ -65,7 +68,9 @@ const experienceEvents = [
         "#B4BFAE", 
         "STUDENT - ELEC. & BIOMED. ENG. LEVEL III", 
         "McMaster University - Faculty of Engineering", 
-        "",
+        `Digital Logic Design | Microprocessor Systems | Electronic Devices and Circuits I | Electromagnetics 
+        II | Hlth. Solutions Design Projects III | Biomedical Signals and Systems | Energy Conversion | Advanced 
+        Probability | Statistical Methods in Biomed. Eng.`,
         "Edu",
     ],
     [
@@ -75,7 +80,9 @@ const experienceEvents = [
         "#B4BFAE", 
         "STUDENT - ELEC. & BIOMED. ENG. LEVEL IV", 
         "McMaster University - Faculty of Engineering", 
-        "",
+        `Hlth. Solutions Design Projects IV | Electronic Devices and Circuits II | Communication Systems | Numerical 
+        Methods & Scientific Computing | Biomedical Instrumentation | Biomechanics | Biomedical Control Systems | Biosensors 
+        Applications | Organic Chemistry`,
         "Edu",
     ],
     [
@@ -85,7 +92,7 @@ const experienceEvents = [
         "#C9B27E", 
         "QUALITY ASSURANCE AND AUTOMATION INTERN", 
         "Canadian Imperial Bank of Commerce (CIBC)", 
-        "",
+        ``,
         "Work",
     ],
     [
@@ -95,7 +102,7 @@ const experienceEvents = [
         "#8FA0A8",
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Aerial Robotics Team", 
-        "",
+        ``,
         "EC",
     ],
     [
@@ -105,7 +112,7 @@ const experienceEvents = [
         "#8FA0A8",
         "ELECTRICAL SUBTEAM TECHNICAL LEAD",
         "McMaster Aerial Robotics Team",
-        "",
+        ``,
         "EC",
     ],
     [
@@ -115,7 +122,7 @@ const experienceEvents = [
         "#8FA0A8",
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Biomedical Engineering Technical Team", 
-        "",
+        ``,
         "EC",
     ],
 ]
@@ -244,6 +251,20 @@ function selectModuleType(moduleType, uniqueDateSet) {
     return moduleObj;
 }
 
+function processModuleBodyText(moduleBodyText) {
+    let bodyTextItemsArray = moduleBodyText.replaceAll("\n", "").split(" | ");
+
+    let processedBodyTextArray = [];
+
+    bodyTextItemsArray.forEach((textItem) => {
+        const bodyTextItem = textItem.replace(/\s+/g, ' ');
+
+        processedBodyTextArray.push(bodyTextItem);
+    });
+
+    return processedBodyTextArray;
+}
+
 
 
 /* Experience Module Functions */
@@ -322,11 +343,21 @@ function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
 
     const moduleBody = document.createElement("div");
 
-        moduleBody.classList.add("bodyText");
-
-        moduleBody.textContent = experienceEvent[6];
+        moduleBody.classList.add("moduleBody");
 
         newExperienceModule.appendChild(moduleBody);
+
+        const textContentArray = processModuleBodyText(experienceEvent[6]);
+
+            textContentArray.forEach((textContent) => {
+
+                const moduleList = document.createElement("li");
+
+                moduleList.classList.add("bodyText");
+                moduleList.textContent = textContent;
+
+                moduleBody.appendChild(moduleList);
+            })
 }
 
 function renderExperienceModules(uniqueDateSet) {
