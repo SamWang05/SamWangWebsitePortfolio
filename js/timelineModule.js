@@ -5,12 +5,16 @@ const experienceModules = document.querySelector(".experienceModules");
 let timelinePositionIndex = 0;
 let scrollFlag = true;
 
-let datePosition = [2023, 9];
+const TIMELINE_START_DATE = [2023, 9];
+const PRESENT_DATE = findPresentDate();
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let datePosition = TIMELINE_START_DATE;
+
+const MODULE_HEIGHT_MULTIPLE = 100; // Units of px
+const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
 
 
 
-const experienceEvents = [
 /* 
     Copy/Paste for new experience:
 
@@ -22,7 +26,7 @@ const experienceEvents = [
         "EXPERIENCE TITLE",
         "Employer", 
         "Summary of Duties",
-        "false", // flag for controlling deletion animations
+        "Type of Experience (Edu/Work/EC)"
     ],
     
     Recommended Experience Colors:
@@ -31,7 +35,9 @@ const experienceEvents = [
     Muted Blue-Grey - #8FA0A8
     Soft Ochre/Mustard - #C9B27E
     Sage Green - #B4BFAE
-    */
+*/
+
+const experienceEvents = [
     [
         null, 
         [2023, 9], 
@@ -40,37 +46,37 @@ const experienceEvents = [
         "STUDENT - BIOMEDICAL ENGINEERING LEVEL I", 
         "McMaster University - Faculty of Engineering", 
         "",
-        false,
+        "Edu",
     ],
     [
         null, 
-        [2024, 5], 
+        [2024, 4], 
         [2025, 4], 
         "#B4BFAE", 
         "STUDENT - ELECTRICAL & BIOMED. ENG. LEVEL II", 
         "McMaster University - Faculty of Engineering", 
         "",
-        false,
+        "Edu",
     ],
     [
         null, 
-        [2025, 5], 
+        [2025, 4], 
         [2026, 4], 
         "#B4BFAE", 
         "STUDENT - ELEC. & BIOMED. ENG. LEVEL III", 
         "McMaster University - Faculty of Engineering", 
         "",
-        false,
+        "Edu",
     ],
     [
         null, 
-        [2026, 5], 
-        [2026, 7], 
+        [2026, 4], 
+        PRESENT_DATE, 
         "#B4BFAE", 
         "STUDENT - ELEC. & BIOMED. ENG. LEVEL IV", 
         "McMaster University - Faculty of Engineering", 
         "",
-        false,
+        "Edu",
     ],
     [
         null, 
@@ -80,7 +86,7 @@ const experienceEvents = [
         "QUALITY ASSURANCE AND AUTOMATION INTERN", 
         "Canadian Imperial Bank of Commerce (CIBC)", 
         "",
-        false,
+        "Work",
     ],
     [
         null,
@@ -90,7 +96,7 @@ const experienceEvents = [
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Aerial Robotics Team", 
         "",
-        false,
+        "EC",
     ],
     [
         null,
@@ -100,11 +106,53 @@ const experienceEvents = [
         "ELECTRICAL SUBTEAM TECHNICAL LEAD",
         "McMaster Aerial Robotics Team",
         "",
-        false,
+        "EC",
+    ],
+    [
+        null,
+        [2025, 9], 
+        PRESENT_DATE, 
+        "#8FA0A8",
+        "ELECTRICAL SUBTEAM GENERAL MEMBER",
+        "McMaster Biomedical Engineering Technical Team", 
+        "",
+        "EC",
     ],
 ]
 
+
+
 /* Logic Functions */
+
+function splitExperienceEvents() { // Split experienceEvents array based on which type of experience
+    let educationEvents = [];
+    let workEvents = [];
+    let extracurricularEvents = [];
+
+    experienceEvents.forEach((experience) => {
+        if (experience[7] == "Edu") {
+            educationEvents.push(experience);
+        }
+        else if (experience[7] == "Work") {
+            workEvents.push(experience);
+        }
+        else if (experience[7] == "EC") {
+            extracurricularEvents.push(experience);
+        }
+    });
+
+    return [educationEvents, workEvents, extracurricularEvents];
+}
+
+function formatDateRange(startDateArray, endDateArray) { // Simply reformat date range from two arrays to string for experienceModules
+    const startYear = startDateArray[0];
+    const endYear = endDateArray[0];
+
+    const startMonth = months[startDateArray[1] - 1];
+    const endMonth = months[endDateArray[1] - 1];
+
+    return (startMonth + " " + startYear + " to " + endMonth + " " + endYear);
+}
 
 function findPresentDate() {
     const currentDate = Temporal.Now.plainDateISO();
@@ -112,62 +160,207 @@ function findPresentDate() {
     return [currentDate.year, currentDate.month];
 }
 
-function calculateScrollDirection(prevPos, currentPos) {
-    if (currentPos > prevPos) return "DOWN";
-    else if (currentPos < prevPos) return "UP";
-    else return null;
+function calculateModuleHeight(startDateArray, endDateArray) {
+    const startDateMonths = 12 * startDateArray[0] + startDateArray[1];
+    const endDateMonths = 12 * endDateArray[0] + endDateArray[1];
+
+    return (endDateMonths - startDateMonths) * MODULE_HEIGHT_MULTIPLE;
 }
 
-function checkTimelineIndexBounds() {
-    const timelineLength = countUniqueDates().length;
+function calculateTimelineHeight(uniqueDateSet) {
+    const endDate = uniqueDateSet[uniqueDateSet.length - 1][0];
 
-    if (timelinePositionIndex < 0) {
-        timelinePositionIndex = 0;
-    }
-    else if (timelinePositionIndex > (timelineLength - 1)) {
-        timelinePositionIndex = timelineLength - 1;
-    }
+    const startDateMonths = 12 * TIMELINE_START_DATE[0] + TIMELINE_START_DATE[1];
+    const endDateMonths = 12 * endDate[0] + endDate[1];
+
+    return (endDateMonths - startDateMonths) * MODULE_HEIGHT_MULTIPLE + TIMELINE_HEIGHT_INCREASE;
+}
+
+function calculateModuleDistance(startDateArray) { // Module's distance needs to be based on its start date relative to Sept. 2023
+    const startDateMonths = 12 * startDateArray[0] + startDateArray[1];
+    const startPositionMonths = 12 * TIMELINE_START_DATE[0] + TIMELINE_START_DATE[1];
+
+    return ((startDateMonths - startPositionMonths) * MODULE_HEIGHT_MULTIPLE);
 }
 
 function countUniqueDates() {
-    let experienceDatesArray = []
+    let experienceDatesArray = [];
 
-    experienceEvents.forEach((experience) => {
-        experienceDatesArray.push(experience[1].toString());
-        experienceDatesArray.push(experience[2].toString());
+    experienceEvents.forEach((experience, index) => {
+        // For each experienceEvent, hold the starting and ending dates, as 
+        // well as the event's corresponding index and tag (start/end)
+
+        experienceDatesArray.push([experience[1], String(index), "start"]);
+        experienceDatesArray.push([experience[2], String(index), "end"]);
     });
 
-    experienceDatesArray.sort();
+    experienceDatesArray.sort((startingDate, endingDate) => {
+        // Compares two entries startingDate, endingDate by converting to # of months, then check if + or -
 
-    let tempSet = new Set(experienceDatesArray);
-    let uniqueExperienceDatesSet = new Set();
+        const startingInMonths = 12 * startingDate[0][0] + startingDate[0][1];
+        const endingInMonths = 12 * endingDate[0][0] + endingDate[0][1];
 
-    tempSet.forEach((experience) => {
-        let experienceDate = experience.split(",");
-
-        experienceDate.forEach((expDate, index) => {
-            experienceDate[index] = parseInt(expDate);
-        });
-
-        uniqueExperienceDatesSet.add(experienceDate);
+        return startingInMonths - endingInMonths;
     });
 
-    const uniqueExperienceDatesArray = [...uniqueExperienceDatesSet];
+    let uniqueExperienceDatesArray = [];
+    let datesSeen = new Map();
+
+    experienceDatesArray.forEach(([experienceDate, experienceIndex, dateType]) => {
+        const dateString = experienceDate.toString();
+        
+
+        if (!datesSeen.has(dateString)) { // Check if this date has already been pushed, and pushes date if not
+            const entry = [experienceDate, experienceIndex, dateType];
+            datesSeen.set(dateString, entry);
+            uniqueExperienceDatesArray.push(entry);
+        } 
+        else { // If a specific date marks both a start and end date, force the start date to take priority
+            const existingEntry = datesSeen.get(dateString);
+
+            if (existingEntry[2] == "end" && dateType == "start") { // Rewrites an end date to take the start date instead
+                existingEntry[1] = experienceIndex;
+                existingEntry[2] = "start";
+            }
+        }
+    });
 
     return uniqueExperienceDatesArray;
+}
+
+function selectModuleType(moduleType, uniqueDateSet) {
+    let moduleObj = null;
+
+    if (moduleType == "Education") {
+        moduleObj = document.querySelector(".eduModules");
+    }
+    else if (moduleType == "Work") {
+        moduleObj = document.querySelector(".workModules");
+    }
+    else if (moduleType == "Extracurricular") {
+        moduleObj = document.querySelector(".extracurricularModules");
+    }
+
+    return moduleObj;
 }
 
 
 
 /* Experience Module Functions */
 
+function scrollModuleDisplay(uniqueFilteredDateSet) {
+    const targetExperienceIndex = uniqueFilteredDateSet[timelinePositionIndex][1];
+    const targetExperience = experienceEvents[targetExperienceIndex]
+    const targetExperienceObj = targetExperience[0];
+
+    targetExperienceObj.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+    });
+
+    setTimeout(() => { // Flash each module to indicate it was selected
+        targetExperienceObj.animate([
+            {filter: "brightness(100%)"},
+            {filter: "brightness(90%)"},
+            {filter: "brightness(100%)"}
+        ],
+        {
+            duration: 300,
+            iterations: 2,
+            fill: "forwards",
+            easing: "ease-in-out",
+        });
+    }, 500);
+    
+}
+
+function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
+
+    const moduleClass = selectModuleType(moduleType, uniqueDateSet);
+
+    const moduleHeight = calculateModuleHeight(experienceEvent[1], experienceEvent[2]) + "px";
+    const moduleDist = calculateModuleDistance(experienceEvent[1]) + "px"; 
+
+    const newExperienceModule = document.createElement("div");
+
+        newExperienceModule.classList.add("moduleCard");
+
+        experienceEvent[0] = newExperienceModule;
+
+        newExperienceModule.style.backgroundColor = experienceEvent[3];
+        newExperienceModule.style.height = moduleHeight;
+        newExperienceModule.style.top = moduleDist;
+
+        moduleClass.appendChild(newExperienceModule);
+    
+    const moduleTitle = document.createElement("div");
+
+        moduleTitle.classList.add("titleText");
+        
+        moduleTitle.textContent = experienceEvent[4];
+
+        newExperienceModule.appendChild(moduleTitle);
+
+    const moduleEmployer = document.createElement("div");
+
+        moduleEmployer.classList.add("subtitleText");
+        moduleEmployer.classList.add("employerText");
+
+        moduleEmployer.textContent = experienceEvent[5];
+
+        newExperienceModule.appendChild(moduleEmployer)
+
+    const moduleDate = document.createElement("div");
+
+        moduleDate.classList.add("subtitleText");
+        moduleDate.classList.add("dateRangeText");
+
+        moduleDate.textContent = formatDateRange(experienceEvent[1], experienceEvent[2]);
+
+        newExperienceModule.appendChild(moduleDate)
+
+    const moduleBody = document.createElement("div");
+
+        moduleBody.classList.add("bodyText");
+
+        moduleBody.textContent = experienceEvent[6];
+
+        newExperienceModule.appendChild(moduleBody);
+}
+
+function renderExperienceModules(uniqueDateSet) {
+    const organizedExperienceEvents = splitExperienceEvents();
+
+    renderEducationModules(organizedExperienceEvents[0], uniqueDateSet);
+    renderWorkModules(organizedExperienceEvents[1], uniqueDateSet);
+    renderECModules(organizedExperienceEvents[2], uniqueDateSet);
+}
+
+function renderEducationModules(educationEvents, uniqueDateSet) {
+    educationEvents.forEach((eduExperience) => {
+        createExperienceModule(eduExperience, uniqueDateSet, "Education");
+    });
+}
+
+function renderWorkModules(workEvents, uniqueDateSet) {
+    workEvents.forEach((workExperience) => {
+        createExperienceModule(workExperience, uniqueDateSet, "Work");
+    });
+}
+
+function renderECModules(extracurricularEvents, uniqueDateSet) {
+    extracurricularEvents.forEach((extraCExperience) => {
+        createExperienceModule(extraCExperience, uniqueDateSet, "Extracurricular");
+    });
+}
 
 
 
 /* Timeline Functions */
 
 function centerWindow() {
-    scrollFlag = false;
+    scrollFlag = false; // Reset scroll flag to false. Otherwise, scrollTo will reactivate centerWindow (8 hours to solve this one ;-;)
 
     window.scrollTo({
         top: (document.documentElement.scrollHeight - window.innerHeight) / 2,
@@ -176,30 +369,35 @@ function centerWindow() {
     });
 }
 
-function updateTimelineDate(timelineSlider, uniqueDateSet) {
-    const uniqueDate = uniqueDateSet[timelinePositionIndex];
+function updateTimelineDate(timelineSlider, uniqueFilteredDateSet) {
+    const uniqueFilteredDate = uniqueFilteredDateSet[timelinePositionIndex][0];
 
-    const uniqueYear = uniqueDate[0];
-    const uniqueMonth = months[(uniqueDate[1] - 1)];
+    const uniqueYear = uniqueFilteredDate[0];
+    const uniqueMonth = months[(uniqueFilteredDate[1] - 1)];
 
     timelineSlider.textContent = uniqueYear + " | " + uniqueMonth;
 
-    return [uniqueYear, (uniqueDate[1])];
+    return [uniqueYear, (uniqueFilteredDate[1])];
 }
 
-function timelineListener(timelineSliderNode, uniqueDateSet) {
-    let lastScrollPos = 100;
+function timelineListener(timelineSliderNode, uniqueFilteredDateSet) {
+    let lastScrollPos = document.scrollingElement.scrollTop;
     let currentScrollPos = 0;
 
     document.addEventListener("scrollend", () => {
-        if (!scrollFlag) {
+        if (!scrollFlag) { // If the scrollFlag is false, we will block the action of centerWindow() from reactivating the listener
             scrollFlag = true;
+            lastScrollPos = document.scrollingElement.scrollTop;
             return;
         }
 
         currentScrollPos = document.scrollingElement.scrollTop;
 
-        let scrollDir = calculateScrollDirection(lastScrollPos, currentScrollPos);
+        let scrollDir
+
+        if (currentScrollPos > lastScrollPos) scrollDir = "DOWN";
+        else if (currentScrollPos < lastScrollPos) scrollDir = "UP";
+        else scrollDir = null;
 
         switch (scrollDir) {
             case "UP":
@@ -210,39 +408,33 @@ function timelineListener(timelineSliderNode, uniqueDateSet) {
             break;
         }
 
-        checkTimelineIndexBounds();
-        animateTimeline(timelineSliderNode, uniqueDateSet);
-        datePosition = updateTimelineDate(timelineSliderNode, uniqueDateSet);
+        if (timelinePositionIndex < 0) {
+            timelinePositionIndex = 0;
+        }
+        else if (timelinePositionIndex > (uniqueFilteredDateSet.length - 1)) {
+            timelinePositionIndex = uniqueFilteredDateSet.length - 1;
+        }
+
+        animateTimeline(timelineSliderNode, uniqueFilteredDateSet);
+        datePosition = updateTimelineDate(timelineSliderNode, uniqueFilteredDateSet);
+
+        scrollModuleDisplay(uniqueFilteredDateSet);
 
         centerWindow();
-
-        lastScrollPos = 100;
     });
 }
 
 function renderTimeline() {
     const timelineSliderFrame = document.createElement("div");
 
-        timelineSliderFrame.style.backgroundColor = "#DDD9D3";
-        
-        timelineSliderFrame.style.width = "30px";
-        timelineSliderFrame.style.height = "100%";
-
-        timelineSliderFrame.style.padding = "5px";
-
-        timelineSliderFrame.style.borderRadius = "15px";
+        timelineSliderFrame.classList.add("timelineSliderFrame");
 
         timelineLine.appendChild(timelineSliderFrame);
 
     const timelineSlider = document.createElement("div");
 
         timelineSlider.classList.add("bodyText");
-
-        timelineSlider.style.backgroundColor = "#8C7B6B";
-
-        timelineSlider.style.width = "20px";
-        timelineSlider.style.minHeight = "20%";
-        timelineSlider.style.maxHeight = "80%";
+        timelineSlider.classList.add("timelineSlider");
         
         timelineSlider.animate([
             {
@@ -260,30 +452,20 @@ function renderTimeline() {
             }
         )
 
-        timelineSlider.style.borderRadius = "10px";
-
-        timelineSlider.style.writingMode = "vertical-rl";
-        timelineSlider.style.textAlign = "right";
-
-        timelineSlider.style.paddingBottom = "10px";
-
-        timelineSlider.style.fontSize = "1rem";
-        timelineSlider.style.color = "#DDD9D3";
-
-        timelineSlider.textContent = "Sep | 2023";
+        timelineSlider.textContent = "2023 | Sep";
 
         timelineSliderFrame.appendChild(timelineSlider);
     
     return timelineSlider;
 }
 
-function animateTimeline(sliderNode, uniqueDateSet) {
+function animateTimeline(sliderNode, uniqueFilteredDateSet) {
     sliderNode.animate([
         {
             height: ""
         },
         {
-            height: String(Math.round(20 + ((60 / (uniqueDateSet.length - 1)) * timelinePositionIndex), 1)) + "%"
+            height: String(Math.round(20 + ((60 / (uniqueFilteredDateSet.length - 1)) * timelinePositionIndex), 1)) + "%"
         }
     ],
         {
@@ -300,11 +482,17 @@ function animateTimeline(sliderNode, uniqueDateSet) {
 /* Main Function */
 
 function main() {
-    const uniqueDateSet = countUniqueDates();
-    const sliderNode = renderTimeline();
-    const presentDate = findPresentDate();
+    // Unique date set contains start and end dates. Effectively a set of "notable" dates, used for 
+    // calculating timeline length.
 
-    timelineListener(sliderNode, uniqueDateSet);
+    // Sorted date set contains only "start" dates, used for scroll positioning -> subset of unique date set
+
+    const sliderNode = renderTimeline();
+    const uniqueDateSet = countUniqueDates();
+    const uniqueSortedDateSet = uniqueDateSet.filter((dateEntry) => dateEntry[2] === "start");
+
+    renderExperienceModules(uniqueDateSet);
+    timelineListener(sliderNode, uniqueSortedDateSet);
 }
 
 main();

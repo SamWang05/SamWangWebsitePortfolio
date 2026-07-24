@@ -115,6 +115,37 @@
     border-radius: 20px;
 }
 
+.timelineDisplay > .timelineLine > .timelineSliderFrame {
+    width: 30px;
+    height: 100%;
+
+    background-color: #DDD9D3;
+
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.timelineDisplay > .timelineLine > .timelineSliderFrame > .timelineSlider {
+    width: 20px;
+    min-height: 20%;
+    max-height: 80%;
+
+    background-color: #8C7B6B;
+
+    border-radius: 10px;
+    padding-bottom: 10px;
+
+    writing-mode: vertical-rl;
+    text-align: right;
+
+    font-size: 1rem;
+    color: #DDD9D3;
+}
+
+
+
+/* Timeline Display Experience Modules (Group) */
+
 .timelineDisplay > .displayModules {
     display: flex;
 
@@ -125,12 +156,78 @@
 
 .timelineDisplay > .displayModules > .experienceModules {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     position: fixed;
 
+    width: 50vw;
+    height: 70vh;
+
+    gap: 10px;
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background-color: #C7C0B5;
+
+    overflow-y: hidden;
+}
+
+.timelineDisplay > .displayModules > .experienceModules > * {
+    display: flex;
+    flex-direction: column;
+
+    width: 33%;
+
+    gap: 0px 10px;
+
+    position: relative;
+}
+
+
+
+/* Timeline Display Experience Modules (Individual) */
+
+.timelineDisplay > .displayModules > .experienceModules > * > .moduleCard {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 15px;
     padding: 20px;
     gap: 10px;
 
-    width: 52vw;
+    position: absolute;
+
+    opacity: 0.5;
+}
+
+.timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .titleText {
+    text-wrap: wrap;
+
+    font-size: 1.25rem;
+}
+
+.timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .employerText {
+    text-wrap: wrap;
+
+    font-size: 1.1rem;
+
+    padding-left: 10px;
+    border-left: 5px solid;
+}
+
+.timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .dateRangeText {
+    text-wrap: wrap;
+
+    font-size: 0.9rem;
+
+    padding-left: 10px;
+}
+
+.timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .bodyText {
+    text-wrap: wrap;
+
+    font-size: 0.75rem;
+
+    padding-left: 10px;
 }
