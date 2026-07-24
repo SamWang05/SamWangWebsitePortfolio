@@ -158,7 +158,7 @@ function formatDateRange(startDateArray, endDateArray) { // Simply reformat date
     const startMonth = months[startDateArray[1] - 1];
     const endMonth = months[endDateArray[1] - 1];
 
-    return (startMonth + " " + startYear + " to " + endMonth + " " + endYear);
+    return (" - " + startMonth + " " + startYear + " to " + endMonth + " " + endYear + " - ");
 }
 
 function findPresentDate() {
