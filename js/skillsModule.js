@@ -60,7 +60,7 @@ function renderSoftwareSkills () {
         ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "MATLAB.svg"],
         ["PCB Design Software", "31%", "Altium Designer, KiCAD, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", "KiCAD.svg"],
         ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "logicORGate.svg"],
-        ["Dev Tools and IDEs", "69%", "VSCode, GitHub, Keil uVision, Arduino IDE", "VSCode.svg"],
+        ["Dev Tools and IDEs", "69%", "VSCode, GitHub, Keil uVision, Arduino IDE, Chrome Dev Tools", "VSCode.svg"],
         ["Assembly", "23%", "Machine Code, Hardware Architecture", "Verilog.svg"],
     ]
 
