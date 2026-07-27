@@ -4,6 +4,7 @@ const experienceModules = document.querySelector(".experienceModules");
 
 let timelinePositionIndex = 0;
 let scrollFlag = true;
+let activeExperienceIndex = null;
 
 const TIMELINE_START_DATE = [2023, 9];
 const PRESENT_DATE = findPresentDate();
@@ -45,8 +46,8 @@ const experienceEvents = [
         "#B4BFAE", 
         "STUDENT - BIOMEDICAL ENGINEERING LEVEL I", 
         "McMaster University - Faculty of Engineering", 
-        `Health Solutions Design Projects I | Engineering Mathematics I/II | Physics 
-        | Entrepreneurship and Biomedical Innovation`,
+        `Health Solutions Design Projects I | Engineering Mathematics I/II | Introductory Physics | 
+        Entrepreneurship and Biomedical Innovation`,
         "Edu",
     ],
     [
@@ -249,6 +250,24 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
     const targetExperienceIndex = uniqueFilteredDateSet[timelinePositionIndex][1];
     const targetExperience = experienceEvents[targetExperienceIndex]
     const targetExperienceObj = targetExperience[0];
+
+    // ActiveExperienceIndex = Currently viewed position, targetExperienceIndex = Next in line
+    if (activeExperienceIndex != null && activeExperienceIndex != targetExperienceIndex) {
+        activeExperienceObj = experienceEvents[activeExperienceIndex][0]; // Obj. for the experience viewed before the new target
+
+        activeExperienceObj.animate([
+            {opacity: 1.0},
+            {opacity: MODULE_BASE_OPACITY},
+        ],
+        {
+            duration: 300,
+            iterations: 1,
+            fill: "forwards",
+            easing: "ease-in-out",
+        });
+    }
+
+    activeExperienceIndex = targetExperienceIndex;
 
     targetExperienceObj.scrollIntoView({ 
         behavior: 'smooth',

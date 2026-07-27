@@ -198,7 +198,7 @@
 
     position: absolute;
 
-    opacity: 0.75;
+    opacity: 0.5;
 }
 
 .timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .titleText {
@@ -225,13 +225,19 @@
     padding: 5px 0px 10px 5px;
 }
 
+.timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .moduleBody {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
 .timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .moduleBody > .bodyText {
     display: flex;
 
     text-wrap: wrap;
     font-size: 0.75rem;
 
-    width: 90%;
 
     justify-self: center;
 }
