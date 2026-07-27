@@ -14,7 +14,7 @@ let datePosition = TIMELINE_START_DATE;
 const MODULE_HEIGHT_MULTIPLE = 150; // Units of px
 const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
 
-const MODULE_BASE_OPACITY = 0.65
+const MODULE_BASE_BRIGHTNESS = "90%";
 
 
 
@@ -256,8 +256,8 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
         activeExperienceObj = experienceEvents[activeExperienceIndex][0]; // Obj. for the experience viewed before the new target
 
         activeExperienceObj.animate([
-            {opacity: 1.0},
-            {opacity: MODULE_BASE_OPACITY},
+            {filter: "brightness(100%)"},
+            {filter: "brightness(" + MODULE_BASE_BRIGHTNESS + ")"},
         ],
         {
             duration: 300,
@@ -277,13 +277,12 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
 
     setTimeout(() => { // Flash each module to indicate it was selected
         targetExperienceObj.animate([
-            {filter: "brightness(100%)", opacity: MODULE_BASE_OPACITY},
-            {filter: "brightness(90%)"},
-            {filter: "brightness(100%)", opacity: 1.0}
+            {filter: "brightness(" + MODULE_BASE_BRIGHTNESS + ")"},
+            {filter: "brightness(100%)"},
         ],
         {
-            duration: 300,
-            iterations: 2,
+            duration: 400,
+            iterations: 1,
             fill: "forwards",
             easing: "ease-in-out",
         });

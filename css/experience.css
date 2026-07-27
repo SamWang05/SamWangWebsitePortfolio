@@ -203,7 +203,7 @@
     position: absolute;
     scroll-margin-top: 10px;
 
-    opacity: 0.65;
+    filter:brightness(90%);
 }
 
 .timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .titleText {
