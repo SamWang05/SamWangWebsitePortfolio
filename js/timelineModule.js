@@ -29,12 +29,10 @@ const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
         "Type of Experience (Edu/Work/EC)"
     ],
     
-    Recommended Experience Colors:
-    Terracotta Clay - #C4A184
-    Warm Taupe - #A89A8C
-    Muted Blue-Grey - #8FA0A8
-    Soft Ochre/Mustard - #C9B27E
-    Sage Green - #B4BFAE
+    Experience Colors:
+        Education: Sage Green - #B4BFAE
+        Work: Soft Ochre/Mustard - #C9B27E
+        EC: Muted Blue-Grey - #8FA0A8
 */
 
 const experienceEvents = [
@@ -92,7 +90,8 @@ const experienceEvents = [
         "#C9B27E", 
         "QUALITY ASSURANCE AND AUTOMATION INTERN", 
         "Canadian Imperial Bank of Commerce (CIBC)", 
-        ``,
+        `JIRA Atlassian | PostgreSQL | Quality Assurance Metrics | Agile Workflow | Data Processing and Validation | Database 
+        Manipulation | Student Leadership`,
         "Work",
     ],
     [
@@ -102,7 +101,7 @@ const experienceEvents = [
         "#8FA0A8",
         "ELECTRICAL SUBTEAM GENERAL MEMBER",
         "McMaster Aerial Robotics Team", 
-        ``,
+        `Altium Designer | LTSpice | Circuit Design, Analysis, and Optimization | Error Detection`,
         "EC",
     ],
     [
@@ -112,7 +111,7 @@ const experienceEvents = [
         "#8FA0A8",
         "ELECTRICAL SUBTEAM TECHNICAL LEAD",
         "McMaster Aerial Robotics Team",
-        ``,
+        `Electrical Infrastructure Design | Test Suite Design | Resource Allocation and Organization | Technical Guidance`,
         "EC",
     ],
     [
@@ -120,9 +119,9 @@ const experienceEvents = [
         [2025, 9], 
         PRESENT_DATE, 
         "#8FA0A8",
-        "ELECTRICAL SUBTEAM GENERAL MEMBER",
+        "ELECTRICAL SUBTEAM MEMBER",
         "McMaster Biomedical Engineering Technical Team", 
-        ``,
+        `Circuit Design and Analysis | Engineering Peer Review | ISO Standards Research`,
         "EC",
     ],
 ]
@@ -293,7 +292,6 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
             easing: "ease-in-out",
         });
     }, 500);
-    
 }
 
 function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
@@ -301,7 +299,7 @@ function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
     const moduleClass = selectModuleType(moduleType, uniqueDateSet);
 
     const moduleHeight = calculateModuleHeight(experienceEvent[1], experienceEvent[2]) + "px";
-    const moduleDist = calculateModuleDistance(experienceEvent[1]) + "px"; 
+    const moduleDist = calculateModuleDistance(experienceEvent[1]); 
 
     const newExperienceModule = document.createElement("div");
 
@@ -310,8 +308,11 @@ function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
         experienceEvent[0] = newExperienceModule;
 
         newExperienceModule.style.backgroundColor = experienceEvent[3];
+
         newExperienceModule.style.height = moduleHeight;
-        newExperienceModule.style.top = moduleDist;
+        newExperienceModule.style.top = moduleDist + "px";
+
+        newExperienceModule.style.zIndex = moduleDist;
 
         moduleClass.appendChild(newExperienceModule);
     
@@ -524,6 +525,7 @@ function main() {
 
     renderExperienceModules(uniqueDateSet);
     timelineListener(sliderNode, uniqueSortedDateSet);
+    scrollModuleDisplay(uniqueSortedDateSet);
 }
 
 main();
