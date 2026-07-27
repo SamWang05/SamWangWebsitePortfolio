@@ -255,6 +255,8 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
     if (activeExperienceIndex != null && activeExperienceIndex != targetExperienceIndex) {
         activeExperienceObj = experienceEvents[activeExperienceIndex][0]; // Obj. for the experience viewed before the new target
 
+        activeExperienceObj.style.zIndex = activeExperienceObj.OGZIndex;
+
         activeExperienceObj.animate([
             {filter: "brightness(100%)"},
             {filter: "brightness(" + MODULE_BASE_BRIGHTNESS + ")"},
@@ -286,10 +288,12 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
             fill: "forwards",
             easing: "ease-in-out",
         });
+        
+        targetExperienceObj.style.zIndex = 999999;
     }, 500);
 }
 
-function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
+function createExperienceModule(experienceEvent, uniqueDateSet, moduleType, zIndex) {
 
     const moduleClass = moduleType;
 
@@ -307,7 +311,8 @@ function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
         newExperienceModule.style.height = moduleHeight;
         newExperienceModule.style.top = moduleDist + "px";
 
-        newExperienceModule.style.zIndex = moduleDist;
+        newExperienceModule.OGZIndex = moduleDist // Sets OG ZIndex as property of each experience module obj, can be referenced
+        newExperienceModule.style.zIndex = newExperienceModule.OGZIndex;
 
         moduleClass.appendChild(newExperienceModule);
     
