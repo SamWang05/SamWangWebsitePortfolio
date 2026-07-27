@@ -201,6 +201,7 @@
     gap: 10px;
 
     position: absolute;
+    scroll-margin-top: 10px;
 
     opacity: 0.65;
 }
