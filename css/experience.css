@@ -192,13 +192,16 @@
     display: flex;
     flex-direction: column;
 
+    background-color: #DDD9D3;
+    border-left: 10px solid var(--backgroundAccent, #8C7B6B);
+
     border-radius: 15px;
     padding: 20px;
     gap: 10px;
 
     position: absolute;
 
-    opacity: 0.5;
+    opacity: 0.65;
 }
 
 .timelineDisplay > .displayModules > .experienceModules > * > .moduleCard > .titleText {
@@ -237,7 +240,6 @@
 
     text-wrap: wrap;
     font-size: 0.75rem;
-
 
     justify-self: center;
 }

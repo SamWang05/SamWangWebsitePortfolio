@@ -14,7 +14,7 @@ let datePosition = TIMELINE_START_DATE;
 const MODULE_HEIGHT_MULTIPLE = 150; // Units of px
 const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
 
-const MODULE_BASE_OPACITY = 0.5
+const MODULE_BASE_OPACITY = 0.65
 
 
 
@@ -303,7 +303,7 @@ function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
 
         experienceEvent[0] = newExperienceModule;
 
-        newExperienceModule.style.backgroundColor = experienceEvent[3];
+        newExperienceModule.style.setProperty('--backgroundAccent', experienceEvent[3]);
 
         newExperienceModule.style.height = moduleHeight;
         newExperienceModule.style.top = moduleDist + "px";
