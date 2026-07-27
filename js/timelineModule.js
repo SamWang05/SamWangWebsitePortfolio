@@ -13,6 +13,8 @@ let datePosition = TIMELINE_START_DATE;
 const MODULE_HEIGHT_MULTIPLE = 150; // Units of px
 const TIMELINE_HEIGHT_INCREASE = 100; // Units of px
 
+const MODULE_BASE_OPACITY = 0.5
+
 
 
 /* 
@@ -173,15 +175,6 @@ function calculateModuleHeight(startDateArray, endDateArray) {
     return (endDateMonths - startDateMonths) * MODULE_HEIGHT_MULTIPLE;
 }
 
-function calculateTimelineHeight(uniqueDateSet) {
-    const endDate = uniqueDateSet[uniqueDateSet.length - 1][0];
-
-    const startDateMonths = 12 * TIMELINE_START_DATE[0] + TIMELINE_START_DATE[1];
-    const endDateMonths = 12 * endDate[0] + endDate[1];
-
-    return (endDateMonths - startDateMonths) * MODULE_HEIGHT_MULTIPLE + TIMELINE_HEIGHT_INCREASE;
-}
-
 function calculateModuleDistance(startDateArray) { // Module's distance needs to be based on its start date relative to Sept. 2023
     const startDateMonths = 12 * startDateArray[0] + startDateArray[1];
     const startPositionMonths = 12 * TIMELINE_START_DATE[0] + TIMELINE_START_DATE[1];
@@ -234,22 +227,6 @@ function countUniqueDates() {
     return uniqueExperienceDatesArray;
 }
 
-function selectModuleType(moduleType, uniqueDateSet) {
-    let moduleObj = null;
-
-    if (moduleType == "Education") {
-        moduleObj = document.querySelector(".eduModules");
-    }
-    else if (moduleType == "Work") {
-        moduleObj = document.querySelector(".workModules");
-    }
-    else if (moduleType == "Extracurricular") {
-        moduleObj = document.querySelector(".extracurricularModules");
-    }
-
-    return moduleObj;
-}
-
 function processModuleBodyText(moduleBodyText) {
     let bodyTextItemsArray = moduleBodyText.replaceAll("\n", "").split(" | ");
 
@@ -281,9 +258,9 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
 
     setTimeout(() => { // Flash each module to indicate it was selected
         targetExperienceObj.animate([
-            {filter: "brightness(100%)"},
+            {filter: "brightness(100%)", opacity: MODULE_BASE_OPACITY},
             {filter: "brightness(90%)"},
-            {filter: "brightness(100%)"}
+            {filter: "brightness(100%)", opacity: 1.0}
         ],
         {
             duration: 300,
@@ -296,7 +273,7 @@ function scrollModuleDisplay(uniqueFilteredDateSet) {
 
 function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
 
-    const moduleClass = selectModuleType(moduleType, uniqueDateSet);
+    const moduleClass = moduleType;
 
     const moduleHeight = calculateModuleHeight(experienceEvent[1], experienceEvent[2]) + "px";
     const moduleDist = calculateModuleDistance(experienceEvent[1]); 
@@ -363,27 +340,21 @@ function createExperienceModule(experienceEvent, uniqueDateSet, moduleType) {
 
 function renderExperienceModules(uniqueDateSet) {
     const organizedExperienceEvents = splitExperienceEvents();
+    
+    const eduModules = document.querySelector(".eduModules");
+    const workModules = document.querySelector(".workModules");
+    const ECModules = document.querySelector(".extracurricularModules");
 
-    renderEducationModules(organizedExperienceEvents[0], uniqueDateSet);
-    renderWorkModules(organizedExperienceEvents[1], uniqueDateSet);
-    renderECModules(organizedExperienceEvents[2], uniqueDateSet);
-}
+    const moduleObjArray = [eduModules, workModules, ECModules];
 
-function renderEducationModules(educationEvents, uniqueDateSet) {
-    educationEvents.forEach((eduExperience) => {
-        createExperienceModule(eduExperience, uniqueDateSet, "Education");
+    organizedExperienceEvents.forEach((experienceEvent, index) => {
+        renderModules(experienceEvent, uniqueDateSet, moduleObjArray[index]);
     });
 }
 
-function renderWorkModules(workEvents, uniqueDateSet) {
-    workEvents.forEach((workExperience) => {
-        createExperienceModule(workExperience, uniqueDateSet, "Work");
-    });
-}
-
-function renderECModules(extracurricularEvents, uniqueDateSet) {
-    extracurricularEvents.forEach((extraCExperience) => {
-        createExperienceModule(extraCExperience, uniqueDateSet, "Extracurricular");
+function renderModules(moduleEvents, uniqueDateSet, moduleObj) {
+    moduleEvents.forEach((moduleEvent) => {
+        createExperienceModule(moduleEvent, uniqueDateSet, moduleObj);
     });
 }
 
