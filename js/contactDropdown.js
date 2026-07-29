@@ -18,8 +18,8 @@ function createHoverListeners(contactArray) {
         contactObj.addEventListener("mouseenter", (event) => {
 
             contactObjBody.animate([
-                {transform: "translateY(-20px)", opacity: 0},
-                {transform: "translateY(0px)", opacity: 1},
+                {transform: "translateY(-10px)", opacity: 0},
+                {transform: "translateY(5px)", opacity: 1},
             ],
                 {
                     duration: 500,
@@ -32,8 +32,8 @@ function createHoverListeners(contactArray) {
 
         contactObj.addEventListener("mouseleave", (event) => {
             contactObjBody.animate([
-                {transform: "translateY(0px)", opacity: 1},
-                {transform: "translateY(-20px)", opacity: 0},
+                {transform: "translateY(5px)", opacity: 1},
+                {transform: "translateY(-10px)", opacity: 0},
             ],
                 {
                     duration: 500,
@@ -44,14 +44,6 @@ function createHoverListeners(contactArray) {
             )
         });
     });
-}
-
-
-
-/* Animation Functions */
-
-function animateContactModule() {
-
 }
 
 

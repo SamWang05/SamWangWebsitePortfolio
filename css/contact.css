@@ -3,7 +3,7 @@
 
     justify-content: space-between;
 
-    height: 80%;
+    height: 100%
 }
 
 .contactDisplay > .captionText {
@@ -22,7 +22,7 @@
     margin-left: 20px;
     padding-left: 30px;
 
-    border-left: 5px solid
+    border-left: 5px solid #5E5653;
 }
 
 .contactDisplay > .contactModules {
@@ -50,6 +50,9 @@
     align-items: center;
 
     gap: 20px;
+    padding-left: 20px;
+
+    border-left: 5px solid #5E5653;
 }
 
 .contactDisplay > .contactModules > .contactModule > .contactTitle > img {
@@ -59,5 +62,12 @@
 .contactDisplay > .contactModules > .contactModule > .bodyText {
     font-size: 1.25rem;
 
+    margin-left: 25px;
+
     opacity: 0;
+}
+
+.contactDisplay > .contactModules > .contactModule > .bodyText > a {
+    color: #5E5653;
+    text-decoration: none;
 }
