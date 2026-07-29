@@ -15,11 +15,11 @@ function createHoverListeners(contactArray) {
     contactArray.forEach((contactObj) => {
         const contactObjBody = contactObj.querySelector(".bodyText");
 
-        contactObj.addEventListener("mouseenter", (event) => {
+        contactObj.addEventListener("mouseenter", () => {
 
             contactObjBody.animate([
                 {transform: "translateY(-10px)", opacity: 0},
-                {transform: "translateY(5px)", opacity: 1},
+                {transform: "translateY(0px)", opacity: 1},
             ],
                 {
                     duration: 500,
@@ -30,9 +30,9 @@ function createHoverListeners(contactArray) {
             )
         });
 
-        contactObj.addEventListener("mouseleave", (event) => {
+        contactObj.addEventListener("mouseleave", () => {
             contactObjBody.animate([
-                {transform: "translateY(5px)", opacity: 1},
+                {transform: "translateY(0px)", opacity: 1},
                 {transform: "translateY(-10px)", opacity: 0},
             ],
                 {

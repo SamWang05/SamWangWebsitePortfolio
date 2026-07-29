@@ -139,13 +139,12 @@ body:not(.animation) {
 
     text-decoration: none;
 
-    transform: scale(1);
     transform-origin: center;
     transition: 0.15s ease-in-out;
 }
 
 .overheadDisplay > .displayModules > .links a:hover {
-    transform: scale(1.2);
+    scale: 1.2;
 }
 
 

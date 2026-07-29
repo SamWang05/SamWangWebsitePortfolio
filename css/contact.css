@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
 
-    gap: 10px;
+    gap: 15px;
 }
 
 .contactDisplay > .contactModules > .contactModule > .contactTitle {
@@ -66,10 +66,19 @@
 
     margin-left: 25px;
 
+    text-align: left;
+
     opacity: 0;
+
+    transform-origin: left;
+    transition: 0.15s ease-in-out;
 }
 
 .contactDisplay > .contactModules > .contactModule > .bodyText > a {
     color: #5E5653;
     text-decoration: none;
+}
+
+.contactDisplay > .contactModules > .contactModule > .bodyText:hover {
+    scale: 1.05;
 }
