@@ -22,7 +22,7 @@
 
 .contactDisplay > .captionText::before {
     position: absolute;
-    top: 200px;
+    top: 150px;
     left: 375px;
 
     content: "";
@@ -55,7 +55,7 @@
     justify-content: center;
 
     margin: 50px;
-    gap: 100px;
+    gap: 50px;
 }
 
 .contactDisplay > .contactModules > .contactModule {
