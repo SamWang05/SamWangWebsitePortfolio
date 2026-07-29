@@ -38,13 +38,26 @@
 
 .contactDisplay > .contactModules > .contactModule {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
+    gap: 10px;
+}
+
+.contactDisplay > .contactModules > .contactModule > .contactTitle {
+    display: flex;
+    flex-direction: row;
+    
     align-items: center;
 
     gap: 20px;
 }
 
-.contactDisplay > .contactModules > .contactModule > img {
+.contactDisplay > .contactModules > .contactModule > .contactTitle > img {
     height: 50px;
+}
+
+.contactDisplay > .contactModules > .contactModule > .bodyText {
+    font-size: 1.25rem;
+
+    opacity: 0;
 }
