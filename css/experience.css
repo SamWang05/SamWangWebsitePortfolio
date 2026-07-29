@@ -34,7 +34,7 @@
 
     justify-content: flex-start;
 
-    align-items: center; /* Note: align-items will affect items within the container. Don't mistake with align-content! :) */
+    align-items: center;
 
     margin-left: 10px;
 }

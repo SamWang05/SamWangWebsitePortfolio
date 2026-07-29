@@ -27,19 +27,23 @@
 
 .contactDisplay > .contactModules {
     display: flex;
-    flex: 1;
-
-    justify-content: flex-end;
-}
-
-.contactDisplay > .contactModules > ul {
-    display: flex;
     flex-direction: column;
+    flex: 1;
 
     justify-content: center;
 
-    margin-right: 100px;
     gap: 100px;
+}
 
-    list-style-type: none;
+.contactDisplay > .contactModules > .contactModule {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.contactDisplay > .contactModules > .contactModule > img {
+    height: 50px;
 }
