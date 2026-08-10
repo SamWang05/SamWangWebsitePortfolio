@@ -22,6 +22,18 @@
     gap: 20px;
 }
 
+.titleBanner > .displayModules > .titleText {
+    color: #D8D4C9;
+}
+
+.titleBanner > .displayModules > .subtitleText {
+    font-weight: 700;
+
+    padding-left: 30px;
+
+    color: #D8D4C9;
+}
+
 
 
 /* Blog Body */
