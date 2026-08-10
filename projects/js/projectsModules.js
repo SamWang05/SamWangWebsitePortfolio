@@ -9,6 +9,7 @@ const projectsArray = [
 ];
 
 
+
 /* Logic Functions */
 
 function isRowFull(projectRow){
@@ -18,21 +19,12 @@ function isRowFull(projectRow){
 
 
 
-/* Listener Functions */
-
-function moduleCardListener(project) {
-    document.addEventListener("click", () => {
-
-    });
-}
-
-
-
 /* Projects Display Functions */
 
 function createNewRow(rowsArray){
 
     const displayRow = document.createElement("div");
+
         displayRow.classList.add("displayRow");
         projectsDisplayNode.appendChild(displayRow);
     
@@ -48,11 +40,13 @@ function populateProjectsDisplay(){
     projectsArray.forEach((project, index) => {
         if (project[0]) {
             const moduleCardLink = document.createElement("a");
+
                 moduleCardLink.href = projectsDirectory + project[2];
 
                 rowObjects[rowCount - 1].appendChild(moduleCardLink);
                 
             const moduleCard = document.createElement("div");
+
                 moduleCard.index = index;
                 renderCard(moduleCard, project);
 
