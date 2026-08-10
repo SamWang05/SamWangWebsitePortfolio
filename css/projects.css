@@ -1,3 +1,71 @@
+/* Projects Page Title */
+
 .projectsHeader {
+    display: flex;
     
+    margin: 30px;
+    padding: 50px;
+
+    height: 100vh;
+
+    justify-content: right;
+}
+
+.projectsHeader > .captionText {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    width: 500px;
+
+    text-align: right;
+    text-wrap: wrap;
+
+    gap: 10px;
+}
+
+.projectsHeader > .captionText > .subtitleText{ 
+    margin-right: 10px;
+    padding-right: 30px;
+    border-right: 5px solid #5E5653;
+}
+
+
+
+/* Projects Display Panel */
+
+.projectsDisplay {
+    display: flex;
+    flex-direction: column;
+
+    margin: 5%;
+    gap: 50px;
+
+    align-self: center;
+}
+
+.projectsDisplay > .displayRow {
+    display: flex;
+    flex-direction: row;
+
+    gap: 50px;
+}
+
+.moduleCard{
+    display: flex;
+
+    background-color: #C9C9C9;
+
+    width: 25vw;
+    height: 25vw;
+
+    border-radius: 25px;
+}
+
+.moduleCard > .titleText {
+    margin: 10px;
+    padding-left: 20px;
+
+    font-size: 2rem;
 }
