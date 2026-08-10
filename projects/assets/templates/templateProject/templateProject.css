@@ -46,7 +46,7 @@
     padding: 5vw;
     gap: 50px;
 
-    min-width: 1000px;
+    width: 65%;
 }
 
 .blogBody > * {

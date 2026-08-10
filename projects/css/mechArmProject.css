@@ -9,7 +9,7 @@
     justify-content: center;
 
     background-color: #B9B9B9;
-    background-image: url(/projects/assets/img/templateImage.jpg);
+    background-image: url(/projects/assets/img/templateImage.jpg); /* CHANGE */
     background-repeat: no-repeat;
     background-position: 60%;
 }
@@ -46,7 +46,7 @@
     padding: 5vw;
     gap: 50px;
 
-    min-width: 1000px;
+    width: 65%;
 }
 
 .blogBody > * {
