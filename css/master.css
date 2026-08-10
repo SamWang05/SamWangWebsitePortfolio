@@ -34,18 +34,18 @@ body:not(.animation) {
 /* Fira Sans Condensed for Titles */
 
 @font-face {
-    font-family: frauncesVariable;
-    src: url(/assets/fonts/frauncesVariable.woff2);
+    font-family: canelaBold;
+    src: url(/assets/fonts/canelaBold.woff2);
 }
 
 .titleText {
-    font-family: frauncesVariable;
+    font-family: canelaBold;
 
     color: #5E5653;
 
     text-wrap: nowrap;
     
-    font-size: 8rem;
+    font-size: 6rem;
     font-weight: 700;
 }
 

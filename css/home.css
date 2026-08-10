@@ -48,6 +48,8 @@
 
 .introDisplay > .captionText > .titleText {
     display: flex; 
+
+    font-size: 8rem;
 }
 
 .introDisplay > .captionText > .subtitleText {
