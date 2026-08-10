@@ -1,0 +1,100 @@
+/* Title Banner */
+
+.titleBanner {
+    display: flex;
+    flex-direction: column;
+
+    height: 50vh;
+
+    justify-content: center;
+
+    background-color: #B9B9B9;
+    background-image: url(/projects/assets/img/templateImage.jpg);
+    background-repeat: no-repeat;
+    background-position: 60%;
+}
+
+.titleBanner > .displayModules {
+    display: flex;
+    flex-direction: column;
+
+    margin: 100px;
+    gap: 20px;
+}
+
+.titleBanner > .displayModules > .titleText {
+    color: #D8D4C9;
+}
+
+.titleBanner > .displayModules > .subtitleText {
+    font-weight: 700;
+
+    padding-left: 30px;
+
+    color: #D8D4C9;
+}
+
+
+
+/* Blog Body */
+
+.blogBody {
+    display: flex;
+    flex-direction: column;
+
+    margin: 50px;
+    padding: 5vw;
+    gap: 50px;
+
+    min-width: 1000px;
+}
+
+.blogBody > * {
+    display: flex;
+    flex-direction: column;
+
+    gap: 50px;
+}
+
+.blogBody > .blogModuleTypeOne {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.blogBody > .blogModuleTypeTwo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.blogBody > .blogModuleTypeTwo > .moduleDisplay {
+    display: flex;
+    flex-direction: row;
+
+    gap: 50px;
+}
+
+.blogBody > .blogModuleTypeTwo > .moduleDisplay > .bodyDisplayText {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    gap: 50px;
+}
+
+.blogBody > .blogModuleTypeTwo > .moduleDisplay > .imgDisplay {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 400px;
+    height: auto;
+
+    gap: 20px;
+}
+
+.blogBody > .blogModuleTypeTwo > .moduleDisplay > .imgDisplay > .captionText {
+    font-size: 1rem;
+}

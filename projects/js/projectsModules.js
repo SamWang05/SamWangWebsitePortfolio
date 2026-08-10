@@ -1,11 +1,10 @@
 const projectsDisplayNode = document.querySelector(".projectsDisplay");
 
-const projectsDirectory = "/projects/";
+const projectsDirectory = "/projects/html/";
 const projectsArray = [
-    [false, "Template Project", "templateProject.html"],
-    [true, "Mechanical Arm Project", "templateProject.html"],
-    [true, "LiDAR Project", "templateProject.html"],
-    [true, "Website Portfolio", "templateProject.html"],
+    [true, "Mechanical Arm Project", "mechArmProject.html"],
+    [true, "LiDAR Project", "LIDARProject.html"],
+    [true, "Website Portfolio", "websitePortfolio.html"],
 ];
 
 
