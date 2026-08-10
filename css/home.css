@@ -177,40 +177,28 @@
 
 @keyframes titleSmashRight {
     0% {
-        transform-origin: right center;
+        
         transform:scale(1, 1);
-
-        letter-spacing: normal;
     }
     20% {
         transform-origin: right center;
         transform:scale(1, 1);
-
-        letter-spacing: normal;
     }
     35% {
         transform-origin: right center;
         transform:scale(1.1, 0.9);
-
-        letter-spacing: normal;
     }
     75% {
         transform-origin: right center;
         transform:scale(0.05, 1.2);
-
-        letter-spacing: normal;
     }
     80% {
         transform-origin: right center;
         transform:scale(0, 1.2);
-
-        letter-spacing: 0.5rem;
     }
     100% {
         transform-origin: right center;
         transform:scale(0, 1.2);
-
-        letter-spacing: 0.5rem;
     }
 }
 
@@ -228,10 +216,10 @@
         transform:translateX(140px);
     }
     80% {
-        transform:translateX(190px);
+        transform:translateX(180px);
     }
     100% {
-        transform:translateX(190px);
+        transform:translateX(180px);
     }
 }
 
