@@ -52,6 +52,10 @@
     gap: 50px;
 }
 
+.projectsDisplay > .displayRow > a {
+    text-decoration: none;
+}
+
 .moduleCard{
     display: flex;
 
@@ -63,9 +67,15 @@
     border-radius: 25px;
 }
 
+.moduleCard:hover {
+    scale: 1.05;
+}
+
 .moduleCard > .titleText {
     margin: 10px;
     padding-left: 20px;
 
     font-size: 2rem;
+
+    text-wrap: wrap;
 }

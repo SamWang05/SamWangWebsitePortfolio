@@ -1,15 +1,11 @@
 const projectsDisplayNode = document.querySelector(".projectsDisplay");
+
+const projectsDirectory = "/projects/";
 const projectsArray = [
-    [true, "test1"],
-    [true, "test2"],
-    [true, "test3"],
-    [true, "test4"],
-    [true, "test5"],
-    [false, "tes6"],
-    [true, "test7"],
-    [true, "test8"],
-    [true, "test9"],
-    [true, "test10"],
+    [false, "Template Project", "templateProject.html"],
+    [true, "Mechanical Arm Project", "templateProject.html"],
+    [true, "LiDAR Project", "templateProject.html"],
+    [true, "Website Portfolio", "templateProject.html"],
 ];
 
 
@@ -18,6 +14,16 @@ const projectsArray = [
 function isRowFull(projectRow){
     if (projectRow.childElementCount >= 3) return true;
     else return false;
+}
+
+
+
+/* Listener Functions */
+
+function moduleCardListener(project) {
+    document.addEventListener("click", () => {
+
+    });
 }
 
 
@@ -39,13 +45,18 @@ function populateProjectsDisplay(){
 
     createNewRow(rowObjects);
 
-    projectsArray.forEach((project) => {
+    projectsArray.forEach((project, index) => {
         if (project[0]) {
+            const moduleCardLink = document.createElement("a");
+                moduleCardLink.href = projectsDirectory + project[2];
+
+                rowObjects[rowCount - 1].appendChild(moduleCardLink);
+                
             const moduleCard = document.createElement("div");
+                moduleCard.index = index;
+                renderCard(moduleCard, project);
 
-            renderCard(moduleCard, project);
-
-            rowObjects[rowCount - 1].appendChild(moduleCard);
+                moduleCardLink.appendChild(moduleCard);
 
             if (isRowFull(rowObjects[rowCount - 1])){
                 createNewRow(rowObjects);
@@ -55,6 +66,8 @@ function populateProjectsDisplay(){
         }
     });
 }
+
+
 
 /* Module Card Functions */
 
@@ -69,6 +82,7 @@ function renderCard(moduleCardObj, project) {
 
         moduleCardObj.appendChild(moduleTitle);
 }
+
 
 
 /* Main Function */
