@@ -2,13 +2,18 @@
 
 .projectsHeader {
     display: flex;
+    flex-direction: row;
     
-    margin: 30px;
+    margin: 80px;
     padding: 50px;
 
     height: 100vh;
 
-    justify-content: right;
+    justify-content: space-between;
+}
+
+.projectsHeader > img {
+    display: flex;
 }
 
 .projectsHeader > .captionText {
