@@ -1,7 +1,7 @@
 const projectsDisplayNode = document.querySelector(".projectsDisplay");
 
-const PROJECTS_DIRECTORY = "/projects/html/";
-const IMAGES_DIRECTORY = "/projects/assets/img/";
+const PROJECTS_DIRECTORY = "./../html/";
+const IMAGES_DIRECTORY = "./../assets/img/";
 
 const projectsArray = [
     [false, "Mechanical Arm Project", "mechArmProject.html", ""],
