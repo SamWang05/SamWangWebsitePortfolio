@@ -10,7 +10,7 @@
 
     background-color: #B9B9B9;
     
-    background-image: url(./projects/assets/img/LIDARSystem.jpg);
+    background-image: url(./../assets/img/LIDARSystem.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 60%;

@@ -9,7 +9,7 @@
     justify-content: center;
 
     background-color: #B9B9B9;
-    background-image: url(./projects/assets/img/);
+    background-image: url(./../assets/img/);
     background-repeat: no-repeat;
     background-position: 50%;
 }
