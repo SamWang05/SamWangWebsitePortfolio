@@ -35,7 +35,7 @@ body:not(.animation) {
 
 @font-face {
     font-family: canelaBold;
-    src: url(./assets/fonts/canelaBold.woff2);
+    src: url(./../assets/fonts/canelaBold.woff2);
 }
 
 .titleText {
@@ -53,7 +53,7 @@ body:not(.animation) {
 
 @font-face {
     font-family: karlaVariable;
-    src: url(./assets/fonts/karlaVariable.woff2);
+    src: url(./../assets/fonts/karlaVariable.woff2);
 }
 
 .subtitleText {
