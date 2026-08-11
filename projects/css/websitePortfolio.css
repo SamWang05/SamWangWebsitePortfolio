@@ -9,8 +9,10 @@
     justify-content: center;
 
     background-color: #B9B9B9;
-    background-image: url(/projects/assets/webLogo.svg);
+
+    background-image: url(/projects/assets/img/webLogo.svg);
     background-repeat: no-repeat;
+    background-size: 25%;
 }
 
 .titleBanner > .displayModules {
@@ -29,8 +31,11 @@
     font-weight: 700;
 
     padding-left: 30px;
+    margin-left: 10px;
 
     color: #D8D4C9;
+
+    border-left: 5px solid #D8D4C9;
 }
 
 
