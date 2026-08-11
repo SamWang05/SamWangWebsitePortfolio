@@ -6,7 +6,7 @@ const IMAGES_DIRECTORY = "/projects/assets/img/";
 const projectsArray = [
     [true, "Mechanical Arm Project", "mechArmProject.html", ""],
     [true, "LiDAR Project", "LIDARProject.html", "LIDARSystem.jpg"],
-    [true, "Website Portfolio", "websitePortfolio.html", ""],
+    [true, "Website Portfolio", "websitePortfolio.html", "webLogo.svg"],
 ];
 
 
