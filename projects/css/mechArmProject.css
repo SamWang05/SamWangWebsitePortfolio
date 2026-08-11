@@ -9,9 +9,9 @@
     justify-content: center;
 
     background-color: #B9B9B9;
-    background-image: url(/projects/assets/img/templateImage.jpg); /* CHANGE */
+    background-image: url(/projects/assets/img/);
     background-repeat: no-repeat;
-    background-position: 60%;
+    background-position: 50%;
 }
 
 .titleBanner > .displayModules {
