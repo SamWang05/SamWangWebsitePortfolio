@@ -3,12 +3,6 @@ const contactModulesArray = document.querySelectorAll(".contactModule");
 
 
 
-/* Logic Functions */
-
-
-
-
-
 /* Listeners */
 
 function createHoverListeners(contactArray) {

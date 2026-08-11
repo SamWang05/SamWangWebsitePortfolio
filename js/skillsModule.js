@@ -6,7 +6,7 @@ const softwareSkillNode = document.querySelector(".softwareSkills");
 const baseColor = "#D9D9D9";
 const selectColor = "#C9C9C9";
 
-const logosDirectory = "/assets/img/logos/";
+const logosDirectory = "./../assets/img/logos/";
 
 
 
