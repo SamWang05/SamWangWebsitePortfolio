@@ -33,7 +33,7 @@
     z-index: -1;
     opacity: 0.3;
   
-    background-image: url(/assets/img/mailSpeeding.svg);
+    background-image: url(./assets/img/mailSpeeding.svg);
     background-repeat: no-repeat;
     background-position: center;
 
