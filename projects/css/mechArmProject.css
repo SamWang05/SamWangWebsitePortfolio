@@ -40,44 +40,83 @@
 
 .blogBody {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     margin: 50px;
     padding: 5vw;
+}
+
+/* Blog Links */
+
+.blogBody > .blogLinks {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    height: 400px;
+
+    position: sticky;
+    top: 120px;
+
+    padding: 20px;
+    gap: 20px;
+    margin-left: 10vw;
+
+    border-radius: 20px;
+
+    text-wrap: wrap;
+
+    background-color: #C7C0B5;
+}
+
+.blogBody > .blogLinks > .titleText {
+    font-size: 2rem;
+}
+
+.blogBody > .blogLinks > ul {
+    list-style: none;
+
+    padding-left: 10px;
+    margin-left: 10px;
+
+    border-left: 5px solid #5E5653;
+}
+
+
+
+/* Blog Modules */
+
+.blogBody > .blogModules {
+    display: flex;
+    flex-direction: column;
+
     gap: 50px;
 
     width: 65%;
 }
 
-.blogBody > * {
-    display: flex;
-    flex-direction: column;
-
-    gap: 50px;
-}
-
-.blogBody > .blogModuleTypeOne {
+.blogBody > .blogModules > .blogModuleTypeOne {
     display: flex;
     flex-direction: column;
 
     gap: 25px;
 }
 
-.blogBody > .blogModuleTypeTwo {
+.blogBody > .blogModules > .blogModuleTypeTwo {
     display: flex;
     flex-direction: column;
 
     gap: 25px;
 }
 
-.blogBody > .blogModuleTypeTwo > .moduleDisplay {
+.blogBody > .blogModules > .blogModuleTypeTwo > .moduleDisplay {
     display: flex;
     flex-direction: row;
 
     gap: 50px;
 }
 
-.blogBody > .blogModuleTypeTwo > .moduleDisplay > .bodyDisplayText {
+.blogBody > .blogModules > .blogModuleTypeTwo > .moduleDisplay > .bodyDisplayText {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -85,7 +124,7 @@
     gap: 50px;
 }
 
-.blogBody > .blogModuleTypeTwo > .moduleDisplay > .imgDisplay {
+.blogBody > .blogModules > .blogModuleTypeTwo > .moduleDisplay > .imgDisplay {
     display: flex;
     flex-direction: column;
 
@@ -95,6 +134,13 @@
     gap: 20px;
 }
 
-.blogBody > .blogModuleTypeTwo > .moduleDisplay > .imgDisplay > .captionText {
+.blogBody > .blogModules > .blogModuleTypeTwo > .moduleDisplay > .imgDisplay > .captionText {
     font-size: 1rem;
+}
+
+.blogBody > .blogModules > .blogModuleTypeThree {
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
 }
