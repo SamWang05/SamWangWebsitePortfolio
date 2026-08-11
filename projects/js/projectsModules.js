@@ -1,10 +1,12 @@
 const projectsDisplayNode = document.querySelector(".projectsDisplay");
 
-const projectsDirectory = "/projects/html/";
+const PROJECTS_DIRECTORY = "/projects/html/";
+const IMAGES_DIRECTORY = "/projects/assets/img/";
+
 const projectsArray = [
-    [true, "Mechanical Arm Project", "mechArmProject.html"],
-    [true, "LiDAR Project", "LIDARProject.html"],
-    [true, "Website Portfolio", "websitePortfolio.html"],
+    [true, "Mechanical Arm Project", "mechArmProject.html", ""],
+    [true, "LiDAR Project", "LIDARProject.html", "LIDARSystem.jpg"],
+    [true, "Website Portfolio", "websitePortfolio.html", ""],
 ];
 
 
@@ -40,7 +42,7 @@ function populateProjectsDisplay(){
         if (project[0]) {
             const moduleCardLink = document.createElement("a");
 
-                moduleCardLink.href = projectsDirectory + project[2];
+                moduleCardLink.href = PROJECTS_DIRECTORY + project[2];
 
                 rowObjects[rowCount - 1].appendChild(moduleCardLink);
                 
@@ -66,6 +68,10 @@ function populateProjectsDisplay(){
 
 function renderCard(moduleCardObj, project) {
     moduleCardObj.classList.add("moduleCard");
+
+    moduleCardObj.style.backgroundImage = "url('" + IMAGES_DIRECTORY + project[3] + "')";
+    moduleCardObj.style.backgroundRepeat = "no-repeat";
+    moduleCardObj.style.backgroundSize = "cover";
 
     const moduleTitle = document.createElement("div");
 
