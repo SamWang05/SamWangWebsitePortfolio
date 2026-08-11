@@ -105,7 +105,7 @@
 
     justify-content: center;
 
-    background-color: #C7C0B5;
+    background-color: #B9B9B9;
 
     padding: 5px 10px;
     border-radius: 20px;
@@ -115,7 +115,7 @@
     width: 30px;
     height: 100%;
 
-    background-color: #DDD9D3;
+    background-color: #D9D9D9;
 
     padding: 5px;
     border-radius: 15px;
@@ -164,7 +164,7 @@
 
     border-radius: 15px;
 
-    background-color: #C7C0B5;
+    background-color: #C9C9C9;
 
     overflow-y: hidden;
 }
