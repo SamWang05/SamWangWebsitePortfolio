@@ -41,7 +41,7 @@
 
     color: #5E5653;
 
-    background-image: url(./assets/img/backgroundCircle.svg);
+    background-image: url(./../assets/img/backgroundCircle.svg);
     background-repeat: no-repeat;
     background-position: center right;
 }
