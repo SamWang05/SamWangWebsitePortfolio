@@ -44,43 +44,67 @@
             <div class="blogModules">
                 <div class="blogModuleTypeOne">
                     <div class="subtitleText">
-                        Blog Module Type One
+                        Project Overview
                     </div>
                     <div class="bodyText">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus cupiditate, 
-                        debitis corrupti ipsam sapiente omnis recusandae iure. Reiciendis nisi quas 
-                        cupiditate ducimus error, iste maxime nihil amet id, ratione dolor!
+                        As the final project for students in COMP ENG 2DX3 - Microprocessor Design Projects, I created a LIDAR 
+                        scanner system that can scan 2D slices of a 3D space to reconstruct corridors and hallways.
                     </div>
                     <div class="bodyText">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus cupiditate, 
-                        debitis corrupti ipsam sapiente omnis recusandae iure. Reiciendis nisi quas 
-                        cupiditate ducimus error, iste maxime nihil amet id, ratione dolor!
+                        The LIDAR scanner utilizes a Time of Flight (ToF) sensor [VL53L1X] attached to a stepper motor 
+                        [VMA401], allowing the unit to scan 2D slices of a 3D environment. The LIDAR scanner is able to 
+                        scan 360 degrees in a radius of up to 4m at a speed of 5 mins per slice. The scanner can be 
+                        user-controlled via onboard pushbuttons to toggle SCAN and UPLOAD modes. By default, the scanner 
+                        has a resolution of 32 readings per slice and can be configured to 64 readings per slice. 
+                        Furthermore, the scanner has automatic error detection and can adapt by changing ToF sensor ranges 
+                        to improve scanning in different light levels.
+                    </div>
+                    <div class="bodyText">
+                        The scanner is powered by a MSP EXP432E401Y microcontroller running a C++ program to read and process 
+                        signals, before transmitting processed signals to a MATLAB program for 3D plotting and analysis. The 
+                        scanner requires a 5V USB-A connection to a computer with UART functionality and MATLAB installed. The 
+                        scanner is assembled via multiple 3D-printed, friction-fitted PLA components.
                     </div>
                 </div>
 
                 <div class="blogModuleTypeTwo">
                     <div class="subtitleText">
-                        Blog Module Type Two
+                        Design and Implementation
                     </div>
                     <div class="moduleDisplay">
                         <div class="bodyDisplayText">
                             <div class="bodyText">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus cupiditate, 
-                                debitis corrupti ipsam sapiente omnis recusandae iure. Reiciendis nisi quas 
-                                cupiditate ducimus error, iste maxime nihil amet id, ratione dolor!
+                                The primary focus of the final project is to test a student's ability to program a 
+                                microcontroller-based embedded system to power a simple LIDAR project. Keil uVision is the 
+                                IDE of choice for programming the ARM Cortex-based microcontroller with a C++ program. The 
+                                program itself is interrupt-based to allow for a more efficient implementation that reacts 
+                                to user inputs without needing to poll regularly. Data is collected by sampling the ToF sensor
+                                reading at regular intervals to collect distance and angle data, then is processed into strings
+                                and uploaded to MATLAB. Finally, the personal computer will decipher 
+                                and 3D-plot the resulting data for visualization.
                             </div>
                             <div class="bodyText">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus cupiditate, 
-                                debitis corrupti ipsam sapiente omnis recusandae iure. Reiciendis nisi quas 
-                                cupiditate ducimus error, iste maxime nihil amet id, ratione dolor!
+                                Furthermore, I need to implement an I2C communication protocol to transfer raw signals between 
+                                the ToF sensor and the microcontroller, as well as a UART protocol between the microcontroller 
+                                and the personal computer for data transfer and 3D plotting. The data transfer diagrams and 
+                                wiring diagrams can be found in the linked technical reference manual.
+                            </div>
+                            <div class="bodyText">
+                                Furthermore, I created a 3D-printable package (right) to hold the electrical components of 
+                                the system, which allowed for more reliable testing and operation. To do this, I modelled each
+                                electrical component as a low-fidelity 3D model in Autodesk Inventor, which allowed me to create 
+                                a carefully-fitted housing for all components. Furthermore, I prioritized making each component 
+                                easily printable (&lt;5 hour print time) and quick to assemble/disassemble by friction fitting, 
+                                allowing for easier hardware and software troubleshooting.
                             </div>
                         </div>
                         <div class="imgDisplay">
-                            <img class="bodyImg" src="/projects/assets/img/templateImage.jpg"> <!-- CHANGE -->
+                            <img class="bodyImg" src="/projects/assets/img/LIDARPackage.jpg">
                             <div class="captionText bodyText">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ex 
-                                labore, ad debitis error, modi reiciendis ipsa quos architecto, inventore 
-                                quidem temporibus libero eos? A unde placeat illum? Impedit, recusandae?
+                                I designed a package to hold the microcontroller, stepper motor, driver board, and ToF sensor
+                                in a electrically safe package. In comparison to other students, who often used cardboard or 
+                                Tupperware boxes, my package was more secure and reduced the risk of random noise or errors from 
+                                poor fittings.
                             </div>
                         </div>
                     </div>
@@ -109,7 +133,8 @@
                     Associated Links:
                 </div>
                 <ul class="bodyText">
-                    <a class="bodyText" href="/projects/assets/pdf/LIDARProjectDocumentation.pdf"><li>Project Documentation</li></a>
+                    <a class="bodyText" href="/projects/assets/pdf/LIDARProjectDocumentation.pdf"><li>Techncial Reference Manual</li></a>
+                    <a class="bodyText" href=""><li>Course Outline</li></a>
                 </ul>
             </div>
         </div>
