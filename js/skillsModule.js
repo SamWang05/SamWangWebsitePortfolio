@@ -58,8 +58,8 @@ function renderSoftwareSkills () {
         ["Python", "82%", "Automation, Data Processing and Visualization", "Python.svg"],
         ["C/C++", "73%", "Object-Oriented Programming, Data Structures, Time/Space Optimization", "cLogo.svg"],
         ["MATLAB", "68%", "Matrix Operations, 3D Visualization, Signal Analysis", "MATLAB.svg"],
-        ["PCB Design Software", "72%", "Altium Designer, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", "Altium.png"],
-        ["Circuit Simulation", "57%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "logicORGate.svg"],
+        ["PCB Design Software", "76%", "Altium Designer, Circuit Construction, Simulation, Component Selection, PCB Design and Layout", "Altium.png"],
+        ["Circuit Simulation", "67%", "PSPICE/LTSPICE, Digital Logic, Transistor Circuits", "logicORGate.svg"],
         ["Dev Tools and IDEs", "69%", "VSCode, GitHub, Keil uVision, Arduino IDE, Chrome Dev Tools", "VSCode.svg"],
         ["Assembly", "23%", "Machine Code, Hardware Architecture", "Verilog.svg"],
     ]
@@ -69,12 +69,12 @@ function renderSoftwareSkills () {
 
 function renderHardwareSkills () {
     const hardwareSkillsArray = [ // [Skill, Strength%, Comments, Photo]
-        ["Microcontrollers", "74%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", "Arduino.svg"],
-        ["Debugging and Testing", "71%", "Breadboard Prototyping, Testing Suites, Data Sheets", "MagnifyingGlass.svg"],
-        ["Oscilloscope/Multimeter Measurements", "54%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", "ACVoltage.svg"],
-        ["Circuit Design", "63%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors", "Transistor.svg"],
-        ["Verification and Protection", "47%", "Circuit Protection, Component Selection, Collaborative Engineering", "Shield.svg"],
-        ["PCB Construction", "15%", "Bill of Materials, PCB Layout", "PCBGeneralLogo.svg"]
+        ["Microcontrollers", "87%", "Arduino, TI MSP-432, Raspberry Pi, Jetson Nano", "Arduino.svg"],
+        ["Debugging and Testing", "88%", "Breadboard Prototyping, Testing Suites, Data Sheets", "MagnifyingGlass.svg"],
+        ["Oscilloscope/Multimeter Measurements", "68%", "Circuit Analysis/Troubleshooting, Digital Logic, AC Signals", "ACVoltage.svg"],
+        ["Circuit Design", "79%", "Theoretical Circuit Models, Linear Circuits, Filters, Converters, Transistors", "Transistor.svg"],
+        ["Verification and Protection", "72%", "Circuit Protection, Component Selection, Collaborative Engineering", "Shield.svg"],
+        ["PCB Construction", "68%", "Bill of Materials, PCB Layout", "PCBGeneralLogo.svg"]
     ]
 
     createSkillModule(hardwareSkillsArray);
