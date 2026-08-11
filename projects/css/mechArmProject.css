@@ -100,11 +100,19 @@
     gap: 25px;
 }
 
+.blogBody > .blogModules > .blogModuleTypeOne > .titleText {
+    font-size: 2rem;
+}
+
 .blogBody > .blogModules > .blogModuleTypeTwo {
     display: flex;
     flex-direction: column;
 
     gap: 25px;
+}
+
+.blogBody > .blogModules > .blogModuleTypeTwo > .titleText {
+    font-size: 2rem;
 }
 
 .blogBody > .blogModules > .blogModuleTypeTwo > .moduleDisplay {
@@ -141,4 +149,8 @@
     flex-direction: column;
 
     gap: 25px;
+}
+
+.blogBody > .blogModules > .blogModuleTypeThree > .titleText {
+    font-size: 2rem;
 }

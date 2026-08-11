@@ -101,6 +101,10 @@
     gap: 25px;
 }
 
+.blogBody > .blogModules > .blogModuleTypeOne > .titleText {
+    font-size: 2rem;
+}
+
 .blogBody > .blogModules > .blogModuleTypeTwo {
     display: flex;
     flex-direction: column;
@@ -113,6 +117,10 @@
     flex-direction: row;
 
     gap: 50px;
+}
+
+.blogBody > .blogModules > .blogModuleTypeTwo > .titleText {
+    font-size: 2rem;
 }
 
 .blogBody > .blogModules > .blogModuleTypeTwo > .moduleDisplay > .bodyDisplayText {
