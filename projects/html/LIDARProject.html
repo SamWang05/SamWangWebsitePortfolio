@@ -86,11 +86,12 @@
                             <div class="bodyText">
                                 Furthermore, I need to implement an I2C communication protocol to transfer raw signals between 
                                 the ToF sensor and the microcontroller, as well as a UART protocol between the microcontroller 
-                                and the personal computer for data transfer and 3D plotting. The data transfer diagrams and 
-                                wiring diagrams can be found in the linked technical reference manual.
+                                and the personal computer for data transfer and 3D plotting. The overall electrical wiring 
+                                diagrams can be found in the photo on the right, and a more detailed overview can be found
+                                in the technical reference manual.
                             </div>
                             <div class="bodyText">
-                                Furthermore, I created a 3D-printable package (right) to hold the electrical components of 
+                                Finally, I created a 3D-printable package to hold the electrical components of 
                                 the system, which allowed for more reliable testing and operation. To do this, I modelled each
                                 electrical component as a low-fidelity 3D model in Autodesk Inventor, which allowed me to create 
                                 a carefully-fitted housing for all components. Furthermore, I prioritized making each component 
@@ -99,14 +100,32 @@
                             </div>
                         </div>
                         <div class="imgDisplay">
-                            <img class="bodyImg" src="/projects/assets/img/LIDARPackage.jpg">
+                            <img class="bodyImg" src="/projects/assets/img/LIDARWiring.jpg">
                             <div class="captionText bodyText">
-                                I designed a package to hold the microcontroller, stepper motor, driver board, and ToF sensor
-                                in a electrically safe package. In comparison to other students, who often used cardboard or 
-                                Tupperware boxes, my package was more secure and reduced the risk of random noise or errors from 
-                                poor fittings.
+                                A basic wiring diagram showing how different components are electrically connected. There are four 
+                                main components (MC, ToF sensor, driver board, and motor). I2C pins on the MSP-401Y are labelled
+                                pins PB3 (data) and PB2 (clock). UART connection is not shown.
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="blogModuleTypeThree">
+                    <div class="subtitleText">
+                        3D Printed Packaging
+                    </div>
+                    <div class="bodyText">
+                        I designed a package to hold the microcontroller, stepper motor, driver board, and ToF sensor
+                        in a electrically safe package. In comparison to other students, who often used cardboard or 
+                        Tupperware boxes, my package was more secure and reduced the risk of random noise or errors from 
+                        poor fittings. I am confident that my reliable design was able to save me many hours of 
+                        troubleshooting and resulted in a more effective design.
+                    </div>
+                    <img class="bodyImg" src="/projects/assets/img/LIDARPackage.jpg">
+                    <div class="bodyText">
+                        To help future students to focus on hardware/software debugging instead of worrying about random 
+                        errors resulting from poor packaging, I provided the 3D CAD files to the 2DX3 teaching team so that
+                        future students can download and use my design free of charge!
                     </div>
                 </div>
             </div>
@@ -117,7 +136,7 @@
                 </div>
                 <ul class="bodyText">
                     <a class="bodyText" href="/projects/assets/pdf/LIDARProjectDocumentation.pdf"><li>Techncial Reference Manual</li></a>
-                    <a class="bodyText" href=""><li>Course Outline</li></a>
+                    <a class="bodyText" href=""><li>COMPENG 2DX3 - Course Outline - Winter 2026</li></a>
                 </ul>
             </div>
         </div>
