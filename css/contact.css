@@ -102,3 +102,43 @@
 .contactDisplay > .contactModules > .contactModule > .bodyText:hover {
     scale: 1.1;
 }
+
+/* ============================= */
+/* RESPONSIVE / MOBILE OVERRIDES */
+/* ============================= */
+
+@media (max-width: 800px) {
+
+    .contactDisplay {
+        flex-direction: column;
+
+        height: auto;
+
+        padding: 50px 0px;
+
+        gap: 40px;
+    }
+
+    .contactDisplay > .captionText {
+        width: 100%;
+
+        padding: 20px 30px;
+    }
+
+    /* Decorative background graphic is desktop-only; it uses fixed pixel
+       positioning that doesn't translate to narrow screens */
+
+    .contactDisplay > .captionText::before {
+        display: none;
+    }
+
+    .contactDisplay > .contactModules {
+        margin: 20px 30px;
+
+        gap: 30px;
+    }
+
+    .contactDisplay > .contactModules > .contactModule > .bodyText {
+        opacity: 1; /* JS-driven hover-reveal doesn't fire on touch, so keep text visible */
+    }
+}
